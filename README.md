@@ -10,7 +10,7 @@ Members:
 - **ELEMENT** aka Ms. DOM, _alias Ikra_
 
 ## Project Diagram
-![Project Diagram](./assets/project_diagram.PNG)
+![Project Diagram](./assets/project_diagram.PNG) 
 
 ## ERD
 ![ERD](./assets/Covid_Pets.jpg)
