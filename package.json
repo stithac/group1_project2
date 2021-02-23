@@ -1,0 +1,28 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "Project 2 - group",
+  "main": "server.js",
+  "scripts": {
+    "test": "N/A",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenneration/Project2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenneration/Project2/issues"
+  },
+  "homepage": "https://github.com/jenneration/Project2#readme",
+  "dependencies": {
+    "cloudinary": "^1.24.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}
