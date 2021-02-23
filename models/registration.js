@@ -11,6 +11,8 @@
       phone: DataTypes.STRING,
       volunteer: DataTypes.BOOLEAN,
       password: DataTypes.STRING,
+      securityQuestion: DataTypes.STRING,
+      securityAnswer: DataTypes.STRING,
     });
 
 
