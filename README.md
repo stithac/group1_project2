@@ -10,7 +10,7 @@ Members:
 - **ELEMENT** aka Ms. DOM, _alias Ikra_
 
 ## Project Diagram
-![Project Diagram](./assets/project_diagram.png)
+![Project Diagram](./assets/project_diagram.PNG)
 
 ## ERD
 ![ERD](./assets/Covid_Pets.jpg)
@@ -81,7 +81,7 @@ Members:
 ### HTML Routes
     * Home page ("/")
     * View all pets ("/pet.html")
-    
+
 ### API Routes
     * View all users (Important to show delete functionality)
     * View all services
