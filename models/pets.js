@@ -11,6 +11,7 @@
       monetary: DataTypes.BOOLEAN,
       requestAmount: DataTypes.INTEGER,
       raisedAmount: DataTypes.INTEGER,
+      amountMet: DataTypes.BOOLEAN,
     });
 
 
