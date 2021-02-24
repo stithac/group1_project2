@@ -10,7 +10,7 @@ Members:
 - **ELEMENT** aka Ms. DOM, _alias Ikra_
 
 ## Project Diagram
-![Project Diagram](./assets/project_diagram.PNG) 
+![Project Diagram](./assets/project_diagram.PNG)
 
 ## ERD
 ![ERD](./assets/Covid_Pets.jpg)
@@ -49,7 +49,7 @@ Members:
             * request amount
             * raisedAmount
 * pet.html - Page to display all pets. Each pet has pic, name, sponsor button, donate button
-* *volunteer.html* - Is this the page that displays when user clicks "volunteer" for a particular pet?
+* *volunteer.html* - View All volunteers
 * login.html
     * email (userid)
     * password
@@ -59,9 +59,10 @@ Members:
 * *createaccount.html* - Is this the same as registration.html?
 * aboutus.html - Page with team info
 * Additional pages added by Ashley:
-    * Donate pet page - Opens when user clicks "Donate" for particular pet
-    * General Donation page - Allows users to submit general donations
-    * Credit Card (Handlebars)? - Allow users to submit payment information for donations
+    * donatepet.html: Donate pet page: Opens when user clicks "Donate" for particular pet
+    * volunteerpet.html: Volunteer pet page: Opens when user clicks "Volunteer" for particular pet
+    * donations.html: General Donation page - Allows users to submit general donations
+    * Credit Card (Handlebars)?: Allow users to submit payment information for donations
 
 ## CRUD Operations
 * **CREATE**
