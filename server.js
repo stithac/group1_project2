@@ -21,6 +21,12 @@ app.set('view engine', 'handlebars');
 // Static directory
 app.use(express.static('public'));
 
+// Set Handlebars.
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'index' }));
+app.set('view engine', 'handlebars');
+
 // Routes
 require('./routes/api-routes.js')(app);
 require('./routes/html-routes.js')(app);
