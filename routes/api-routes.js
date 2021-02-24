@@ -7,7 +7,7 @@ const db = require('../models');
 const passport = require("../config/passport");
 
 // Routes
-module.exports = (app) => {
+module.exports = function(app) {
   // Get all pets
   app.get('/api/pets', (req, res) => {
     // Finding all Pets, and then returning them to the user as JSON.
@@ -48,6 +48,8 @@ module.exports = (app) => {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
+    console.log("api/login");
+    console.log(req.user);
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
@@ -56,17 +58,27 @@ module.exports = (app) => {
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // how we configured our Sequelize Registration Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
+    console.log(req.body);
+    db.Registration.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      street: req.body.street,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      phone: req.body.phone,
     })
       .then(() => {
+        console.log("inside signup promise");
         res.redirect(307, "/api/login");
       })
       .catch(err => {
+        console.log("inside signup catch");
         res.status(401).json(err);
       });
   });
