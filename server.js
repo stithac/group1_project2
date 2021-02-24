@@ -2,7 +2,10 @@ console.log("Project 2 is here!!!")
 
 // Dependencies
 const express = require('express');
+const session = require("express-session");
 require('dotenv').config();
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
 // Sets up the Express App
 const app = express();
@@ -20,6 +23,13 @@ app.set('view engine', 'handlebars');
 
 // Static directory
 app.use(express.static('public'));
+
+// We need to use sessions to keep track of our user's login status
+app.use(
+    session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 // Routes
 require('./routes/api-routes.js')(app);

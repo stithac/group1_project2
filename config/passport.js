@@ -12,7 +12,7 @@ passport.use(
     },
     (email, password, done) => {
       // When a user tries to sign in this code runs
-      db.User.findOne({
+      db.Registration.findOne({
         where: {
           email: email
         }
@@ -30,6 +30,8 @@ passport.use(
           });
         }
         // If none of the above, return the user
+//        console.log('returning user');
+//        console.log(dbUser.email + " " + dbUser.id);
         return done(null, dbUser);
       });
     }
