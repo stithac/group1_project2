@@ -12,12 +12,18 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set Handlebars.
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 // Static directory
 app.use(express.static('public'));
 
 // Routes
 require('./routes/api-routes.js')(app);
-require('./routes/html-routes')(app);
+require('./routes/html-routes.js')(app);
 const db = require('./models');
 
 // Starts the server to begin listening
