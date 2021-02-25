@@ -47,13 +47,48 @@
             <label for="exampleInputEmail1">Phone</label>
             <input type="phone" class="form-control" id="phone" placeholder="Phone">
           </div>
+          <div>
+            <p>Are you requesting help for a pet OR volunteering?</p>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pet Name</label>
+            <input type="input" class="form-control" id="petName" placeholder="Pet Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Breed/Type</label>
+            <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pet Age</label>
+            <input type="input" class="form-control" id="petAge" placeholder="Pet Age">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pet Bio</label>
+            <input type="input" class="form-control" id="petBio" placeholder="Pet Bio">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pet Weight</label>
+            <input type="input" class="form-control" id="petweight" placeholder="Pet Weight">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Reason for Help</label>
+            <input type="input" class="form-control" id="helpReason" placeholder="Reason for Help">
+          </div>
+          <div>
+            <p>Are you needing help with pet services or monetary donations?</p>
+          </div>
+          <div>
+            <button id="upload_widget" class="cloudinary-button">Upload files</button>
+          </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
+          <br>
+          <br>
           <button type="submit" class="btn btn-default">Sign Up</button>
         </form>
-        <br />
+        <br>
         <!-- <p>Or log in <a href="/login">here</a></p> -->
       </div>
     </div>
@@ -62,7 +97,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- <script t ype="text/javascript" src="js/signup.js"></script> -->
 
-  <button id="upload_widget" class="cloudinary-button">Upload files</button>
+
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
   <script>
@@ -76,21 +111,38 @@
       const stateInput = $("input#state");
       const zipInput = $("input#zip");
       const phoneInput = $("input#phone");
+      const petNameInput = $("input#petName");
+      const breedTypeInput = $("input#breed-type");
+      const petAgeInput = $("input#petAge");
+      const petWeightInput = $("input#petWeight");
+      const petBioInput = $("input#petBio");
+      const helpReasonInput = $("input#helpReason");
+      var picURLInput;
+      var savedEmail;
+      var savedID;
 
       signUpForm.on("submit", event => {
         event.preventDefault();
-        const userData = {
+        const regData = {
           firstName: firstNameInput.val().trim(),
           lastName: lastNameInput.val().trim(),
           street: streetInput.val().trim(),
           city: cityInput.val().trim(),
           state: stateInput.val().trim(),
           zip: zipInput.val().trim(),
-          phone: phoneInput.val().trim()
+          phone: phoneInput.val().trim(),
+          petName: petNameInput.val().trim(),
+          breed_type: breedTypeInput.val().trim(),
+          petAge: petAgeInput.val().trim(),
+          petWeight: petWeightInput.val(),
+          petBio: petBioInput.val().trim(),
+          helpReason: helpReasonInput.val().trim(),
+          picURL: picURLInput
         };
 
-        regUser(userData.firstName, userData.lastName, userData.street, userData.city, userData.state,
-        userData.zip, userData.phone);
+        regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
+          regData.zip, regData.phone);
+        regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.picURL);
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
@@ -98,6 +150,12 @@
         stateInput.val("");
         zipInput.val("");
         phoneInput.val("");
+        petNameInput.val("");
+        breedTypeInput.val("");
+        petAgeInput.val("");
+        petWeightInput.val("");
+        petBioInput.val("");
+        helpReasonInput.val("");
       });
 
       // Does a post to the signup route. If successful, we are redirected to the members page
@@ -111,6 +169,8 @@
           })
           .then((response) => response.json())
           .then((data) => {
+            savedEmail = data.email;
+            savedID = data.id;
             console.log(firstName, lastName, street, city, state, zip, phone);
             $.post("/api/register", {
                 email: data.email,
@@ -124,13 +184,44 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/register");
-                window.location.replace("/members");
+//                window.location.replace("/members");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
           })
       }
 
+      function regPet(petName, breed_type, petAge, petWeight, petBio, helpReason, picURL) {
+        fetch('/api/user_data', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(petName, breed_type, petAge, petWeight, petBio, helpReason, picURL);
+            console.log("savedID = " + savedID);
+            console.log("savedemail = " + savedEmail);
+            $.post("/api/registerPet", {
+                registrationId: data.id,
+                petName: petName,
+                breed_type: breed_type,
+                petAge: petAge,
+                petWeight: petWeight,
+                petBio: petBio,
+                helpReason: helpReason,
+                picURL: picURL
+              })
+              .then(() => {
+                console.log("did I return successfully from api/registePet");
+//                window.location.replace("/members");
+                // If there's an error, handle it by throwing up a bootstrap alert
+              })
+              .catch(handleLoginErr);
+            })
+      }
+      
       function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
@@ -183,7 +274,14 @@
                   }
                 }
               }
-            }, (error, result) => {});
+            }, (error, result) => {
+              if (!error) {
+                console.log("Upload Widget event - ", result);
+                if (result.event === "success") {
+                  console.log(result.info.url);
+                };
+              };
+            });
           })
           .catch((err) => console.error(err))
       });
