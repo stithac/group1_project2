@@ -3,11 +3,10 @@
 // Dependencies
 const db = require('../models');
 // Requiring our models and passport as we've configured it
-
 const passport = require("../config/passport");
 
 // Routes
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all pets
   app.get('/api/pets', (req, res) => {
     // Finding all Pets, and then returning them to the user as JSON.
@@ -36,7 +35,7 @@ module.exports = function(app) {
 
   app.get('/api/envVars', (req, res) => {
     console.log("in route api/envVars");
-    var envVars = { 
+    var envVars = {
       cloudName: process.env.CLOUD_NAME,
       uploadPreset: process.env.UPLOAD_PRESET,
     }
@@ -44,7 +43,7 @@ module.exports = function(app) {
   });
 
 
-    // Using the passport.authenticate middleware with our local strategy.
+  // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
@@ -63,16 +62,9 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     console.log(req.body);
     db.Registration.create({
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      phone: req.body.phone,
-    })
+        email: req.body.email,
+        password: req.body.password,
+      })
       .then(() => {
         console.log("inside signup promise");
         res.redirect(307, "/api/login");
@@ -81,6 +73,33 @@ module.exports = function(app) {
         console.log("inside signup catch");
         res.status(401).json(err);
       });
+  });
+
+  app.post("/api/register", (req, res) => {
+
+    console.log("inside api/register");
+    console.log(req.body);
+    db.Registration.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        phone: req.body.phone
+      }, {
+        where: {
+          email: req.body.email
+        }
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
   });
 
   // Route for logging user out
@@ -104,7 +123,3 @@ module.exports = function(app) {
     }
   });
 };
-
-
-
-

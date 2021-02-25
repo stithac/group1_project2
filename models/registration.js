@@ -13,7 +13,7 @@ const bcrypt = require("bcryptjs");
           isEmail: true
         }
       },
-      street: DataTypes.INTEGER,
+      street: DataTypes.STRING,
       city: DataTypes.STRING,
       state: DataTypes.STRING,
       zip: DataTypes.STRING,

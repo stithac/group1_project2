@@ -8,60 +8,187 @@
 
 
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Sign Up Form</h2>
+        <form class="signup">
+          <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="input" class="form-control" id="first-name" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="input" class="form-control" id="last-name" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Street</label>
+            <input type="input" class="form-control" id="street" placeholder="Street">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">City</label>
+            <input type="input" class="form-control" id="city" placeholder="City">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">State</label>
+            <input type="input" class="form-control" id="state" placeholder="State">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Zip</label>
+            <input type="input" class="form-control" id="zip" placeholder="Zip">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Phone</label>
+            <input type="phone" class="form-control" id="phone" placeholder="Phone">
+          </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+        <br />
+        <!-- <p>Or log in <a href="/login">here</a></p> -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script t ype="text/javascript" src="js/signup.js"></script> -->
+
   <button id="upload_widget" class="cloudinary-button">Upload files</button>
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
   <script>
-    document.getElementById("upload_widget").addEventListener("click", function () {
+    $(document).ready(() => {
+      // Getting references to our form and input
+      const signUpForm = $("form.signup");
+      const firstNameInput = $("input#first-name");
+      const lastNameInput = $("input#last-name");
+      const streetInput = $("input#street");
+      const cityInput = $("input#city");
+      const stateInput = $("input#state");
+      const zipInput = $("input#zip");
+      const phoneInput = $("input#phone");
 
-      fetch('/api/envVars', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('successful GET', data);
+      signUpForm.on("submit", event => {
+        event.preventDefault();
+        const userData = {
+          firstName: firstNameInput.val().trim(),
+          lastName: lastNameInput.val().trim(),
+          street: streetInput.val().trim(),
+          city: cityInput.val().trim(),
+          state: stateInput.val().trim(),
+          zip: zipInput.val().trim(),
+          phone: phoneInput.val().trim()
+        };
 
-          cloudinary.openUploadWidget({
-            cloudName: data.cloudName,
-            uploadPreset: data.uploadPreset,
-            sources: [
-              "local"
-            ],
-            googleApiKey: "<image_search_google_api_key>",
-            showAdvancedOptions: true,
-            cropping: true,
-            multiple: false,
-            defaultSource: "local",
-            styles: {
-              palette: {
-                window: "#5D005D",
-                sourceBg: "#3A0A3A",
-                windowBorder: "#AD5BA3",
-                tabIcon: "#ffffcc",
-                inactiveTabIcon: "#FFD1D1",
-                menuIcons: "#FFD1D1",
-                link: "#ffcc33",
-                action: "#ffcc33",
-                inProgress: "#00e6b3",
-                complete: "#a6ff6f",
-                error: "#ff1765",
-                textDark: "#3c0d68",
-                textLight: "#fcfffd"
-              },
-              fonts: {
-                default: null,
-                "'Kalam', cursive": {
-                  url: "https://fonts.googleapis.com/css?family=Kalam",
-                  active: true
+        regUser(userData.firstName, userData.lastName, userData.street, userData.city, userData.state,
+        userData.zip, userData.phone);
+        firstNameInput.val("");
+        lastNameInput.val("");
+        streetInput.val("");
+        cityInput.val("");
+        stateInput.val("");
+        zipInput.val("");
+        phoneInput.val("");
+      });
+
+      // Does a post to the signup route. If successful, we are redirected to the members page
+      // Otherwise we log any errors
+      function regUser(firstName, lastName, street, city, state, zip, phone) {
+        fetch('/api/user_data', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(firstName, lastName, street, city, state, zip, phone);
+            $.post("/api/register", {
+                email: data.email,
+                firstName: firstName,
+                lastName: lastName,
+                street: street,
+                city: city,
+                state: state,
+                zip: zip,
+                phone: phone
+              })
+              .then(() => {
+                console.log("did I return successfully from api/register");
+                window.location.replace("/members");
+                // If there's an error, handle it by throwing up a bootstrap alert
+              })
+              .catch(handleLoginErr);
+          })
+      }
+
+      function handleLoginErr(err) {
+        $("#alert .msg").text(err.responseJSON);
+        $("#alert").fadeIn(500);
+      }
+
+      document.getElementById("upload_widget").addEventListener("click", function () {
+
+        fetch('/api/envVars', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('successful GET', data);
+
+            cloudinary.openUploadWidget({
+              cloudName: data.cloudName,
+              uploadPreset: data.uploadPreset,
+              sources: [
+                "local"
+              ],
+              googleApiKey: "<image_search_google_api_key>",
+              showAdvancedOptions: true,
+              cropping: true,
+              multiple: false,
+              defaultSource: "local",
+              styles: {
+                palette: {
+                  window: "#5D005D",
+                  sourceBg: "#3A0A3A",
+                  windowBorder: "#AD5BA3",
+                  tabIcon: "#ffffcc",
+                  inactiveTabIcon: "#FFD1D1",
+                  menuIcons: "#FFD1D1",
+                  link: "#ffcc33",
+                  action: "#ffcc33",
+                  inProgress: "#00e6b3",
+                  complete: "#a6ff6f",
+                  error: "#ff1765",
+                  textDark: "#3c0d68",
+                  textLight: "#fcfffd"
+                },
+                fonts: {
+                  default: null,
+                  "'Kalam', cursive": {
+                    url: "https://fonts.googleapis.com/css?family=Kalam",
+                    active: true
+                  }
                 }
               }
-            }
-          }, (error, result) => {});
-        })
-        .catch((err) => console.error(err))
+            }, (error, result) => {});
+          })
+          .catch((err) => console.error(err))
+      });
+
+
     });
   </script>
 
