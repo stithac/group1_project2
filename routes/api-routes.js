@@ -42,7 +42,23 @@ module.exports = function (app) {
     res.json(envVars);
   });
 
-
+  app.post("/api/donatePet", (req, res) => {
+    console.log("inside api/donatePet");
+    db.Donations.create({
+      donationAmount: req.body.donation,
+      petID: req.body.petID,
+      registrationID: req.body.registrationID
+    })
+    .then(() => {
+      console.log("inside donatePet promise");
+      res.redirect(307, "/api/members");
+    })
+    .catch(err => {
+      console.log("inside donatePet catch");
+      console.log(err);
+      res.status(401).json(err);
+    })
+  })
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -71,6 +87,7 @@ module.exports = function (app) {
       })
       .catch(err => {
         console.log("inside signup catch");
+        console.log(err);
         res.status(401).json(err);
       });
   });
@@ -91,6 +108,31 @@ module.exports = function (app) {
         where: {
           email: req.body.email
         }
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.post("/api/registerPet", (req, res) => {
+
+    console.log("inside api/registerPet");
+    console.log(req.body);
+    console.log(parseInt(req.body.registrationId));
+    db.Pets.create({
+        petName: req.body.petName,
+        picURL: req.body.picURL,
+        breed_type: req.body.breed_type,
+        petAge: req.body.petAge,
+        petWeight: req.body.petWeight,
+        petBio: req.body.petBio,
+        helpReason: req.body.helpReason,
+        RegistrationId: parseInt(req.body.registrationId)
       }).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
