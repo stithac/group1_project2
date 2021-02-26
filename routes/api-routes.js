@@ -136,6 +136,12 @@ module.exports = function (app) {
         zip: req.body.zip,
         phone: req.body.phone,
         email: req.body.email,
+        cardNumber: req.body.cardNumber,
+        securityCode: req.body.securityCode,
+        cardType: req.body.cardType,
+        nameOnCard: req.body.nameOnCard,
+        expirationDate: req.body.expirationDate,
+        donationAmount: parseInt(req.body.donationAmount),
       }).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
