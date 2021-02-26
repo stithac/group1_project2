@@ -44,8 +44,8 @@
             <input type="input" class="form-control" id="zip" placeholder="Zip">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Phone</label>
-            <input type="phone" class="form-control" id="phone" placeholder="Phone">
+            <label for="phone">Phone</label><br><br>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="123-45-6789" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Security Question</label>
@@ -58,6 +58,13 @@
           <div>
             <p>Are you requesting help for a pet OR volunteering?</p>
           </div>
+          <div class="form-group">
+            <input type="radio" id="requestHelp" name="gender" name="petHelp">
+            <label for="male">Request Help</label><br>
+            <input type="radio" id="volunteer" name="gender" name="petHelp">
+            <label for="female">Volunteer</label>
+          </div>
+          <br>
           <div class="form-group">
             <label for="exampleInputEmail1">Pet Name</label>
             <input type="input" class="form-control" id="petName" placeholder="Pet Name">
@@ -76,7 +83,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Pet Weight</label>
-            <input type="input" class="form-control" id="petweight" placeholder="Pet Weight">
+            <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Reason for Help</label>
@@ -85,6 +92,13 @@
           <div>
             <p>Are you needing help with pet services or monetary donations?</p>
           </div>
+          <div class="form-group">
+            <input type="radio" id="petServices" name="help">
+            <label for="petServices">Pet Services</label><br>
+            <input type="radio" id="monetaryDonation" name="help" >
+            <label for="monetaryDonation">Monetary Donation</label>
+          </div>
+          <br>
           <div class="form-group">
             <label for="exampleInputEmail1">Amount Requested</label>
             <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
@@ -142,13 +156,12 @@
           <button type="submit" class="btn btn-default">Sign Up</button>
         </form>
         <br>
-        <!-- <p>Or log in <a href="/login">here</a></p> -->
       </div>
     </div>
   </div>
+  <br>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <script t ype="text/javascript" src="js/signup.js"></script> -->
   <div>
     <button id="upload_widget" class="cloudinary-button">Upload files</button>
   </div>
@@ -192,6 +205,7 @@
 
       signUpForm.on("submit", event => {
         event.preventDefault();
+        console.log(petWeightInput.val());
         const regData = {
           firstName: firstNameInput.val().trim(),
           lastName: lastNameInput.val().trim(),
@@ -203,7 +217,7 @@
           petName: petNameInput.val().trim(),
           breed_type: breedTypeInput.val().trim(),
           petAge: petAgeInput.val().trim(),
-          petWeight: petWeightInput.val(),
+          petWeight: petWeightInput.val().trim(),
           petBio: petBioInput.val().trim(),
           helpReason: helpReasonInput.val().trim(),
           amountRequested: amountRequestedInput.val().trim(),
@@ -224,7 +238,7 @@
         regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
           regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
         regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.amountRequested, regData.picURL);
-        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
+//        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
@@ -288,8 +302,6 @@
           .then((response) => response.json())
           .then((data) => {
             console.log(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested, picURL);
-            console.log("savedID = " + savedID);
-            console.log("savedemail = " + savedEmail);
             $.post("/api/registerPet", {
                 registrationId: data.id,
                 petName: petName,
@@ -366,6 +378,7 @@
               if (!error) {
                 console.log("Upload Widget event - ", result);
                 if (result.event === "success") {
+                  picURLInput = result.info.url;
                   console.log(result.info.url);
                 };
               };
@@ -373,11 +386,7 @@
           })
           .catch((err) => console.error(err))
       });
-
-
     });
   </script>
-
 </body>
-
 </html>
