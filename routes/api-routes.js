@@ -197,12 +197,13 @@ module.exports = function (app) {
     console.log("inside api/registerPet");
     console.log(req.body);
     console.log(parseInt(req.body.registrationId));
+    console.log("pet weight = " + req.body.petWeight);
     db.Pets.create({
         petName: req.body.petName,
         picURL: req.body.picURL,
         breed_type: req.body.breed_type,
-        petAge: req.body.petAge,
-        petWeight: req.body.petWeight,
+        petAge: parseInt(req.body.petAge),
+        petWeight: parseInt(req.body.petWeight),
         petBio: req.body.petBio,
         helpReason: req.body.helpReason,
         requestAmount: parseInt(req.body.amountRequested),
