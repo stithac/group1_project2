@@ -10,7 +10,10 @@
       helpReason: DataTypes.STRING,
       monetary: DataTypes.BOOLEAN,
       requestAmount: DataTypes.INTEGER,
-      raisedAmount: DataTypes.INTEGER,
+      raisedAmount: {
+        type: DataTypes.INTEGER,
+        defaultValue: '0'
+      },
       amountMet: DataTypes.BOOLEAN,
     });
 
