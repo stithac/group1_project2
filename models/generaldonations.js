@@ -9,10 +9,16 @@
       state: DataTypes.STRING,
       zip: DataTypes.STRING,
       phone: DataTypes.STRING,
+      cardNumber: DataTypes.STRING,
+      securityCode: DataTypes.INTEGER,
+      nameOnCard: DataTypes.STRING,
+      expirationDate: DataTypes.DATE,
+      cardType: DataTypes.STRING,
+      donationAmount: DataTypes.INTEGER,
     });
 
 
-    GeneralDonation.associate = (models) => {
+/*     GeneralDonation.associate = (models) => {
         // Associating general donation with credit card
         // When a general donation is deleted, also delete any associated credit card
         GeneralDonation.hasOne(models.CreditCard, {
@@ -26,7 +32,7 @@
       GeneralDonation.hasMany(models.Donation, {
         onDelete: 'cascade',
       });
-    };
+    }; */
 
     return GeneralDonation;
   }
