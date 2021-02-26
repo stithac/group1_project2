@@ -88,6 +88,11 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, '../public/volunteerpet.html'))
   );
 
+  // generaldonation route loads generaldonation.html
+  app.get('/generaldonation', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
+  );
+
 /*__________________________________________________________________________________________________*/
 
   // Passport routes:

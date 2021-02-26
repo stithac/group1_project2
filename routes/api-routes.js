@@ -44,14 +44,16 @@ module.exports = function (app) {
 
   app.post("/api/donatePet", (req, res) => {
     console.log("inside api/donatePet");
-    db.Donations.create({
-      donationAmount: req.body.donation,
-      petID: req.body.petID,
-      registrationID: req.body.registrationID
+    console.log("regId = " + req.body.registrationId);
+    db.Donation.create({
+      RegistrationId: parseInt(req.body.registrationId),
+      donationAmount: parseInt(req.body.donationAmount),
+      petId: parseInt(req.body.petId),
     })
-    .then(() => {
+    .then((data) => {
       console.log("inside donatePet promise");
-      res.redirect(307, "/api/members");
+//      res.redirect(307, "/api/members");
+        res.status(200).json(data);
     })
     .catch(err => {
       console.log("inside donatePet catch");
@@ -103,7 +105,9 @@ module.exports = function (app) {
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
-        phone: req.body.phone
+        phone: req.body.phone,
+        securityQuestion: req.body.question,
+        securityAnswer: req.body.answer
       }, {
         where: {
           email: req.body.email
@@ -114,6 +118,69 @@ module.exports = function (app) {
       })
       .catch(err => {
         console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.post("/api/generalDonation", (req, res) => {
+
+    console.log("inside api/generalDonation");
+    console.log(req.body);
+    db.GeneralDonation.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        phone: req.body.phone,
+        email: req.body.email,
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+  
+  app.post("/api/saveDonation", (req, res) => {
+
+    console.log("inside api/saveDonation");
+    console.log(req.body);
+    db.Donation.create({
+        donationAmount: parseInt(req.body.donationAmount),
+        RegistrationId: 1
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside post failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.post("/api/updateRaisedAmount", (req, res) => {
+
+    console.log("inside api/updateRaisedAmount");
+    console.log(req.body);
+    db.Pets.update({
+        raisedAmount: parseInt(req.body.raisedAmount),
+      }, {
+        where: {
+          RegistrationId: 1
+        }
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside post failure");
         console.log(err);
         res.status(401).json(err);
       })
@@ -132,8 +199,26 @@ module.exports = function (app) {
         petWeight: req.body.petWeight,
         petBio: req.body.petBio,
         helpReason: req.body.helpReason,
+        requestAmount: parseInt(req.body.amountRequested),
         RegistrationId: parseInt(req.body.registrationId)
       }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.get("/api/getPetInfo", (req, res) => {
+
+    console.log("inside api/getPetInfo");
+    db.Pets.findOne({
+      where: {
+        RegistrationId: 1
+      }}).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
       })
@@ -157,6 +242,8 @@ module.exports = function (app) {
       res.json({});
     } else {
       // Otherwise send back the user's email and id
+      console.log(req.user.id);
+      console.log(req.user.email);
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,

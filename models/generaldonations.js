@@ -4,7 +4,7 @@
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      street: DataTypes.INTEGER,
+      street: DataTypes.STRING,
       city: DataTypes.STRING,
       state: DataTypes.STRING,
       zip: DataTypes.STRING,
