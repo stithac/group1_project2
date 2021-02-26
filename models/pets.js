@@ -8,7 +8,8 @@
       petBio: DataTypes.STRING,
       petWeight: DataTypes.INTEGER,
       helpReason: DataTypes.STRING,
-      monetary: DataTypes.BOOLEAN,
+      services_monetary: DataTypes.STRING,
+      // monetary: DataTypes.BOOLEAN,
       requestAmount: DataTypes.INTEGER,
       raisedAmount: {
         type: DataTypes.INTEGER,
@@ -32,7 +33,7 @@
     Pets.associate = (models) => {
       // Associating pets with services
       // When a pet is deleted, also delete any associated services
-      Pets.belongsToMany(models.Services, 
+      Pets.belongsToMany(models.Services,
         { through: 'ServicesPets' }
       );
     };
