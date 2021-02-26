@@ -89,7 +89,50 @@
             <label for="exampleInputEmail1">Amount Requested</label>
             <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
           </div>          
-
+          <div class="form-group">
+            <label for="exampleInputEmail1">Service Name</label>
+            <input type="input" class="form-control" id="serviceName" placeholder="serviceName">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Frequency</label>
+            <input type="input" class="form-control" id="frequency" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Time of Day</label>
+            <input type="input" class="form-control" id="timeOfDay" placeholder="Time Of Day">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Day of Week</label>
+            <input type="input" class="form-control" id="dayOfWeek" placeholder="Day of Week">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Monday</label>
+            <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tuesday</label>
+            <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Wednesday</label>
+            <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Thursday</label>
+            <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Friday</label>
+            <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Saturday</label>
+            <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Sunday</label>
+            <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
+          </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
@@ -132,6 +175,17 @@
       const amountRequestedInput = $("input#amountRequested");
       const securityQuestionInput = $("input#securityQuestion");
       const securityAnswerInput = $("input#securityAnswer");
+      const serviceNameInput = $("input#serviceName");
+      const frequencyInput = $("input#frequency");
+      const dayOfWeekInput = $("input#dayOfWeek");
+      const mondayInput = $("input#monday");
+      const tuesdayInput = $("input#tuesday");
+      const wednesdayInput = $("input#wednesday");
+      const thursdayInput = $("input#thursday");
+      const fridayInput = $("input#friday");
+      const saturdayInput = $("input#saturday");
+      const sundayInput = $("input#sunday");
+      const timeOfDayInput = $("input#timeOfDay");
       var picURLInput;
       var savedEmail;
       var savedID;
@@ -155,12 +209,22 @@
           amountRequested: amountRequestedInput.val().trim(),
           securityQuestion: securityQuestionInput.val().trim(),
           securityAnswer: securityAnswerInput.val().trim(),
+          serviceName: serviceNameInput.val().trim(),
+          frequency: frequencyInput.val().trim(),
+          monday: mondayInput.val(),
+          tuesday: tuesdayInput.val(),
+          wednesday: wednesdayInput.val(),
+          thursday: thursdayInput.val(),
+          friday: fridayInput.val(),
+          saturday: saturdayInput.val(),
+          sunday: sundayInput.val(),
           picURL: picURLInput
         };
 
         regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
           regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
         regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.amountRequested, regData.picURL);
+        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
