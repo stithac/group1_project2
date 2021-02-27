@@ -66,14 +66,28 @@ $(document).ready(() => {
                 console.log(donation);
                 console.log(data);
                 console.log(data.id);
-                console.log('updating raised amount 2 = ' + updatingRaised);
+                localStorage.setItem("RegistrationId", data.id);
                 $.post("/api/donatePet", {
                         registrationId: data.id,
-                        donationAmount: donation
+                        donationAmount: donation,
+                        petId: 1
                     })
                     .then((data) => {
-
-                        console.log("succes return from api/registerPet");
+                        console.log("success from donate pet");
+                        $.post("/api/updateRaisedAmount", {
+                                registrationId: localStorage.getItem("RegistrationId"),
+//                                registrationId: data.id,
+                                raisedAmount: updatingRaised,
+                                petId: 1
+                            })
+                            .then(() => {
+                                console.log("success from updating raised amount");
+                                window.location.replace('/donatepet');
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                        console.log("success return from api/registerPet");
                         //                        window.location.replace("/members");
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })
@@ -81,18 +95,7 @@ $(document).ready(() => {
                         console.log("in error from donate pet")
                         console.log(err);
                     });
-                console.log("success from donate pet");
-                $.post("/api/updateRaisedAmount", {
-                        registrationId: data.id,
-                        raisedAmount: updatingRaised,
-                    })
-                    .then(() => {
-                        console.log("success from updating raised amount");
-                        window.location.replace('/donatepet');
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+
             })
 
     }

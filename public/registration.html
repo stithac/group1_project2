@@ -21,73 +21,78 @@
         <form class="signup">
           <div class="form-group">
             <label for="exampleInputEmail1">First Name</label>
-            <input type="input" class="form-control" id="first-name" placeholder="First Name">
+            <input type="input" class="form-control" id="first-name" placeholder="First Name" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Last Name</label>
-            <input type="input" class="form-control" id="last-name" placeholder="Last Name">
+            <input type="input" class="form-control" id="last-name" placeholder="Last Name" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Street</label>
-            <input type="input" class="form-control" id="street" placeholder="Street">
+            <input type="input" class="form-control" id="street" placeholder="Street" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">City</label>
-            <input type="input" class="form-control" id="city" placeholder="City">
+            <input type="input" class="form-control" id="city" placeholder="City" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">State</label>
-            <input type="input" class="form-control" id="state" placeholder="State">
+            <input type="input" class="form-control" id="state" placeholder="State" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Zip</label>
-            <input type="input" class="form-control" id="zip" placeholder="Zip">
+            <input type="input" class="form-control" id="zip" placeholder="Zip" required>
           </div>
           <div class="form-group">
-            <label for="phone">Phone</label><br><br>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="123-45-6789" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" required>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="123-45-6789"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Security Question</label>
-            <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question">
+            <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Security Question Answer</label>
-            <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer">
-          </div>          
+            <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer"
+              required>
+          </div>
           <div>
             <p>Are you requesting help for a pet OR volunteering?</p>
           </div>
           <div class="form-group">
-            <input type="radio" id="requestHelp" name="gender" name="petHelp">
-            <label for="male">Request Help</label><br>
-            <input type="radio" id="volunteer" name="gender" name="petHelp">
-            <label for="female">Volunteer</label>
+            <input type="radio" id="requestHelp" name="petHelp" value="1">
+            <label for="petHelp">Request Help</label><br>
+            <input type="radio" id="volunteer" name="petHelp" value="2">
+            <label for="volunteer">Volunteer</label>
           </div>
           <br>
-          <div class="form-group">
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Pet Name</label>
-            <input type="input" class="form-control" id="petName" placeholder="Pet Name">
+            <input type="input" class="form-control" id="petName" name="petHelp" placeholder="Pet Name" required>
           </div>
-          <div class="form-group">
+          <p>You can upload a photo of your pet below:</p>
+          <button id="upload_widget" class="cloudinary-button">Upload Pet Photo</button>
+          <br><br>
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Breed/Type</label>
-            <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type">
+            <input type="input" class="form-control" id="breed-type" name="petHelp" placeholder="Breed/Type" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Pet Age</label>
-            <input type="input" class="form-control" id="petAge" placeholder="Pet Age">
+            <input type="input" class="form-control" id="petAge" name="petHelp" placeholder="Pet Age" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Pet Bio</label>
-            <input type="input" class="form-control" id="petBio" placeholder="Pet Bio">
+            <input type="input" class="form-control" id="petBio" name="petHelp" placeholder="Pet Bio" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Pet Weight</label>
-            <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight">
+            <input type="input" class="form-control" id="petWeight" name="petHelp" placeholder="Pet Weight" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="petName1">
             <label for="exampleInputEmail1">Reason for Help</label>
-            <input type="input" class="form-control" id="helpReason" placeholder="Reason for Help">
+            <input type="input" class="form-control" id="helpReason" name="petHelp" placeholder="Reason for Help">
           </div>
           <div>
             <p>Are you needing help with pet services or monetary donations?</p>
@@ -95,25 +100,29 @@
           <div class="form-group">
             <input type="radio" id="petServices" name="help">
             <label for="petServices">Pet Services</label><br>
-            <input type="radio" id="monetaryDonation" name="help" >
+            <input type="radio" id="monetaryDonation" name="help">
             <label for="monetaryDonation">Monetary Donation</label>
           </div>
           <br>
           <div class="form-group">
             <label for="exampleInputEmail1">Amount Requested</label>
-            <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
-          </div>          
+            <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested" required>
+          </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Service Name</label>
-            <input type="input" class="form-control" id="serviceName" placeholder="serviceName">
+            <input type="input" class="form-control" id="serviceName" placeholder="serviceName" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Frequency</label>
             <input type="input" class="form-control" id="frequency" placeholder="Frequency">
           </div>
-          <div class="form-group">
+<!--           <div class="form-group">
             <label for="exampleInputEmail1">Time of Day</label>
             <input type="input" class="form-control" id="timeOfDay" placeholder="Time Of Day">
+          </div> -->
+          <div class="form-group">
+            <label for="appt">Select a time:</label>
+            <input type="time" id="timeOfDay" name="timeOfDay">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Day of Week</label>
@@ -153,17 +162,16 @@
           </div>
           <br>
           <br>
-          <button type="submit" class="btn btn-default">Sign Up</button>
         </form>
         <br>
       </div>
     </div>
   </div>
   <br>
-
+  <button type="submit" id="submitInfo" class="btn btn-default">Sign Up</button>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <div>
-    <button id="upload_widget" class="cloudinary-button">Upload files</button>
+
   </div>
 
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
@@ -171,7 +179,7 @@
   <script>
     $(document).ready(() => {
       // Getting references to our form and input
-      const signUpForm = $("form.signup");
+      const signUpForm = $("#submitInfo");
       const firstNameInput = $("input#first-name");
       const lastNameInput = $("input#last-name");
       const streetInput = $("input#street");
@@ -202,8 +210,55 @@
       var picURLInput;
       var savedEmail;
       var savedID;
+      var petHelp;
 
-      signUpForm.on("submit", event => {
+      if(document.getElementById('requestHelp').checked) {
+      //Need pet help radio button is checked
+        petHelp = true;
+      } else if(document.getElementById('volunteer').checked) {
+        //volunteer radio button is checked
+        petHelp = false;
+      }
+      $('input[name="petHelp"]').on('change', function () {
+            // this, in the anonymous function, refers to the changed-<input>:
+            // select the element(s) you want to show/hide:
+            $('#petName1')
+                // pass a Boolean to the method, if the numeric-value of the changed-<input>
+                // is exactly equal to 2 and that <input> is checked, the .business-fields
+                // will be shown:
+                .toggle(+this.value === 2 && this.checked);
+            if (+this.value === 1) {
+                $('#petName').removeAttr('required');
+            } else if (+this.value === 2) {
+                $('#petName').attr('required', '');
+            }
+            // trigger the change event, to show/hide the .business-fields element(s) on
+            // page-load:
+        }).change();
+
+//      var currentValue = 0;
+//function handleClick(myRadio) {
+//    alert('Old value: ' + currentValue);
+ //   alert('New value: ' + myRadio.value);
+//    currentValue = myRadio.value;
+//}
+$('#petHelp').hide();
+
+$("#petHelp").change(function() {
+  if ($(this).checked = true) {
+    $('#petName').show();
+    $('#petName').attr('required', '');
+    $('#petName').attr('data-error', 'This field is required.');
+  } else {
+    $('#petName').hide();
+    $('#petName').removeAttr('required');
+    $('#petName').removeAttr('data-error');
+  }
+});
+$("#petHelp").trigger("onchange");
+
+      //      signUpForm.on("submit", event => {
+      $("#submitInfo").on("click", function () {
         event.preventDefault();
         console.log(petWeightInput.val());
         const regData = {
@@ -237,8 +292,9 @@
 
         regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
           regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
-        regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.amountRequested, regData.picURL);
-//        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
+        regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData
+          .helpReason, regData.amountRequested, regData.picURL);
+        //        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
@@ -285,7 +341,7 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/register");
-//                window.location.replace("/members");
+                //                window.location.replace("/members");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
@@ -315,13 +371,13 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/registePet");
-//                window.location.replace("/members");
+                //                window.location.replace("/members");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
-            })
+          })
       }
-      
+
       function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
@@ -389,4 +445,5 @@
     });
   </script>
 </body>
+
 </html>

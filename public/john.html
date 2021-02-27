@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../public/css/john.css" rel="stylesheet">
+</head>
+
+<body>
+    <form class="p-3">
+        <div class="form-group">
+            <input type="radio" id="requestHelp" name="petHelp" value="1">
+            <label for="petHelp">Request Help</label><br>
+            <input type="radio" id="volunteer" name="petHelp" value="2">
+            <label for="volunteer">Volunteer</label>
+        </div>
+
+        <div class="form-group" id="petName1">
+            <label for="expand">Pet Name</label>
+            <input type="input" class="form-control" id="petName" placeholder="Pet Name" required>
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // select the relevant <input> elements, and using on() to bind a change event-handler:
+        $('input[name="petHelp"]').on('change', function () {
+            // this, in the anonymous function, refers to the changed-<input>:
+            // select the element(s) you want to show/hide:
+            $('#petName1')
+                // pass a Boolean to the method, if the numeric-value of the changed-<input>
+                // is exactly equal to 2 and that <input> is checked, the .business-fields
+                // will be shown:
+                .toggle(+this.value === 2 && this.checked);
+            if (+this.value === 1) {
+                $('#petName').removeAttr('required');
+            } else if (+this.value === 2) {
+                $('#petName').attr('required', '');
+            }
+            // trigger the change event, to show/hide the .business-fields element(s) on
+            // page-load:
+        }).change();
+
+    </script>
+</body>
+
+</html>

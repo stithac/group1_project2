@@ -15,9 +15,9 @@ module.exports = (app) => {
      }
      console.log("doesn't have account");
      console.log("redirect to signup.html");
-     res.sendFile(path.join(__dirname, "../public/signup.html"));
+//     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-//    res.sendFile(path.join(__dirname, '../public/index.html'))
+    res.sendFile(path.join(__dirname, '../public/index.html'))
     }
   );
 

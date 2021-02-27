@@ -48,7 +48,7 @@ module.exports = function (app) {
     db.Donation.create({
       RegistrationId: parseInt(req.body.registrationId),
       donationAmount: parseInt(req.body.donationAmount),
-      petId: parseInt(req.body.petId),
+      PetId: parseInt(req.body.petId),
     })
     .then((data) => {
       console.log("inside donatePet promise");
@@ -153,7 +153,7 @@ module.exports = function (app) {
       })
   });
   
-  app.post("/api/saveDonation", (req, res) => {
+/*   app.post("/api/saveDonation", (req, res) => {
 
     console.log("inside api/saveDonation");
     console.log(req.body);
@@ -169,7 +169,7 @@ module.exports = function (app) {
         console.log(err);
         res.status(401).json(err);
       })
-  });
+  }); */
 
   app.post("/api/updateRaisedAmount", (req, res) => {
 
@@ -179,7 +179,7 @@ module.exports = function (app) {
         raisedAmount: parseInt(req.body.raisedAmount),
       }, {
         where: {
-          RegistrationId: 1
+          id: parseInt(req.body.petId)
         }
       }).then((dbUser) => {
         console.log(dbUser);
@@ -224,7 +224,7 @@ module.exports = function (app) {
     console.log("inside api/getPetInfo");
     db.Pets.findOne({
       where: {
-        RegistrationId: 1
+        id: 1
       }}).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
