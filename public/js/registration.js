@@ -27,20 +27,40 @@ $("#emailSubmit").click(function(event){
 
 // loginUser does a post to our "api/signup" route to create a user and get the RegisterId
 function loginUser(email, password) {
-  $.post("/api/signup", {
-    email: email,
-    password: password
-  })
-    .then((data) => {
-      console.log(data.email, data.id);
-      // window.location.replace("/members");
 
-      console.log(data.email, data.id);
-      // If there's an error, log the error
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  $.get("/api/userExists")
+    .then((data) => {
+      console.log(data);
+      var found = false;
+      for (let i = 0; i < data.length; i++) { 
+        if (data[i].email === email) {
+          found = true;
+        }
+      }
+      console.log(found);
+      if (!found) {
+        $.post("/api/signup", {
+            email: email,
+            password: password
+          })
+          .then((data) => {
+            console.log(data.email, data.id);
+            // window.location.replace("/members");
+            // only display more fields if successfully created user
+            $("#registrationDiv").addClass("show").removeClass("hide");
+            $("#emailSubmit").addClass("hide").removeClass("show");
+            console.log(data.email, data.id);
+            // If there's an error, log the error
+          })
+          .catch(err => {
+            // upon error creating user, redisplay registration page
+            window.location.replace("/registration");
+            console.log(err);
+          });
+      } else {
+        window.location.replace("/registration");
+      }
+      })
 }
 
 /************************* Event Listeners for radio buttons ********************************* */

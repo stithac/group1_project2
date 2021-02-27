@@ -25,6 +25,10 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
+  app.get('/help', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/help.html"));
+  });
+
   // login route loads login.html
   app.get('/login', (req, res) => {
      // If the user already has an account send them to the members page
