@@ -23,7 +23,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  background: url("../assets/p2-images/cats/photo-1442291928580-fb5d0856a8f1.jpg"), -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
+  background: -webkit-linear-gradient(bottom, #02c54d, #3fd48e);
 
 }
 ::selection{
@@ -94,7 +94,7 @@ form .page .field button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #d33f8d;
+  background: #3fd3ab;
   margin-top: -20px;
   border-radius: 5px;
   color: #fff;
@@ -147,8 +147,8 @@ form .page .btns button.next{
   line-height: 25px;
 }
 .progress-bar .step .bullet.active{
-  border-color: #d43f8d;
-  background: #d43f8d;
+  border-color: #3fd3ab;
+  background: #3fd3ab;
 }
 .progress-bar .step .bullet span{
   position: absolute;
@@ -169,7 +169,7 @@ form .page .btns button.next{
   background: #262626;
 }
 .progress-bar .step .bullet.active:after{
-  background: #d43f8d;
+  background: #3fd3ab;
   transform: scaleX(0);
   transform-origin: left;
   animation: animate 0.3s linear forwards;
@@ -184,7 +184,7 @@ form .page .btns button.next{
   display: none;
 }
 .progress-bar .step p.active{
-  color: #d43f8d;
+  color: #3fd3ab;
   transition: 0.2s linear;
 }
 .progress-bar .step .check{
