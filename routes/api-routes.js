@@ -46,20 +46,20 @@ module.exports = function (app) {
     console.log("inside api/donatePet");
     console.log("regId = " + req.body.registrationId);
     db.Donation.create({
-      RegistrationId: parseInt(req.body.registrationId),
-      donationAmount: parseInt(req.body.donationAmount),
-      petId: parseInt(req.body.petId),
-    })
-    .then((data) => {
-      console.log("inside donatePet promise");
-//      res.redirect(307, "/api/members");
+        RegistrationId: parseInt(req.body.registrationId),
+        donationAmount: parseInt(req.body.donationAmount),
+        PetId: parseInt(req.body.petId),
+      })
+      .then((data) => {
+        console.log("inside donatePet promise");
+        //      res.redirect(307, "/api/members");
         res.status(200).json(data);
-    })
-    .catch(err => {
-      console.log("inside donatePet catch");
-      console.log(err);
-      res.status(401).json(err);
-    })
+      })
+      .catch(err => {
+        console.log("inside donatePet catch");
+        console.log(err);
+        res.status(401).json(err);
+      })
   })
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -180,7 +180,7 @@ module.exports = function (app) {
         raisedAmount: parseInt(req.body.raisedAmount),
       }, {
         where: {
-          RegistrationId: 1
+          id: parseInt(req.body.petId)
         }
       }).then((dbUser) => {
         console.log(dbUser);
@@ -258,15 +258,27 @@ module.exports = function (app) {
 
     console.log("inside api/getPetInfo");
     db.Pets.findOne({
-      where: {
-        RegistrationId: 1
-      }}).then((dbUser) => {
+        where: {
+          id: 1
+        }
+      }).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
       })
       .catch(err => {
         console.log("inside get failure");
         console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.get("/api/userExists", (req, res) => {
+    console.log("inside userExists");
+    db.Registration.findAll()
+      .then((dbUser) => {
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
         res.status(401).json(err);
       })
   });

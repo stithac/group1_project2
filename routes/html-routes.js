@@ -15,14 +15,18 @@ module.exports = (app) => {
      }
      console.log("doesn't have account");
      console.log("redirect to signup.html");
-     res.sendFile(path.join(__dirname, "../public/signup.html"));
+//     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-//    res.sendFile(path.join(__dirname, '../public/index.html'))
+    res.sendFile(path.join(__dirname, '../public/index.html'))
     }
   );
 
   app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
+  });
+
+  app.get('/help', (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/help.html"));
   });
 
   // login route loads login.html
