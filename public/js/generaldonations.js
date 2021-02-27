@@ -15,11 +15,10 @@ $(document).ready(() => {
     const nameOnCardInput = $("input#nameOnCard");
     const expirationDateInput = $("input#expirationDate");
     const cardTypeInput = $("input#cardType");
-    var savedEmail;
-    var savedID;
 
     genDonationForm.on("submit", event => {
         event.preventDefault();
+
         const donationData = {
             firstName: firstNameInput.val().trim(),
             lastName: lastNameInput.val().trim(),
@@ -33,9 +32,10 @@ $(document).ready(() => {
             cardNumber: cardNumberInput.val().trim(),
             securityCode: securityCodeInput.val().trim(),
             nameOnCard: nameOnCardInput.val().trim(),
-            expirationDate: expirationDateInput.val().trim(),
+            expirationDate: expirationDateInput.val(),
             cardType: cardTypeInput.val().trim()
         };
+        console.log(donationData.expirationDate);
         donationData.expirationDate = calcDay(donationData.expirationDate);
         console.log("transformed date = " + donationData.expirationDate);
         genDonate(donationData.firstName, donationData.lastName, donationData.street, donationData.city, donationData.state,
@@ -58,8 +58,8 @@ $(document).ready(() => {
 
     function calcDay(expirationDate) {
         var date = expirationDate;
-        var tempArray = date.split("/");
-        var day = parseInt(tempArray[0]);
+        var tempArray = date.split("-");
+        var day = parseInt(tempArray[1]);
         var numToAdd;
         
         switch(day)
@@ -84,7 +84,7 @@ $(document).ready(() => {
                 break;
         }
 
-        date = tempArray[0] + "/" + numToAdd + "/" + tempArray[1];
+        date = tempArray[1] + "/" + numToAdd + "/" + tempArray[0];
         return date;
     }
 
@@ -114,27 +114,10 @@ $(document).ready(() => {
                 console.log("did I return successfully from api/generalDonation");
                 //                window.location.replace("/members");
                 // If there's an error, handle it by throwing up a bootstrap alert
-
-
-/*                 console.log("genDonation =" + parseInt(genDonation));
-                $.post("/api/saveDonation", {
-                        donationAmount: genDonation,
-                    })
-                    .then(() => {
-                        //              console.log(data);
-                        console.log("successful return api/saveDonation");
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    }) */
-
             })
             .catch(err => {
                 console.log("in error from generalDonation");
                 console.log(err);
             })
-
     }
-
-
 });
