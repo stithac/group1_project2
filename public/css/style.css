@@ -1,3 +1,12 @@
-.hidden {
+/***** Styling used to toggle form fields on Registration page *****/
+.hide {
     display: none;
+}
+
+.show {
+    display:block;
+}
+
+textarea{
+    vertical-align: middle;
 }
