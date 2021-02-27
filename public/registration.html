@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-</head>
+  <head>
+    <title>Petocracy: Registration</title>
+    <meta charset="utf-8">
 
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/main.js"></script>
+  </head>
 
 <body>
   <nav class="navbar navbar-default">
@@ -19,141 +23,212 @@
       <div class="col-md-6 col-md-offset-3">
         <h2>Sign Up Form</h2>
         <form class="signup">
-          <div class="form-group">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="input" class="form-control" id="first-name" placeholder="First Name">
+
+          <div id="emailDiv">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email-input" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password-input" placeholder="Password">
+              </div>
+              <button id="emailSubmit" type="submit" class="btn btn-default">Next</button>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Last Name</label>
-            <input type="input" class="form-control" id="last-name" placeholder="Last Name">
+
+          <div id="registrationDiv" class="hide">
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="input" class="form-control" id="first-name" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="input" class="form-control" id="last-name" placeholder="Last Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street</label>
+                <input type="input" class="form-control" id="street" placeholder="Street">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input type="input" class="form-control" id="city" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">State</label>
+                <input type="input" class="form-control" id="state" placeholder="State">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Zip</label>
+                <input type="input" class="form-control" id="zip" placeholder="Zip">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Phone</label>
+                <input type="phone" class="form-control" id="phone" placeholder="Phone">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Security Question</label>
+                <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Security Question Answer</label>
+                <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer">
+              </div>
+              <div>
+                <p>Are you requesting help for a pet OR volunteering?</p>
+              </div>
+              <div class="form-group">
+                <input type="radio" id="needHelp" name="needType" value="needHelp">
+                <label for="needHelp">Requesting assistance for my pet</label><br>
+                <input type="radio" id="giveHelp" name="needType" value="giveHelp">
+                <label for="giveHelp">I would like to volunteer</label><br><br>
+              </div>
+              <div id="helpDiv" class ="hide">
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Name</label>
+                  <input type="input" class="form-control" id="petName" placeholder="Pet Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Breed/Type</label>
+                  <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Age</label>
+                  <input type="input" class="form-control" id="petAge" placeholder="Pet Age">
+                </div>
+                <div class="form-group">
+                  <label for="petBio">Pet Bio</label>
+                  <textarea class="form-control" id="petBio" placeholder="Pet Bio"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Weight</label>
+                  <input type="input" class="form-control" id="petweight" placeholder="Pet Weight">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Reason for Help</label>
+                  <textarea class="form-control" id="helpReason" placeholder="Reason for Help"></textarea>
+                </div>
+                <div>
+                  <p>Are you needing help with pet services or monetary donations?</p>
+                </div>
+                <div class="form-group">
+                  <input type="radio" id="helpTypeService" name="helpType" value="services">
+                  <label for="helpTypeService">Pet Services</label><br>
+                  <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
+                  <label for="helpTypeMonetary">Monetary Donation</label><br><br>
+                </div>
+                <div id="monetaryDiv" class = "hide">
+                  <div class="form-group">
+                    <label for="amountRequested">Amount Requested</label>
+                    <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
+                  </div>
+                </div>
+                <div id="servicesDiv" class="hide">
+                  <div class="form-group">
+                    <label for="serviceName">Requested Service </label>
+                    <input type="input" class="form-control" id="serviceName" placeholder="Requested Service" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" name="startDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate" name="endDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="recurringCheck">Make this a repeating service</label>
+                    <input type="checkbox" id="recurringCheck" class = "check" name="recurringCheck">
+                  </div>
+
+                  <div class="form-group hide" id="frequencyDiv">
+                    <label for="frequencySelect">Frequency</label>
+                    <!-- <input type="input" class="form-control" id="frequency" placeholder="Frequency"> -->
+
+                    <select name="frequencySelect" id="frequencySelect">
+                      <option value="">Select Frequency:</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </div>
+
+                  <div id="recurringDiv" class="hide">
+
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Time of Day</label>
+                      <input type="input" class="form-control" id="timeOfDay" placeholder="Time Of Day">
+                    </div>
+                    <!-- <div class="form-group">
+                      <label for="exampleInputEmail1">Day of Week</label>
+                      <input type="input" class="form-control" id="dayOfWeek" placeholder="Day of Week">
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="frequencyNumber">Recur every </label>
+                        <input type="input" class="form-control" id="frequencyNumber"><span id="frequencySpan" style="margin-left:10px;"></span>
+                      </div>
+
+                    <div class="form-group">
+
+                        <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Sunday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Monday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Tuesday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Wednesday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Thursday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Friday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Saturday</label>
+                    </div>
+
+                  </div>
+
+                  <div class= "form-group">
+                    <label for = "serviceNotes">Notes / Additional Information</label>
+                    <textarea id = "serviceNotes"></textarea>
+                  </div>
+              </div>
+
+              </div>
+
+              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> <span class="msg"></span>
+              </div>
+              <br>
+              <br>
+            <button id="submitBtn" type="submit" class="btn btn-default">Sign Up</button>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Street</label>
-            <input type="input" class="form-control" id="street" placeholder="Street">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">City</label>
-            <input type="input" class="form-control" id="city" placeholder="City">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">State</label>
-            <input type="input" class="form-control" id="state" placeholder="State">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Zip</label>
-            <input type="input" class="form-control" id="zip" placeholder="Zip">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label><br><br>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="123-45-6789" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" required>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Security Question</label>
-            <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Security Question Answer</label>
-            <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer">
-          </div>          
-          <div>
-            <p>Are you requesting help for a pet OR volunteering?</p>
-          </div>
-          <div class="form-group">
-            <input type="radio" id="requestHelp" name="gender" name="petHelp">
-            <label for="male">Request Help</label><br>
-            <input type="radio" id="volunteer" name="gender" name="petHelp">
-            <label for="female">Volunteer</label>
-          </div>
-          <br>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Pet Name</label>
-            <input type="input" class="form-control" id="petName" placeholder="Pet Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Breed/Type</label>
-            <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Pet Age</label>
-            <input type="input" class="form-control" id="petAge" placeholder="Pet Age">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Pet Bio</label>
-            <input type="input" class="form-control" id="petBio" placeholder="Pet Bio">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Pet Weight</label>
-            <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Reason for Help</label>
-            <input type="input" class="form-control" id="helpReason" placeholder="Reason for Help">
-          </div>
-          <div>
-            <p>Are you needing help with pet services or monetary donations?</p>
-          </div>
-          <div class="form-group">
-            <input type="radio" id="petServices" name="help">
-            <label for="petServices">Pet Services</label><br>
-            <input type="radio" id="monetaryDonation" name="help" >
-            <label for="monetaryDonation">Monetary Donation</label>
-          </div>
-          <br>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Amount Requested</label>
-            <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
-          </div>          
-          <div class="form-group">
-            <label for="exampleInputEmail1">Service Name</label>
-            <input type="input" class="form-control" id="serviceName" placeholder="serviceName">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Frequency</label>
-            <input type="input" class="form-control" id="frequency" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Time of Day</label>
-            <input type="input" class="form-control" id="timeOfDay" placeholder="Time Of Day">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Day of Week</label>
-            <input type="input" class="form-control" id="dayOfWeek" placeholder="Day of Week">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Monday</label>
-            <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Tuesday</label>
-            <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Wednesday</label>
-            <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Thursday</label>
-            <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Friday</label>
-            <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Saturday</label>
-            <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Sunday</label>
-            <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
-          </div>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-          <br>
-          <br>
-          <button type="submit" class="btn btn-default">Sign Up</button>
+          <!-- End of registrationDiv -->
+
         </form>
         <br>
       </div>
@@ -165,168 +240,254 @@
   <div>
     <button id="upload_widget" class="cloudinary-button">Upload files</button>
   </div>
+  <!-- external stylesheet with event listeners for buttons/inputs -->
+  <script src="js/registration.js" type="text/javascript"></script>
 
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
   <script>
-    $(document).ready(() => {
-      // Getting references to our form and input
-      const signUpForm = $("form.signup");
-      const firstNameInput = $("input#first-name");
-      const lastNameInput = $("input#last-name");
-      const streetInput = $("input#street");
-      const cityInput = $("input#city");
-      const stateInput = $("input#state");
-      const zipInput = $("input#zip");
-      const phoneInput = $("input#phone");
-      const petNameInput = $("input#petName");
-      const breedTypeInput = $("input#breed-type");
-      const petAgeInput = $("input#petAge");
-      const petWeightInput = $("input#petWeight");
-      const petBioInput = $("input#petBio");
-      const helpReasonInput = $("input#helpReason");
-      const amountRequestedInput = $("input#amountRequested");
-      const securityQuestionInput = $("input#securityQuestion");
-      const securityAnswerInput = $("input#securityAnswer");
-      const serviceNameInput = $("input#serviceName");
-      const frequencyInput = $("input#frequency");
-      const dayOfWeekInput = $("input#dayOfWeek");
-      const mondayInput = $("input#monday");
-      const tuesdayInput = $("input#tuesday");
-      const wednesdayInput = $("input#wednesday");
-      const thursdayInput = $("input#thursday");
-      const fridayInput = $("input#friday");
-      const saturdayInput = $("input#saturday");
-      const sundayInput = $("input#sunday");
-      const timeOfDayInput = $("input#timeOfDay");
-      var picURLInput;
-      var savedEmail;
-      var savedID;
+    // Getting references to our form and input
+    // user fields
+    const signUpForm = $("form.signup");
+    const firstNameInput = $("input#first-name");
+    const lastNameInput = $("input#last-name");
+    const streetInput = $("input#street");
+    const cityInput = $("input#city");
+    const stateInput = $("input#state");
+    const zipInput = $("input#zip");
+    const phoneInput = $("input#phone");
+    const securityQuestionInput = $("input#securityQuestion");
+    const securityAnswerInput = $("input#securityAnswer");
+    const needTypeInput = $("input#needType");
 
-      signUpForm.on("submit", event => {
+    // pet fields
+    const petNameInput = $("input#petName");
+    const breedTypeInput = $("input#breed-type");
+    const petAgeInput = $("input#petAge");
+    const petWeightInput = $("input#petWeight");
+    const petBioInput = $("textarea#petBio");
+    const helpReasonInput = $("textarea#helpReason");
+    const helpTypeInput = $("input#helpType");
+
+    // monetary fields
+    const amountRequestedInput = $("input#amountRequested");
+
+    // services fields
+    const serviceNameInput = $("input#serviceName");
+    const startDateInput = $("input#startDate");
+    const endDateInput = $("input#endDate");
+    const recurringCheckInput = $("input#recurringCheck");
+    // const frequencyInput = $("input#frequency");
+    const frequencySelect = $("select#frequencySelect");
+    const timeOfDayInput = $("input#timeOfDay");
+    const frequencyNumberInput = $("input#frequencyNumber");
+    // const dayOfWeekInput = $("input#dayOfWeek");
+    const sundayInput = $("input#sunday");
+    const mondayInput = $("input#monday");
+    const tuesdayInput = $("input#tuesday");
+    const wednesdayInput = $("input#wednesday");
+    const thursdayInput = $("input#thursday");
+    const fridayInput = $("input#friday");
+    const saturdayInput = $("input#saturday");
+    const notesInput = $("textarea#servicesNotes");
+
+    // additional global variables
+    var picURLInput;
+    var savedEmail;
+    var savedID; 
+
+    /******************************************************************/
+
+
+    $("#submitBtn").click(function(event){
         event.preventDefault();
-        console.log(petWeightInput.val());
-        const regData = {
-          firstName: firstNameInput.val().trim(),
-          lastName: lastNameInput.val().trim(),
-          street: streetInput.val().trim(),
-          city: cityInput.val().trim(),
-          state: stateInput.val().trim(),
-          zip: zipInput.val().trim(),
-          phone: phoneInput.val().trim(),
-          petName: petNameInput.val().trim(),
-          breed_type: breedTypeInput.val().trim(),
-          petAge: petAgeInput.val().trim(),
-          petWeight: petWeightInput.val().trim(),
-          petBio: petBioInput.val().trim(),
-          helpReason: helpReasonInput.val().trim(),
-          amountRequested: amountRequestedInput.val().trim(),
-          securityQuestion: securityQuestionInput.val().trim(),
-          securityAnswer: securityAnswerInput.val().trim(),
-          serviceName: serviceNameInput.val().trim(),
-          frequency: frequencyInput.val().trim(),
-          monday: mondayInput.val(),
-          tuesday: tuesdayInput.val(),
-          wednesday: wednesdayInput.val(),
-          thursday: thursdayInput.val(),
-          friday: fridayInput.val(),
-          saturday: saturdayInput.val(),
-          sunday: sundayInput.val(),
-          picURL: picURLInput
-        };
+        console.log($("#recurringCheck").prop("checked"));// Testing
+        console.log(recurringCheckInput.prop("checked")); // Testing
 
-        regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
-          regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
-        regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.amountRequested, regData.picURL);
-//        regService(regData.serviceName, regData.frequency, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.sunday)
-        firstNameInput.val("");
-        lastNameInput.val("");
-        streetInput.val("");
-        cityInput.val("");
-        stateInput.val("");
-        zipInput.val("");
-        phoneInput.val("");
-        petNameInput.val("");
-        breedTypeInput.val("");
-        petAgeInput.val("");
-        petWeightInput.val("");
-        petBioInput.val("");
-        helpReasonInput.val("");
-        amountRequestedInput.val("");
-        securityQuestionInput.val("");
-        securityAnswerInput.val("");
-      });
+      const regData = {
+        firstName: firstNameInput.val().trim(),
+        lastName: lastNameInput.val().trim(),
+        street: streetInput.val().trim(),
+        city: cityInput.val().trim(),
+        state: stateInput.val().trim(),
+        zip: zipInput.val().trim(),
+        phone: phoneInput.val().trim(),
+        securityQuestion: securityQuestionInput.val().trim(),
+        securityAnswer: securityAnswerInput.val().trim(),
+        help_volunteer: $("input[name='needType']:checked").val(),
 
-      // Does a post to the signup route. If successful, we are redirected to the members page
-      // Otherwise we log any errors
-      function regUser(firstName, lastName, street, city, state, zip, phone, question, answer) {
-        fetch('/api/user_data', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            savedEmail = data.email;
-            savedID = data.id;
-            console.log(firstName, lastName, street, city, state, zip, phone, question, answer);
-            $.post("/api/register", {
-                email: data.email,
-                firstName: firstName,
-                lastName: lastName,
-                street: street,
-                city: city,
-                state: state,
-                zip: zip,
-                phone: phone,
-                question: question,
-                answer: answer,
-              })
-              .then(() => {
-                console.log("did I return successfully from api/register");
-//                window.location.replace("/members");
-                // If there's an error, handle it by throwing up a bootstrap alert
-              })
-              .catch(handleLoginErr);
-          })
-      }
+        petName: petNameInput.val().trim(),
+        breed_type: breedTypeInput.val().trim(),
+        petAge: petAgeInput.val().trim(),
+        petWeight: petWeightInput.val(),
+        petBio: petBioInput.val().trim(),
+        helpReason: helpReasonInput.val(),
+        services_monetary: $("input[name='helpType']:checked").val(),
 
-      function regPet(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested, picURL) {
-        fetch('/api/user_data', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested, picURL);
-            $.post("/api/registerPet", {
-                registrationId: data.id,
-                petName: petName,
-                breed_type: breed_type,
-                petAge: petAge,
-                petWeight: petWeight,
-                petBio: petBio,
-                helpReason: helpReason,
-                amountRequested: amountRequested,
-                picURL: picURL
-              })
-              .then(() => {
-                console.log("did I return successfully from api/registePet");
-//                window.location.replace("/members");
-                // If there's an error, handle it by throwing up a bootstrap alert
-              })
-              .catch(handleLoginErr);
+        amountRequested: amountRequestedInput.val().trim(),
+
+        serviceName: serviceNameInput.val().trim(),
+        startDate: startDateInput.val().trim(),
+        endDate: endDateInput.val().trim(),
+        recurring: recurringCheckInput.prop("checked"),
+        frequency: frequencySelect.val(),
+        time: timeOfDayInput.val().trim(),
+        frequencyNumber: frequencyNumberInput.val().trim,
+        // frequency: frequencyInput.val().trim(),
+        sunday: sundayInput.prop("checked"),
+        monday: mondayInput.prop("checked"),
+        tuesday: tuesdayInput.prop("checked"),
+        wednesday: wednesdayInput.prop("checked"),
+        thursday: thursdayInput.prop("checked"),
+        friday: fridayInput.prop("checked"),
+        saturday: saturdayInput.prop("checked"),
+        notes: notesInput.prop("checked"),
+
+        picURL: picURLInput
+      };
+
+      regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
+        regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer, regData.help_volunteer);
+
+      regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData.helpReason, regData.amountRequested, regData.services_monetary, regData.picURL);
+
+      regService(regData.serviceName, regData.startDate, regData.endDate, regData.recurring, regData.frequency, regData.time, regData.sunday, regData.monday, regData.tuesday, regData.wednesday, regData.thursday, regData.friday, regData.saturday, regData.notes );
+
+      firstNameInput.val("");
+      lastNameInput.val("");
+      streetInput.val("");
+      cityInput.val("");
+      stateInput.val("");
+      zipInput.val("");
+      phoneInput.val("");
+      securityQuestionInput.val("");
+      securityAnswerInput.val("");
+      helpTypeInput.val("");
+
+      petNameInput.val("");
+      breedTypeInput.val("");
+      petAgeInput.val("");
+      petWeightInput.val("");
+      petBioInput.val("");
+      helpReasonInput.val("");
+      amountRequestedInput.val("");
+
+    });
+
+    // Does a post to the signup route. If successful, we are redirected to the members page
+    // Otherwise we log any errors
+    function regUser(firstName, lastName, street, city, state, zip, phone, question, answer, help_volunteer) {
+      fetch('/api/user_data', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+          savedEmail = data.email;
+          savedID = data.id;
+          console.log(firstName, lastName, street, city, state, zip, phone, question, answer, help_volunteer);
+          $.post("/api/register", {
+              email: data.email,
+              firstName: firstName,
+              lastName: lastName,
+              street: street,
+              city: city,
+              state: state,
+              zip: zip,
+              phone: phone,
+              question: question,
+              answer: answer,
+              help_volunteer: help_volunteer
             })
-      }
-      
-      function handleLoginErr(err) {
-        $("#alert .msg").text(err.responseJSON);
-        $("#alert").fadeIn(500);
-      }
+            .then(() => {
+              console.log("did I return successfully from api/register");
+    //                window.location.replace("/members");
+              // If there's an error, handle it by throwing up a bootstrap alert
+            })
+            .catch(handleLoginErr);
+        })
+    }
 
+    function regPet(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested, services_monetary, picURL) {
+      fetch('/api/user_data', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested, services_monetary, picURL);
+          console.log("savedID = " + savedID);
+          console.log("savedemail = " + savedEmail);
+          $.post("/api/registerPet", {
+              registrationId: data.id,
+              petName: petName,
+              breed_type: breed_type,
+              petAge: petAge,
+              petWeight: petWeight,
+              petBio: petBio,
+              helpReason: helpReason,
+              amountRequested: amountRequested,
+              serevices_monetary: services_monetary,
+              picURL: picURL
+            })
+            .then(() => {
+              console.log("did I return successfully from api/registePet");
+    //                window.location.replace("/members");
+              // If there's an error, handle it by throwing up a bootstrap alert
+            })
+            .catch(handleLoginErr);
+          })
+    }
+
+    function regService(serviceName, startDate, endDate, recurring, frequency, timeOfDay, recurringNumber, sunday, monday, tuesday, wednesday, thursday, friday, saturday, notes) {
+      fetch('/api/user_data', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          console.log("savedID = " + savedID);
+          console.log("savedemail = " + savedEmail);
+          $.post("/api/registerService", {
+              registrationId: data.id,
+              serviceName: serviceName,
+              startDate: startDate,
+              endDate: endDate,
+              recurring: recurring,
+              frequency: frequency,
+              timeOfDay: timeOfDay,
+              recurringNumber: recurringNumber,
+              sunday: sunday,
+              monday: monday,
+              tuesday: tuesday,
+              wednesday: wednesday,
+              thursday: thursday,
+              friday: friday,
+              saturday: saturday,
+              notes: notes
+            })
+            .then(() => {
+              console.log("did I return successfully from api/registePet");
+    //                window.location.replace("/members");
+              // If there's an error, handle it by throwing up a bootstrap alert
+            })
+            .catch(handleLoginErr);
+          })
+    }
+
+    function handleLoginErr(err) {
+      $("#alert .msg").text(err.responseJSON);
+      $("#alert").fadeIn(500);
+    }
+    $(document).ready(() => {
       document.getElementById("upload_widget").addEventListener("click", function () {
 
         fetch('/api/envVars', {
@@ -386,7 +547,9 @@
           })
           .catch((err) => console.error(err))
       });
-    });
+    })
+
+
   </script>
 </body>
 </html>

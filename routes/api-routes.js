@@ -107,7 +107,8 @@ module.exports = function (app) {
         zip: req.body.zip,
         phone: req.body.phone,
         securityQuestion: req.body.question,
-        securityAnswer: req.body.answer
+        securityAnswer: req.body.answer,
+        help_volunteer: req.body.help_volunteer
       }, {
         where: {
           email: req.body.email
@@ -152,7 +153,7 @@ module.exports = function (app) {
         res.status(401).json(err);
       })
   });
-  
+
   app.post("/api/saveDonation", (req, res) => {
 
     console.log("inside api/saveDonation");
@@ -207,6 +208,40 @@ module.exports = function (app) {
         petBio: req.body.petBio,
         helpReason: req.body.helpReason,
         requestAmount: parseInt(req.body.amountRequested),
+        services_monetary: req.body.services_monetary,
+        RegistrationId: parseInt(req.body.registrationId)
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside get failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
+  app.post("/api/registerService", (req, res) => {
+
+    console.log("inside api/registerService");
+    console.log(req.body);
+    console.log(parseInt(req.body.registrationId));
+    db.Services.create({
+        serviceName: req.body.serviceName,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        recurring: req.body.recurring,
+        frequency: req.body.frequency,
+        timeOfDay: req.body.timeOfDay,
+        recurringNumber: parseInt(req.body.recurringNumber),
+        sunday: req.body.sunday,
+        monday: req.body.monday,
+        tuesday: req.body.tuesday,
+        wednesday: req.body.wednesday,
+        thursday: req.body.thursday,
+        friday: req.body.friday,
+        saturday: req.body.saturday,
+        notes: req.body.notes,
         RegistrationId: parseInt(req.body.registrationId)
       }).then((dbUser) => {
         console.log(dbUser);

@@ -3,15 +3,21 @@
     const Services = sequelize.define('Services', {
       serviceName: DataTypes.STRING,
       frequency: DataTypes.STRING,
-      dayOfWeek: DataTypes.STRING,
+      // dayOfWeek: DataTypes.STRING,
+      startDate: DataTypes.DATE,
+      endDate: DataTypes.DATE,
+      recurring: DataTypes.BOOLEAN,
+      frequency: DataTypes.STRING,
       timeOfDay: DataTypes.TIME,
+      recurringNumber: DataTypes.INTEGER,
+      sunday: DataTypes.BOOLEAN,
       monday: DataTypes.BOOLEAN,
       tuesday: DataTypes.BOOLEAN,
       wednesday: DataTypes.BOOLEAN,
       thursday: DataTypes.BOOLEAN,
       friday: DataTypes.BOOLEAN,
       saturday: DataTypes.BOOLEAN,
-      sunday: DataTypes.BOOLEAN
+      notes: DataTypes.STRING
     });
 
     Services.associate = (models) => {

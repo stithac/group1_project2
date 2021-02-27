@@ -18,13 +18,14 @@ const bcrypt = require("bcryptjs");
       state: DataTypes.STRING,
       zip: DataTypes.STRING,
       phone: DataTypes.STRING,
-      volunteer: DataTypes.BOOLEAN,
+      // volunteer: DataTypes.BOOLEAN,
       password: {
         type: DataTypes.STRING,
         allowNull: false
       },
       securityQuestion: DataTypes.STRING,
       securityAnswer: DataTypes.STRING,
+      help_volunteer: DataTypes.STRING
     });
 
 
