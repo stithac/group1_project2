@@ -10,14 +10,14 @@ module.exports = (app) => {
   // index route loads index.html
   app.get('/', (req, res) => {
      // If the user already has an account send them to the members page
-     if (req.user) {
-       res.redirect("/members");
-     }
-     console.log("doesn't have account");
-     console.log("redirect to signup.html");
-     res.sendFile(path.join(__dirname, "../public/signup.html"));
+    //  if (req.user) {
+    //    res.redirect("/members");
+    //  }
+    //  console.log("doesn't have account");
+    //  console.log("redirect to signup.html");
+    //  res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-//    res.sendFile(path.join(__dirname, '../public/index.html'))
+   res.sendFile(path.join(__dirname, '../public/index.html'))
     }
   );
 
@@ -92,6 +92,30 @@ module.exports = (app) => {
   app.get('/generaldonation', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
+
+/***************** Handlebars routes *****************/
+app.get('/all-pets', (req, res) => {
+  // Handlebars requires an object to be sent to the index handlebars file.
+
+  // 2. Loop through the animals, and send those that are pets to the index handlebars file.
+  const data = {
+    pets: [],
+  };
+
+  for (let i = 0; i < pets.length; i += 1) {
+    // Get the current pet.
+    const currentPet = pets[i];
+
+    // // Check if this animal is a pet.
+    // if (currentAnimal.pet) {
+    //   // If so, push it into our data.animals array.
+      data.pets.push(currentPet);
+    // }
+  }
+
+  // res.render('index', data);
+  console.log(pets);
+});
 
 /*__________________________________________________________________________________________________*/
 
