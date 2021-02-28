@@ -55,15 +55,15 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">State</label>
-              <input type="input" class="form-control" id="state" placeholder="State" required>
+              <input type="input" class="form-control" id="state" placeholder="State" maxlength="2" size="2" required>
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Zip</label>
-              <input type="input" class="form-control" id="zip" placeholder="Zip" required>
+              <input type="input" class="form-control" id="zip" placeholder="Zip" maxlength="5" size="5" required>
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" class="form-control" placeholder="555-555-5555"
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="555-555-5555" maxlength="12" size="12"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </div>
             <div class="form-group">
@@ -102,19 +102,19 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Pet Age</label>
-                <input type="input" class="form-control" id="petAge" placeholder="Pet Age" required>
+                <input type="input" class="form-control" id="petAge" placeholder="Pet Age" maxlength="3" size="3" required>
               </div>
               <div class="form-group">
                 <label for="petBio">Pet Bio</label>
-                <textarea class="form-control" id="petBio" placeholder="Pet Bio" required></textarea>
+                <textarea class="form-control" id="petBio" placeholder="Pet Bio" maxlength="100" required></textarea>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Pet Weight</label>
-                <input type="input" class="form-control" id="petweight" placeholder="Pet Weight" required>
+                <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight" maxlength="3" size="5" required>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Reason for Help</label>
-                <textarea class="form-control" id="helpReason" placeholder="Reason for Help" required></textarea>
+                <textarea class="form-control" id="helpReason" placeholder="Reason for Help" maxlength="100" required></textarea>
               </div>
               <div>
                 <p>Are you needing help with pet services or monetary donations?</p>
@@ -128,13 +128,13 @@
               <div id="monetaryDiv" class="hide">
                 <div class="form-group">
                   <label for="amountRequested">Amount Requested</label>
-                  <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested" required>
+                  <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested" >
                 </div>
               </div>
               <div id="servicesDiv" class="hide">
                 <div class="form-group">
                   <label for="serviceName">Requested Service </label>
-                  <input type="input" class="form-control" id="serviceName" placeholder="Requested Service" required>
+                  <input type="input" class="form-control" id="serviceName" placeholder="Requested Service">
                 </div>
 
                 <div class="form-group">
@@ -223,7 +223,7 @@
 
                 <div class="form-group">
                   <label for="serviceNotes">Notes / Additional Information</label>
-                  <textarea id="serviceNotes"></textarea>
+                  <textarea id="serviceNotes" maxlength="100"></textarea>
                 </div>
               </div>
 
