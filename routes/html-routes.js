@@ -18,7 +18,7 @@ module.exports = (app) => {
     //  console.log("redirect to signup.html");
     //  res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-   res.sendFile(path.join(__dirname, '../public/index.html'))
+  //  res.sendFile(path.join(__dirname, '../public/index.html'))
 //      if (req.user) {
 //        res.redirect("/userLanding");
 //      }
