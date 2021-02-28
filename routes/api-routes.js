@@ -197,6 +197,29 @@ module.exports = function (app) {
       })
   });
 
+  app.post("/api/saveCreditCard", (req, res) => {
+
+    console.log("inside api/saveCreditCard");
+    console.log(req.body);
+    db.CreditCard.create({
+        cardNumber: req.body.cardNumber,
+        securityCode: req.body.securityCode,
+        nameOnCard: req.body.nameOnCard,
+        expirationDate: req.body.expirationDate,
+        cardType: req.body.cardType,
+        RegistrationId: parseInt(req.body.RegistrationId),
+        petId: parseInt(req.body.petId)
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside post failure save credit card");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
   app.post("/api/updateRaisedAmount", (req, res) => {
 
     console.log("inside api/updateRaisedAmount");
