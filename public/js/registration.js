@@ -73,11 +73,34 @@ $("input[name='needType']").click(function(){
 
   // if button value === needHelp, show the help fields. helpDiv with additional fields is hidden on default
   if(need === "needHelp"){
-
+    $('#petName').attr('required', '');
+    $('#breed-type').attr('required', '');
+    $('#petAge').attr('required', '');
+    $('#petBio').attr('required', '');
+    $('#petWeight').attr('required', '');
+    $('#helpReason').attr('required', '');
+    $('#amountRequested').removeAttr('required');
+    $('#serviceName').removeAttr('required');
+    $('#startDate').removeAttr('required');
+    $('#endDate').removeAttr('required');
+/*     $('#frequencyNumber').removeAttr('required');
+    $('#recurringCheck').removeAttr('required'); */
     $("#helpDiv").addClass("show").removeClass("hide");
 
   // if button value === giveHelp, hide the help fields
   } else if (need === "giveHelp"){
+    $('#petName').removeAttr('required');
+    $('#breed-type').removeAttr('required');
+    $('#petAge').removeAttr('required');
+    $('#petBio').removeAttr('required');
+    $('#petWeight').removeAttr('required');
+    $('#helpReason').removeAttr('required');
+    $('#amountRequested').removeAttr('required');
+    $('#serviceName').removeAttr('required');
+    $('#startDate').removeAttr('required');
+    $('#endDate').removeAttr('required');
+    $('#frequencyNumber').removeAttr('required');
+    $('#recurringCheck').removeAttr('required');
 
     $("#helpDiv").addClass("hide").removeClass("show");
 
@@ -92,16 +115,28 @@ $("input[name='helpType']").click(function(){
 
   // if the value of the button is services, hide the monetary fields and display the services fields
   if (help === "services"){
+    $('#amountRequested').removeAttr('required');
+    $("#monetaryDiv").addClass("hide").removeClass("show")
+    $("#servicesDiv").addClass("show").removeClass("hide");
+    $('#serviceName').attr('required', '');
+    $('#startDate').attr('required', '');
+    $('#endDate').attr('required', '');
+/*     $('#frequencyNumber').attr('required', '');
+    $('#recurringCheck').attr('required', ''); */
 
-      $("#servicesDiv").addClass("show").removeClass("hide");
-      $("#monetaryDiv").addClass("hide").removeClass("show")
+  
 
   // if the value of the button is monetary, hide the services fields and display the monetary fields
   } else if (help === "monetary"){
-
     $("#monetaryDiv").addClass("show").removeClass("hide");
+    $('#amountRequested').attr('required', '');
+    $('#serviceName').removeAttr('required');
+    $('#startDate').removeAttr('required');
+    $('#endDate').removeAttr('required');
+/*     $('#frequencyNumber').removeAttr('required');
+    $('#recurringCheck').removeAttr('required'); */
+ 
     $("#servicesDiv").addClass("hide").removeClass("show")
-
   }
 
 })
