@@ -1,0 +1,30 @@
+<div class="container has-text-centered py-4">
+    <h2 class="title mb-6">Pets in Need</h2>
+		<div class="columns is-multiline mb-6">
+			{{#each pets }}
+            <div class="column is-6 is-4-widescreen">
+                <div class="card">
+                    <div class="card-image"><a href="#"><img src="" alt=""></a></div>
+                    <div class="card-content py-6">
+                        <h5 class="title is-5">{{petName}}</h5>
+                        <p class="pb-5 px-5">Progress Bar</p>
+                        <img src = {{picURL}}>
+                        <p>{{petBio}}</p>
+                        <a href="/pet-info/{{id}}" data-type="handlebarBtn" class="button" id= "{{id}}">More Info / Volunteer</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+		</div>
+		<div class="buttons is-centered"><a class="button is-primary" href="#">View All Pets</a></div>
+</div>
+
+
+
+
+
+
+
+
+
+

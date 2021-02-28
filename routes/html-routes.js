@@ -1,3 +1,4 @@
+
 // Dependencies
 const path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
@@ -10,6 +11,16 @@ module.exports = (app) => {
   // index route loads index.html
   app.get('/', (req, res) => {
      // If the user already has an account send them to the members page
+<<<<<<< HEAD
+    //  if (req.user) {
+    //    res.redirect("/members");
+    //  }
+    //  console.log("doesn't have account");
+    //  console.log("redirect to signup.html");
+    //  res.sendFile(path.join(__dirname, "../public/signup.html"));
+
+   res.sendFile(path.join(__dirname, '../public/index.html'))
+=======
      if (req.user) {
        res.redirect("/userLanding");
      }
@@ -18,6 +29,7 @@ module.exports = (app) => {
 //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
     res.sendFile(path.join(__dirname, '../public/index.html'))
+>>>>>>> 00e98cc8b1ba801cc1efdf20a7d54c1116ebe839
     }
   );
 
@@ -98,6 +110,9 @@ module.exports = (app) => {
   app.get('/generalDonation', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
+
+
+
 
 /*__________________________________________________________________________________________________*/
 
