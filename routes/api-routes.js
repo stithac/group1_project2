@@ -11,8 +11,13 @@ module.exports = function (app) {
   app.get('/api/pets', (req, res) => {
     // Finding all Pets, and then returning them to the user as JSON.
     // Sequelize queries are asynchronous and results are available to us inside the .then
-    db.Pets.findAll({}).then((results) => res.json(results));
-    console.log(results);
+    // console.log(req); // Testing
+    db.Pets.findAll().then((results) => {
+      res.json(results);
+      // console.log(results); // Testing
+
+    });
+    // console.log(results);
   });
 
   app.get('/api/accounts', (req, res) => {
@@ -293,4 +298,45 @@ module.exports = function (app) {
       });
     }
   });
+
+
+  /***************** Handlebars routes *****************/
+
+
+    app.get('/all-pets', (req, res) => {
+
+        db.Pets.findAll().then((results) => {
+            // res.json(results);
+
+            console.log(JSON.parse(JSON.stringify(results))); // Testing
+
+            const petsArray = JSON.parse(JSON.stringify(results));
+
+            res.render('all-pets', {
+                pets: petsArray, //pets Array
+            });
+
+        });
+    });
+
+    app.get('/pet-info/:id', (req, res) => {
+        console.log(req.params.id);
+        db.Pets.findOne({
+            where: {
+              id: req.params.id,
+            },
+           
+          }).then((results) => {
+
+            const petInfo = JSON.parse(JSON.stringify(results));
+            console.log(petInfo); // Testing
+            res.render('pet-info', {
+                pet: petInfo, // pet Information
+            });
+
+        });
+    });
+
+
+
 };

@@ -1,78 +1,100 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
-document.addEventListener('DOMContentLoaded', (event) => {
-    if (event) {
-      console.info('DOM loaded');
-    }
+// Wait for the DOM to completely load before we run our JS
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded! 🚀');
 
-    // Set up the event listener for the create button
+    const url = window.location.href;
+    console.log( window.location.href);
 
-          fetch("/api/pets/", {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
+    var scriptTag = document.getElementById("scriptTag");
 
-          }).then((response) => {
-            console.log(response);
-          })
-          .then()
-        });
+    var petId;
+    var btn;
+    var clickedBtn;
+
+    // Only run script from the all-pets handlebars route
+    if (url.includes("all-pets")){
+
+        var pets;
+
+        const getPets = () => {
+            console.log('Get pets is getting called');
+
+            fetch('/api/pets', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            })
+                .then((response) => response.json())
+                .then ((data) => {
 
 
+                    pets = data;
 
-    // CREATE
-    const createCatBtn = document.getElementById('create-form');
+                    console.log('Success in getting pets:', pets); // Testing
 
-    if (createCatBtn) {
-      createCatBtn.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Grabs the value of the textarea that goes by the name, "quote"
-        const newCat = {
-          name: document.getElementById('ca').value.trim(),
-          sleepy: document.getElementById('sleepy').checked,
+            })
+                .catch((err) => console.error(err));
         };
 
-        // Send POST request to create a new quote
-        fetch('/api/cats', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
+        const petsHandlebars = () => {
+            console.log('Pet Handlebars is getting called');
 
-          // make sure to serialize the JSON body
-          body: JSON.stringify(newCat),
-        }).then(() => {
-          // Empty the form
-          document.getElementById('ca').value = '';
+            fetch('/all-pets', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            })
+            // .then((response) => response.json())
 
-          // Reload the page so the user can see the new quote
-          console.log('Created a new cat!');
-          location.reload();
-        });
-      });
+            .catch((err) => console.error(err));
+        };
+
+
+        getPets();
+
+        petsHandlebars();
+
+
+
+
+
+    } else {
+
+
+
+        const petInfoHandlebars = (petId) => {
+
+
+            console.log('Pet Info Handlebars is getting called for id: ', petId);
+
+            fetch(`/pet-info/${petId}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            })
+            // .then((response) => response.json())
+
+
+            .catch((err) => console.error(err));
+        };
+
+
+        const getId = () =>{
+
+            petId = url.split("/").pop();
+
+            console.log(petId);
+
+        }
+        getId();
+        petInfoHandlebars(petId);
     }
 
-    // DELETE
-    const deleteCatBtns = document.querySelectorAll('.delete-cat');
+});
 
-    // Set up the event listeners for each delete button
-    deleteCatBtns.forEach((button) => {
-      button.addEventListener('click', (e) => {
-        const id = e.target.getAttribute('data-id');
 
-        // Send the delete request
-        fetch(`/api/cats/${id}`, {
-          method: 'DELETE',
-        }).then((res) => {
-          console.log(res);
-          console.log(`Deleted cat: ${id}`);
 
-          // Reload the page
-          location.reload();
-        });
-      });
-    });
-  });
+

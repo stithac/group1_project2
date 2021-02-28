@@ -1,3 +1,4 @@
+
 // Dependencies
 const path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
@@ -93,29 +94,8 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
 
-/***************** Handlebars routes *****************/
-app.get('/all-pets', (req, res) => {
-  // Handlebars requires an object to be sent to the index handlebars file.
 
-  // 2. Loop through the animals, and send those that are pets to the index handlebars file.
-  const data = {
-    pets: [],
-  };
 
-  for (let i = 0; i < pets.length; i += 1) {
-    // Get the current pet.
-    const currentPet = pets[i];
-
-    // // Check if this animal is a pet.
-    // if (currentAnimal.pet) {
-    //   // If so, push it into our data.animals array.
-      data.pets.push(currentPet);
-    // }
-  }
-
-  // res.render('index', data);
-  console.log(pets);
-});
 
 /*__________________________________________________________________________________________________*/
 

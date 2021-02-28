@@ -93,3 +93,5 @@ Members:
 * Additional packages:
     * Cloudinary (upload pet pics)
     * .env (hide API keys)
+    * passport
+    * Bulma
