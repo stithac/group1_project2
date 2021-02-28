@@ -1,6 +1,5 @@
-console.log("Project 2 is here!!!")
-
 // Dependencies
+const path = require('path');
 const express = require('express');
 const session = require("express-session");
 require('dotenv').config();
@@ -22,7 +21,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Static directory
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // We need to use sessions to keep track of our user's login status
 app.use(
