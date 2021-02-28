@@ -11,7 +11,6 @@ module.exports = (app) => {
   // index route loads index.html
   app.get('/', (req, res) => {
      // If the user already has an account send them to the members page
-<<<<<<< HEAD
     //  if (req.user) {
     //    res.redirect("/members");
     //  }
@@ -19,17 +18,15 @@ module.exports = (app) => {
     //  console.log("redirect to signup.html");
     //  res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-   res.sendFile(path.join(__dirname, '../public/index.html'))
-=======
-     if (req.user) {
-       res.redirect("/userLanding");
-     }
-     console.log("doesn't have account");
-     console.log("redirect to signup.html");
-//     res.sendFile(path.join(__dirname, "../public/signup.html"));
+  //  res.sendFile(path.join(__dirname, '../public/index.html'))
+//      if (req.user) {
+//        res.redirect("/userLanding");
+//      }
+//      console.log("doesn't have account");
+//      console.log("redirect to signup.html");
+// //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
     res.sendFile(path.join(__dirname, '../public/index.html'))
->>>>>>> 00e98cc8b1ba801cc1efdf20a7d54c1116ebe839
     }
   );
 
@@ -48,7 +45,7 @@ module.exports = (app) => {
   }
 //    res.sendFile(path.join(__dirname, '../public/login.html'))
   );
- 
+
    // Here we've add our isAuthenticated middleware to this route.
    // If a user who is not logged in tries to access this route they will be redirected to the signup page
 //   app.get("/members", isAuthenticated, (req, res) => {
