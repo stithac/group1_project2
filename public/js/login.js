@@ -30,7 +30,7 @@ $(document).ready(() => {
     })
       .then((data) => {
         console.log(data.email, data.id);
-        window.location.replace("/members");
+        window.location.replace("/userLanding");
         console.log(data.email, data.id);
         // If there's an error, log the error
       })
