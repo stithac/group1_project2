@@ -47,11 +47,12 @@ $(document).ready(() => {
         updatingRaised = updatingRaised + parseInt(donateData.donation);
         console.log("updatingraised = " + updatingRaised);
         // If we have a donation amount we run the userDonation function and clear the form
-        userDonation(donateData.donation, updatingRaised);
         donationInput.val("");
+        userDonation(donateData.donation, updatingRaised);
+
     })
 
-    // userDonation does a post to our "api/donatePet" route and if successful, redirects us the the members page
+    // userDonation does a post to our "api/donatePet" route and if successful, redirects us the the user landing page
 
     function userDonation(donation, updatingRaised) {
         console.log("getting user data");
@@ -66,33 +67,36 @@ $(document).ready(() => {
                 console.log(donation);
                 console.log(data);
                 console.log(data.id);
-                console.log('updating raised amount 2 = ' + updatingRaised);
+                localStorage.setItem("RegistrationId", data.id);
                 $.post("/api/donatePet", {
                         registrationId: data.id,
-                        donationAmount: donation
+                        donationAmount: donation,
+                        petId: 1
                     })
                     .then((data) => {
-
-                        console.log("succes return from api/registerPet");
-                        //                        window.location.replace("/members");
+                        console.log("success from donate pet");
+                        $.post("/api/updateRaisedAmount", {
+                                registrationId: localStorage.getItem("RegistrationId"),
+//                                registrationId: data.id,
+                                raisedAmount: updatingRaised,
+                                petId: 1
+                            })
+                            .then(() => {
+                                console.log("success from updating raised amount");
+                                window.location.replace('/donatepet');
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                        console.log("success return from api/donatePet");
+                        window.location.replace("/userLanding");
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })
                     .catch(err => {
                         console.log("in error from donate pet")
                         console.log(err);
                     });
-                console.log("success from donate pet");
-                $.post("/api/updateRaisedAmount", {
-                        registrationId: data.id,
-                        raisedAmount: updatingRaised,
-                    })
-                    .then(() => {
-                        console.log("success from updating raised amount");
-                        window.location.replace('/donatepet');
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+
             })
 
     }

@@ -11,13 +11,13 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
      // If the user already has an account send them to the members page
      if (req.user) {
-       res.redirect("/members");
+       res.redirect("/userLanding");
      }
      console.log("doesn't have account");
      console.log("redirect to signup.html");
-     res.sendFile(path.join(__dirname, "../public/signup.html"));
+//     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
-//    res.sendFile(path.join(__dirname, '../public/index.html'))
+    res.sendFile(path.join(__dirname, '../public/index.html'))
     }
   );
 
@@ -30,31 +30,37 @@ module.exports = (app) => {
      // If the user already has an account send them to the members page
      if (req.user) {
        console.log("found account and redirect to members");
-       res.redirect("../public/members.html");
+       res.sendFile(path.join(__dirname, "../public/userLanding.html"));
      }
      res.sendFile(path.join(__dirname, "../public/passportlogin.html"));
   }
 //    res.sendFile(path.join(__dirname, '../public/login.html'))
   );
+ 
+   // Here we've add our isAuthenticated middleware to this route.
+   // If a user who is not logged in tries to access this route they will be redirected to the signup page
+//   app.get("/members", isAuthenticated, (req, res) => {
+//     res.sendFile(path.join(__dirname, "../public/members.html"));
+//   });
 
    // Here we've add our isAuthenticated middleware to this route.
    // If a user who is not logged in tries to access this route they will be redirected to the signup page
-   app.get("/members", isAuthenticated, (req, res) => {
-     res.sendFile(path.join(__dirname, "../public/members.html"));
-   });
+  app.get('/userLanding', isAuthenticated, (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/userLanding.html'))
+  );
 
   // registration route loads registration.html
-  app.get('/registration', (req, res) =>
+  app.get('/registration', isAuthenticated, (req, res) =>
     res.sendFile(path.join(__dirname, '../public/registration.html'))
   );
 
   // pet route loads main.html
-  app.get('/pet', (req, res) =>
+  app.get('/pet', isAuthenticated, (req, res) =>
     res.sendFile(path.join(__dirname, '../public/pet.html'))
   );
 
   // donations route loads donations.html. Displays all general donations
-  app.get('/donations', (req, res) =>
+  app.get('/donations', isAuthenticated, (req, res) =>
     res.sendFile(path.join(__dirname, '../public/donations.html'))
   );
 
@@ -79,7 +85,7 @@ module.exports = (app) => {
   );
 
   // donatepet route loads donatepet.html
-  app.get('/donatepet', (req, res) =>
+  app.get('/donatepet', isAuthenticated, (req, res) =>
     res.sendFile(path.join(__dirname, '../public/donatepet.html'))
   );
 
@@ -89,7 +95,7 @@ module.exports = (app) => {
   );
 
   // generaldonation route loads generaldonation.html
-  app.get('/generaldonation', (req, res) =>
+  app.get('/generalDonation', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
 
