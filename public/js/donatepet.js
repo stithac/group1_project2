@@ -47,11 +47,12 @@ $(document).ready(() => {
         updatingRaised = updatingRaised + parseInt(donateData.donation);
         console.log("updatingraised = " + updatingRaised);
         // If we have a donation amount we run the userDonation function and clear the form
-        userDonation(donateData.donation, updatingRaised);
         donationInput.val("");
+        userDonation(donateData.donation, updatingRaised);
+
     })
 
-    // userDonation does a post to our "api/donatePet" route and if successful, redirects us the the members page
+    // userDonation does a post to our "api/donatePet" route and if successful, redirects us the the user landing page
 
     function userDonation(donation, updatingRaised) {
         console.log("getting user data");
@@ -87,8 +88,8 @@ $(document).ready(() => {
                             .catch(err => {
                                 console.log(err);
                             })
-                        console.log("success return from api/registerPet");
-                        //                        window.location.replace("/members");
+                        console.log("success return from api/donatePet");
+                        window.location.replace("/userLanding");
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })
                     .catch(err => {

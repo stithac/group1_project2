@@ -74,6 +74,26 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/deleteAccount", (req, res) => {
+    console.log("api/deleteAccount");
+    console.log(req.user);
+    console.log(req.body);
+    db.Registration.destroy({
+      where: {
+        id: parseInt(req.body.id)
+      }
+    })
+    .then(function(dbUser) {
+      console.log(dbUser);
+    })
+    .catch(err => {
+      console.log("inside deleteAccount catch");
+      console.log(err);
+      req.logout();
+      res.redirect("/");
+    })
+  });
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize Registration Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
