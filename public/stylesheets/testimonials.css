@@ -1,0 +1,93 @@
+/* WEBSITE BACKGROUND TO MAKE IT EASIER ON THE EYES*/
+
+body {
+	background-color: rgba(247, 244, 233, 0.391);
+}
+
+/* Font family and typeface */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'Baloo 2', cursive;
+}
+
+/* PROGRESS BAR */
+.raised, 
+.goal {
+	font-family: 'Baloo 2', cursive;
+	font-weight: 500;
+}
+
+
+/* BUTTONS */
+.button-ikr, .has-background-primary {
+	background-color: #438945 !important;
+	color: whitesmoke;
+}
+
+.text-ikr {
+	color:#438945 !important;
+}
+
+
+
+/* CAROSUL? */
+
+.testimonial{
+    text-align: center;
+    padding: 20px 20px;
+}
+.testimonial {
+    font-size: 60px !important;
+    line-height: normal;
+    /* background-color: #fff; */
+}
+.testimonial .description{
+    font-size: 16px;
+    font-style: italic;
+    color: #777;
+    line-height: 26px;
+    margin-top: -20px;
+}
+.testimonial .pic{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px auto;
+}
+.testimonial .pic img{
+    width: 100%;
+    height: auto;
+}
+.testimonial .testimonial-title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #474740;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.testimonial .post{
+    display: block;
+    font-size: 14px;
+    color: #438945;
+}
+.owl-theme .owl-controls .owl-pagination{
+    margin-top: 20px;
+}
+.owl-theme .owl-controls .owl-page span{
+    width: 10px;
+    height: 10px;
+    background: #438945;
+    border: 2px solid #fff;
+    opacity: 1;
+}
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls .owl-page span:hover{
+    background: #fff;
+    border: 2px solid #438945;
+}
+
+/* testimonial  close */
