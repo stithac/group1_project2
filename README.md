@@ -2,7 +2,7 @@
 **Petocracy (sp?)** A lil' CRUD app
 
 ## Team: SKOTU (Super Koders of the Universe)
-![SKOTU](./assets/SKOTU3.png)
+![SKOTU](./public/assets/SKOTU3.png)
 
 Members:
 - **EXPRESS** aka The Refactorer,  _alias Ashley_
@@ -10,10 +10,10 @@ Members:
 - **ELEMENT** aka Ms. DOM, _alias Ikra_
 
 ## Project Diagram
-![Project Diagram](./assets/project_diagram.PNG)
+![Project Diagram](./public/assets/project_diagram.PNG)
 
 ## ERD
-![ERD](./assets/Covid_Pets.jpg)
+![ERD](./public/assets/Covid_Pets.jpg)
 
 ## HTML Pages
 * index.html - Home page for site.

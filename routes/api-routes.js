@@ -179,13 +179,13 @@ module.exports = function (app) {
       })
   });
 
-  app.post("/api/saveDonation", (req, res) => {
+/*   app.post("/api/saveDonation", (req, res) => {
 
     console.log("inside api/saveDonation");
     console.log(req.body);
     db.Donation.create({
         donationAmount: parseInt(req.body.donationAmount),
-        RegistrationId: 1
+        RegistrationId: parseInt(req.body.RegistrationId)
       }).then((dbUser) => {
         console.log(dbUser);
         res.status(200).json(dbUser);
@@ -195,7 +195,7 @@ module.exports = function (app) {
         console.log(err);
         res.status(401).json(err);
       })
-  });
+  }); */
 
   app.post("/api/saveCreditCard", (req, res) => {
 
@@ -302,12 +302,15 @@ module.exports = function (app) {
       })
   });
 
-  app.get("/api/getPetInfo", (req, res) => {
+  app.get('/api/getPetInfo', (req, res) => {
 
     console.log("inside api/getPetInfo");
+    var john = req.params.petId;
+    console.log("john = " + john);
+    PetId = john;
     db.Pets.findOne({
         where: {
-          id: 1
+          id: parseInt(PetId)
         }
       }).then((dbUser) => {
         console.log(dbUser);
@@ -392,6 +395,17 @@ module.exports = function (app) {
         });
     });
 
-
-
+    app.get('/getPetID/:id', (req, res) => {
+      console.log(req.params.id);
+      db.Pets.findOne({
+          where: {
+            id: req.params.id,
+          },
+         
+        }).then((results) => {
+          const savedPet = JSON.parse(JSON.stringify(results));
+          console.log(savedPet);
+          return res.json(savedPet);
+          });
+      });
 };
