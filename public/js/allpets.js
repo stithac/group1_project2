@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
         getId();
+        localStorage.setItem("PetID", petId);
         petInfoHandlebars(petId);
     }
 
