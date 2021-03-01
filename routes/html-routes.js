@@ -58,6 +58,10 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, '../public/userLanding.html'))
   );
 
+  app.get('/updateReg', isAuthenticated, (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/updateReg.html'))
+  );
+
   // registration route loads registration.html
   app.get('/registration', isAuthenticated, (req, res) =>
     res.sendFile(path.join(__dirname, '../public/registration.html'))
