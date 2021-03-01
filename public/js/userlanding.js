@@ -40,6 +40,7 @@ $("#donate").on("click", event => {
 $("#updateUserRegistration").on("click", event => {
     event.preventDefault();
     console.log('inside click update');
+    window.location.replace("./updateReg");
 })
 
 // Event listener for donate button

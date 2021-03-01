@@ -5,7 +5,7 @@ $(document).ready(() => {
     const lastNameInput = $("input#last-name");
     const streetInput = $("input#street");
     const cityInput = $("input#city");
-    const stateInput = $("input#state");
+    const stateInput = $("select#state");
     const zipInput = $("input#zip");
     const phoneInput = $("input#phone");
     const genDonationInput = $("input#genDonation");
@@ -24,7 +24,7 @@ $(document).ready(() => {
             lastName: lastNameInput.val().trim(),
             street: streetInput.val().trim(),
             city: cityInput.val().trim(),
-            state: stateInput.val().trim(),
+            state: $("select#state :selected").text(),
             zip: zipInput.val().trim(),
             phone: phoneInput.val().trim(),
             genDonation: genDonationInput.val().trim(),

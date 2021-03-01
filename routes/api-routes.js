@@ -149,6 +149,36 @@ module.exports = function (app) {
       })
   });
 
+  app.post("/api/updateUserReg", (req, res) => {
+
+    console.log("inside api/updateUserReg");
+    console.log(req.body);
+    db.Registration.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        phone: req.body.phone,
+        securityQuestion: req.body.question,
+        securityAnswer: req.body.answer,
+//        help_volunteer: req.body.help_volunteer
+      }, {
+        where: {
+          id: req.body.id
+        }
+      }).then((dbUser) => {
+        console.log(dbUser);
+        res.status(200).json(dbUser);
+      })
+      .catch(err => {
+        console.log("inside post failure");
+        console.log(err);
+        res.status(401).json(err);
+      })
+  });
+
   app.post("/api/generalDonation", (req, res) => {
 
     console.log("inside api/generalDonation");
@@ -406,6 +436,20 @@ module.exports = function (app) {
           const savedPet = JSON.parse(JSON.stringify(results));
           console.log(savedPet);
           return res.json(savedPet);
+          });
+      });
+      
+    app.get('/getUserInfo/:id', (req, res) => {
+      console.log(req.params.id);
+      db.Registration.findOne({
+          where: {
+            id: req.params.id,
+          },
+         
+        }).then((results) => {
+          const savedUser = JSON.parse(JSON.stringify(results));
+          console.log(savedUser);
+          return res.json(savedUser);
           });
       });
 };
