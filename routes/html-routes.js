@@ -1,3 +1,4 @@
+
 // Dependencies
 const path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
@@ -10,12 +11,20 @@ module.exports = (app) => {
   // index route loads index.html
   app.get('/', (req, res) => {
      // If the user already has an account send them to the members page
-     if (req.user) {
-       res.redirect("/userLanding");
-     }
-     console.log("doesn't have account");
-     console.log("redirect to signup.html");
-//     res.sendFile(path.join(__dirname, "../public/signup.html"));
+    //  if (req.user) {
+    //    res.redirect("/members");
+    //  }
+    //  console.log("doesn't have account");
+    //  console.log("redirect to signup.html");
+    //  res.sendFile(path.join(__dirname, "../public/signup.html"));
+
+  //  res.sendFile(path.join(__dirname, '../public/index.html'))
+//      if (req.user) {
+//        res.redirect("/userLanding");
+//      }
+//      console.log("doesn't have account");
+//      console.log("redirect to signup.html");
+// //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 
     res.sendFile(path.join(__dirname, '../public/index.html'))
     }
@@ -36,7 +45,7 @@ module.exports = (app) => {
   }
 //    res.sendFile(path.join(__dirname, '../public/login.html'))
   );
- 
+
    // Here we've add our isAuthenticated middleware to this route.
    // If a user who is not logged in tries to access this route they will be redirected to the signup page
 //   app.get("/members", isAuthenticated, (req, res) => {
@@ -98,6 +107,9 @@ module.exports = (app) => {
   app.get('/generalDonation', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
+
+
+
 
 /*__________________________________________________________________________________________________*/
 
