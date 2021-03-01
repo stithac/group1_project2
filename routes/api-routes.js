@@ -38,6 +38,7 @@ module.exports = function (app) {
     console.log(results);
   });
 
+  // gets the cloudinary environment variables from .env file to return to front end
   app.get('/api/envVars', (req, res) => {
     console.log("in route api/envVars");
     var envVars = {
@@ -47,6 +48,7 @@ module.exports = function (app) {
     res.json(envVars);
   });
 
+// route to create a pet donation entry in Donation table
   app.post("/api/donatePet", (req, res) => {
     console.log("inside api/donatePet");
     console.log("regId = " + req.body.registrationId);
@@ -67,7 +69,7 @@ module.exports = function (app) {
       })
   })
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
+  // If the user has valid login credentials, send them to the registration page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     console.log("api/login");
@@ -79,6 +81,7 @@ module.exports = function (app) {
     });
   });
 
+  // route to delete user account
   app.post("/api/deleteAccount", (req, res) => {
     console.log("api/deleteAccount");
     console.log(req.user);
@@ -92,6 +95,7 @@ module.exports = function (app) {
       console.log(dbUser);
     })
     .catch(err => {
+      // if error in deleting, log out user and redirect to index page
       console.log("inside deleteAccount catch");
       console.log(err);
       req.logout();
@@ -119,6 +123,7 @@ module.exports = function (app) {
       });
   });
 
+  // upon account creation, this route finishes updating the registration table fields
   app.post("/api/register", (req, res) => {
 
     console.log("inside api/register");
@@ -149,6 +154,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to update a user's registration info from the update registration page
   app.post("/api/updateUserReg", (req, res) => {
 
     console.log("inside api/updateUserReg");
@@ -156,6 +162,7 @@ module.exports = function (app) {
     db.Registration.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
         street: req.body.street,
         city: req.body.city,
         state: req.body.state,
@@ -163,7 +170,6 @@ module.exports = function (app) {
         phone: req.body.phone,
         securityQuestion: req.body.question,
         securityAnswer: req.body.answer,
-//        help_volunteer: req.body.help_volunteer
       }, {
         where: {
           id: req.body.id
@@ -179,6 +185,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to create a donation entry in General Donations table (do not need a user account for this type of donation)
   app.post("/api/generalDonation", (req, res) => {
 
     console.log("inside api/generalDonation");
@@ -227,6 +234,7 @@ module.exports = function (app) {
       })
   }); */
 
+  // route to save credit card info into Credit Card table
   app.post("/api/saveCreditCard", (req, res) => {
 
     console.log("inside api/saveCreditCard");
@@ -250,6 +258,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to update the raisedAmount field in the Pets table
   app.post("/api/updateRaisedAmount", (req, res) => {
 
     console.log("inside api/updateRaisedAmount");
@@ -271,6 +280,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to insert a new pet into Pets table
   app.post("/api/registerPet", (req, res) => {
 
     console.log("inside api/registerPet");
@@ -299,6 +309,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to insert a new service into Services table
   app.post("/api/registerService", (req, res) => {
 
     console.log("inside api/registerService");
@@ -332,6 +343,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to retrieve a particular pet's info from Pets table
   app.get('/api/getPetInfo', (req, res) => {
 
     console.log("inside api/getPetInfo");
@@ -353,6 +365,7 @@ module.exports = function (app) {
       })
   });
 
+  // route to check f user exists already
   app.get("/api/userExists", (req, res) => {
     console.log("inside userExists");
     db.Registration.findAll()
@@ -390,7 +403,7 @@ module.exports = function (app) {
 
   /***************** Handlebars routes *****************/
 
-
+    // route to retrieve all pet info from Pets table and send it back to handlebar file
     app.get('/all-pets', (req, res) => {
 
         db.Pets.findAll().then((results) => {
@@ -407,6 +420,7 @@ module.exports = function (app) {
         });
     });
 
+    // route to retrieve a particular pet's info and send it back to handlebar file
     app.get('/pet-info/:id', (req, res) => {
         console.log(req.params.id);
         db.Pets.findOne({
@@ -425,6 +439,7 @@ module.exports = function (app) {
         });
     });
 
+    // route to retrieve a Pet's info based upon ID and return the JSON data
     app.get('/getPetID/:id', (req, res) => {
       console.log(req.params.id);
       db.Pets.findOne({
@@ -439,7 +454,8 @@ module.exports = function (app) {
           });
       });
       
-    app.get('/getUserInfo/:id', (req, res) => {
+      // route to retrieve a particular registration info based upon ID and return the json data
+      app.get('/getUserInfo/:id', (req, res) => {
       console.log(req.params.id);
       db.Registration.findOne({
           where: {

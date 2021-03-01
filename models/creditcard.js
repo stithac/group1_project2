@@ -19,13 +19,6 @@ const bcrypt = require("bcryptjs");
             allowNull: false,
           },
         });
-        // // We're saying that a CreditCard should belong to a General Donation
-        // // A CreditCard can't be created without an General Donation due to the foreign key constraint
-        // CreditCard.belongsTo(models.GeneralDonation, {
-        //     foreignKey: {
-        //       allowNull: false,
-        //     },
-        //   });
       };
 
       // Hooks are automatic methods that run during various phases of the User Model lifecycle

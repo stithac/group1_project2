@@ -19,7 +19,6 @@ const bcrypt = require("bcryptjs");
       donationAmount: DataTypes.INTEGER,
     });
 
-
       // Hooks are automatic methods that run during various phases of the User Model lifecycle
       // In this case, before a User is created, we will automatically hash their password
       GeneralDonation.addHook("beforeCreate", user => {
@@ -34,21 +33,6 @@ const bcrypt = require("bcryptjs");
           null
         );
       });
-/*     GeneralDonation.associate = (models) => {
-        // Associating general donation with credit card
-        // When a general donation is deleted, also delete any associated credit card
-        GeneralDonation.hasOne(models.CreditCard, {
-          onDelete: 'cascade',
-        });
-      };
-
-    GeneralDonation.associate = (models) => {
-      // Associating general donation with donation
-      // When a general donation is deleted, also delete any associated donations
-      GeneralDonation.hasMany(models.Donation, {
-        onDelete: 'cascade',
-      });
-    }; */
 
     return GeneralDonation;
   }

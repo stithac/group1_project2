@@ -3,7 +3,6 @@
     const Services = sequelize.define('Services', {
       serviceName: DataTypes.STRING,
       frequency: DataTypes.STRING,
-      // dayOfWeek: DataTypes.STRING,
       startDate: DataTypes.DATE,
       endDate: DataTypes.DATE,
       recurring: DataTypes.BOOLEAN,
