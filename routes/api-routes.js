@@ -403,6 +403,34 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/getPetID/:id', (req, res) => {
+    console.log(req.params.id);
+    db.Pets.findOne({
+        where: {
+          id: req.params.id,
+        },
+
+      }).then((results) => {
+        const savedPet = JSON.parse(JSON.stringify(results));
+        console.log(savedPet);
+        return res.json(savedPet);
+        });
+    });
+
+  app.get('/getUserInfo/:id', (req, res) => {
+    console.log(req.params.id);
+    db.Registration.findOne({
+        where: {
+          id: req.params.id,
+        },
+
+      }).then((results) => {
+        const savedUser = JSON.parse(JSON.stringify(results));
+        console.log(savedUser);
+        return res.json(savedUser);
+        });
+    });
+
 
   /***************** Handlebars routes *****************/
 
@@ -430,7 +458,7 @@ module.exports = function (app) {
             where: {
               id: req.params.id,
             },
-           
+
           }).then((results) => {
             const petInfo = JSON.parse(JSON.stringify(results));
             console.log(petInfo); // Testing
@@ -441,33 +469,25 @@ module.exports = function (app) {
         });
     });
 
-    // route to retrieve a Pet's info based upon ID and return the JSON data
-    app.get('/getPetID/:id', (req, res) => {
-      console.log(req.params.id);
-      db.Pets.findOne({
-          where: {
-            id: req.params.id,
-          },
-         
-        }).then((results) => {
-          const savedPet = JSON.parse(JSON.stringify(results));
-          console.log(savedPet);
-          return res.json(savedPet);
+     // route to retrieve all pet info from Pets table where servicesMonetary is parameter and send it back to handlebar file
+     app.get('/all-pets/:helpType', (req, res) => {
+
+      db.Pets.findAll({
+        where: {
+          services_monetary : req.params.helpType
+        }
+      }).then((results) => {
+          // res.json(results);
+
+          console.log(JSON.parse(JSON.stringify(results))); // Testing
+
+          const petsArray = JSON.parse(JSON.stringify(results));
+
+          res.render('all-pets', {
+              pets: petsArray, //pets Array
           });
+
       });
-      
-      // route to retrieve a particular registration info based upon ID and return the json data
-      app.get('/getUserInfo/:id', (req, res) => {
-      console.log(req.params.id);
-      db.Registration.findOne({
-          where: {
-            id: req.params.id,
-          },
-         
-        }).then((results) => {
-          const savedUser = JSON.parse(JSON.stringify(results));
-          console.log(savedUser);
-          return res.json(savedUser);
-          });
-      });
+  });
+
 };
