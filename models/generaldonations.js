@@ -1,3 +1,5 @@
+// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
+const bcrypt = require("bcryptjs");
 
   module.exports = (sequelize, DataTypes) => {
     const GeneralDonation = sequelize.define('GeneralDonation', {
@@ -10,29 +12,27 @@
       zip: DataTypes.STRING,
       phone: DataTypes.STRING,
       cardNumber: DataTypes.STRING,
-      securityCode: DataTypes.INTEGER,
+      securityCode: DataTypes.STRING,
       nameOnCard: DataTypes.STRING,
       expirationDate: DataTypes.DATE,
       cardType: DataTypes.STRING,
       donationAmount: DataTypes.INTEGER,
     });
 
-
-/*     GeneralDonation.associate = (models) => {
-        // Associating general donation with credit card
-        // When a general donation is deleted, also delete any associated credit card
-        GeneralDonation.hasOne(models.CreditCard, {
-          onDelete: 'cascade',
-        });
-      };
-
-    GeneralDonation.associate = (models) => {
-      // Associating general donation with donation
-      // When a general donation is deleted, also delete any associated donations
-      GeneralDonation.hasMany(models.Donation, {
-        onDelete: 'cascade',
+      // Hooks are automatic methods that run during various phases of the User Model lifecycle
+      // In this case, before a User is created, we will automatically hash their password
+      GeneralDonation.addHook("beforeCreate", user => {
+        user.cardNumber = bcrypt.hashSync(
+          user.cardNumber,
+          bcrypt.genSaltSync(10),
+          null
+        );
+        user.securityCode = bcrypt.hashSync(
+          user.securityCode,
+          bcrypt.genSaltSync(10),
+          null
+        );
       });
-    }; */
 
     return GeneralDonation;
   }

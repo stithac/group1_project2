@@ -9,7 +9,6 @@
       petWeight: DataTypes.INTEGER,
       helpReason: DataTypes.STRING,
       services_monetary: DataTypes.STRING,
-      // monetary: DataTypes.BOOLEAN,
       requestAmount: DataTypes.INTEGER,
       raisedAmount: {
         type: DataTypes.INTEGER,
@@ -17,7 +16,6 @@
       },
       amountMet: DataTypes.BOOLEAN,
     });
-
 
     Pets.associate = (models) => {
       // We're saying that a Pet should belong to an Registration
@@ -28,7 +26,6 @@
         },
       });
     };
-
 
     Pets.associate = (models) => {
       // Associating pets with services

@@ -73,6 +73,7 @@ $("input[name='needType']").click(function(){
 
   // if button value === needHelp, show the help fields. helpDiv with additional fields is hidden on default
   if(need === "needHelp"){
+    // also need to toggle required on/off for fields displayed/not displayed in order to submit form appropriately
     $('#petName').attr('required', '');
     $('#breed-type').attr('required', '');
     $('#petAge').attr('required', '');
@@ -83,12 +84,11 @@ $("input[name='needType']").click(function(){
     $('#serviceName').removeAttr('required');
     $('#startDate').removeAttr('required');
     $('#endDate').removeAttr('required');
-/*     $('#frequencyNumber').removeAttr('required');
-    $('#recurringCheck').removeAttr('required'); */
     $("#helpDiv").addClass("show").removeClass("hide");
 
   // if button value === giveHelp, hide the help fields
   } else if (need === "giveHelp"){
+    // also need to toggle required on/off for fields displayed/not displayed in order to submit form appropriately
     $('#petName').removeAttr('required');
     $('#breed-type').removeAttr('required');
     $('#petAge').removeAttr('required');
@@ -115,27 +115,22 @@ $("input[name='helpType']").click(function(){
 
   // if the value of the button is services, hide the monetary fields and display the services fields
   if (help === "services"){
+    // also need to toggle required on/off for fields displayed/not displayed in order to submit form appropriately
     $('#amountRequested').removeAttr('required');
     $("#monetaryDiv").addClass("hide").removeClass("show")
     $("#servicesDiv").addClass("show").removeClass("hide");
     $('#serviceName').attr('required', '');
     $('#startDate').attr('required', '');
     $('#endDate').attr('required', '');
-/*     $('#frequencyNumber').attr('required', '');
-    $('#recurringCheck').attr('required', ''); */
-
-  
 
   // if the value of the button is monetary, hide the services fields and display the monetary fields
   } else if (help === "monetary"){
+    // also need to toggle required on/off for fields displayed/not displayed in order to submit form appropriately
     $("#monetaryDiv").addClass("show").removeClass("hide");
     $('#amountRequested').attr('required', '');
     $('#serviceName').removeAttr('required');
     $('#startDate').removeAttr('required');
     $('#endDate').removeAttr('required');
-/*     $('#frequencyNumber').removeAttr('required');
-    $('#recurringCheck').removeAttr('required'); */
- 
     $("#servicesDiv").addClass("hide").removeClass("show")
   }
 

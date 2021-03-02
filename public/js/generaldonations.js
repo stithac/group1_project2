@@ -5,7 +5,7 @@ $(document).ready(() => {
     const lastNameInput = $("input#last-name");
     const streetInput = $("input#street");
     const cityInput = $("input#city");
-    const stateInput = $("input#state");
+    const stateInput = $("select#state");
     const zipInput = $("input#zip");
     const phoneInput = $("input#phone");
     const genDonationInput = $("input#genDonation");
@@ -16,15 +16,17 @@ $(document).ready(() => {
     const expirationDateInput = $("input#expirationDate");
     const cardTypeInput = $("input#cardType");
 
+    // upon form submit, write data to general donation table
     genDonationForm.on("submit", event => {
         event.preventDefault();
 
+        // grab all the user entries from fields on form
         const donationData = {
             firstName: firstNameInput.val().trim(),
             lastName: lastNameInput.val().trim(),
             street: streetInput.val().trim(),
             city: cityInput.val().trim(),
-            state: stateInput.val().trim(),
+            state: $("select#state :selected").text(),
             zip: zipInput.val().trim(),
             phone: phoneInput.val().trim(),
             genDonation: genDonationInput.val().trim(),
@@ -36,6 +38,7 @@ $(document).ready(() => {
             cardType: cardTypeInput.val().trim()
         };
         console.log(donationData.expirationDate);
+        // have to add last day of month to expiration date so field will be correct format for SQL DATE type
         donationData.expirationDate = calcDay(donationData.expirationDate);
         console.log("transformed date = " + donationData.expirationDate);
         genDonate(donationData.firstName, donationData.lastName, donationData.street, donationData.city, donationData.state,
@@ -56,6 +59,8 @@ $(document).ready(() => {
         cardTypeInput.val("");
     });
 
+    // function to break apart MM/YYYY and determine last day of month based upon the month 
+    // and combine to form a YYYY-MM-DD format for SQL
     function calcDay(expirationDate) {
         var date = expirationDate;
         var tempArray = date.split("-");
@@ -88,12 +93,11 @@ $(document).ready(() => {
         return date;
     }
 
-    // Does a post to the signup route. If successful, we are redirected to the members page
+    // Does a post to the general donation route. If successful, we are redirected to the ?? page
     // Otherwise we log any errors
     function genDonate(firstName, lastName, street, city, state, zip, phone, genDonation, email, cardNumber, securityCode, nameOnCard, expirationDate, cardType) {
-        //        savedEmail = data.email;
-        //        savedID = data.id;
         console.log(firstName, lastName, email, street, city, state, zip, phone, genDonation, cardNumber, securityCode, nameOnCard, expirationDate, cardType);
+        // call api route to write data to general donation table
         $.post("/api/generalDonation", {
                 email: email,
                 firstName: firstName,
