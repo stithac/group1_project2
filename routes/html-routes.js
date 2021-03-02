@@ -65,8 +65,7 @@ module.exports = (app) => {
   );
 
   // pet route loads main.html
-  //  if a user is not logged in and tries to access this route they will be redirected to the signup page
-  app.get('/pet', isAuthenticated, (req, res) =>
+  app.get('/pet', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/pet.html'))
   );
 

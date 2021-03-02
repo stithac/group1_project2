@@ -19,14 +19,14 @@
   <div class="container is-fluid">
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="#">Petocracy</a><a class="navbar-burger" role="button"
+        <div class="navbar-brand"><a class="navbar-item" href="/">Petocracy</a><a class="navbar-burger" role="button"
             aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
               aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="./aboutus.html">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
-              class="navbar-item" href="#">Pets</a>
-            <a class="navbar-item" href="./">Contact Us</a>
+            <a class="navbar-item" href="/aboutus">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
+              class="navbar-item" href="/pet">Pets</a>
+            <a class="navbar-item" href="/">Contact Us</a>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -472,7 +472,7 @@
 
       });
 
-      // Does a post to the signup route. If successful, we are redirected to the members page
+      // Does a post to the signup route. If successful, we are redirected to the userLanding page
       // Otherwise we log any errors
       function regUser(firstName, lastName, street, street2, city, state, zip, phone, question, answer, help_volunteer) {
         fetch('/api/user_data', {
@@ -538,7 +538,7 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/registePet");
-                //                window.location.replace("/members");
+                //                window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
@@ -578,7 +578,7 @@
               })
               .then(() => {
                 console.log("success return from api/registerService");
-                //                window.location.replace("/members");
+                //                window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);

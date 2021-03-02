@@ -69,7 +69,7 @@ module.exports = function (app) {
       })
   })
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the registration page.
+  // If the user has valid login credentials, send them to the userLanding page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     console.log("api/login");
@@ -368,7 +368,7 @@ module.exports = function (app) {
       })
   });
 
-  // route to check f user exists already
+  // route to check if user exists already
   app.get("/api/userExists", (req, res) => {
     console.log("inside userExists");
     db.Registration.findAll()
