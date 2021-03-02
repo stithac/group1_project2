@@ -3,13 +3,6 @@ $(document).ready(() => {
   const signUpForm = $("form.signup");
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
-//  const firstNameInput = $("input#first-name");
-//  const lastNameInput = $("input#last-name");
-//  const streetInput = $("input#street");
-//  const cityInput = $("input#city");
-//  const stateInput = $("input#state");
-//  const zipInput = $("input#zip");
-//  const phoneInput = $("input#phone");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
@@ -28,7 +21,7 @@ $(document).ready(() => {
     passwordInput.val("");
   });
 
-  // Does a post to the signup route. If successful, we are redirected to the members page
+  // Does a post to the signup route. If successful, we are redirected to the registration page
   // Otherwise we log any errors
   function signUpUser(email, password) {
     console.log(email, password);

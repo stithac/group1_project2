@@ -40,8 +40,7 @@ $(document).ready(() => {
                     $(amountRequestedInput).val(results.requestAmount);
                     $(amountRaisedInput).val(results.raisedAmount);
                     $(petURLInput).attr("src", results.picURL);
-                    //                window.location.replace("/members");
-                    // If there's an error, handle it by throwing up a bootstrap alert
+                    // If there's an error, handle it by throwing error
                 })
                 .catch(err => {
                     console.log(err);
@@ -169,7 +168,6 @@ $(document).ready(() => {
                                     })
                                 console.log("success return from api/donatePet");
                                 window.location.replace("/userLanding");
-                                //                                window.location.replace('/donatepet');
                             })
                             .catch(err => {
                                 console.log(err);
