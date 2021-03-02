@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
       street: DataTypes.STRING,
+      street2: DataTypes.STRING,
       city: DataTypes.STRING,
       state: DataTypes.STRING,
       zip: DataTypes.STRING,
