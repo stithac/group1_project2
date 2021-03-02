@@ -4,6 +4,7 @@ $(document).ready(() => {
     const firstNameInput = $("input#first-name");
     const lastNameInput = $("input#last-name");
     const streetInput = $("input#street");
+    const street2Input = $("input#aptSuite");
     const cityInput = $("input#city");
     const stateInput = $("select#state");
     const zipInput = $("input#zip");
@@ -25,6 +26,7 @@ $(document).ready(() => {
             firstName: firstNameInput.val().trim(),
             lastName: lastNameInput.val().trim(),
             street: streetInput.val().trim(),
+            street2: street2Input.val().trim(),
             city: cityInput.val().trim(),
             state: $("select#state :selected").text(),
             zip: zipInput.val().trim(),
@@ -41,11 +43,12 @@ $(document).ready(() => {
         // have to add last day of month to expiration date so field will be correct format for SQL DATE type
         donationData.expirationDate = calcDay(donationData.expirationDate);
         console.log("transformed date = " + donationData.expirationDate);
-        genDonate(donationData.firstName, donationData.lastName, donationData.street, donationData.city, donationData.state,
+        genDonate(donationData.firstName, donationData.lastName, donationData.street, donationData.street2, donationData.city, donationData.state,
             donationData.zip, donationData.phone, donationData.genDonation, donationData.email, donationData.cardNumber, donationData.securityCode, donationData.nameOnCard, donationData.expirationDate, donationData.cardType);
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
+        street2Input.val("");
         cityInput.val("");
         stateInput.val("");
         zipInput.val("");
@@ -95,14 +98,15 @@ $(document).ready(() => {
 
     // Does a post to the general donation route. If successful, we are redirected to the ?? page
     // Otherwise we log any errors
-    function genDonate(firstName, lastName, street, city, state, zip, phone, genDonation, email, cardNumber, securityCode, nameOnCard, expirationDate, cardType) {
-        console.log(firstName, lastName, email, street, city, state, zip, phone, genDonation, cardNumber, securityCode, nameOnCard, expirationDate, cardType);
+    function genDonate(firstName, lastName, street, street2, city, state, zip, phone, genDonation, email, cardNumber, securityCode, nameOnCard, expirationDate, cardType) {
+        console.log(firstName, lastName, email, street, street2, city, state, zip, phone, genDonation, cardNumber, securityCode, nameOnCard, expirationDate, cardType);
         // call api route to write data to general donation table
         $.post("/api/generalDonation", {
                 email: email,
                 firstName: firstName,
                 lastName: lastName,
                 street: street,
+                street2: street2,
                 city: city,
                 state: state,
                 zip: zip,
@@ -116,7 +120,7 @@ $(document).ready(() => {
             })
             .then((data) => {
                 console.log("did I return successfully from api/generalDonation");
-                //                window.location.replace("/members");
+                window.location.replace("/");
                 // If there's an error, handle it by throwing up a bootstrap alert
             })
             .catch(err => {
