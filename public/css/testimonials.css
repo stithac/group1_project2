@@ -20,6 +20,9 @@ body {
 	font-weight: 500;
 }
 
+a:hover .navbar-brand {
+    color: yellow !important;
+  }
 
 /* BUTTONS */
 .button-ikr, .has-background-primary {
