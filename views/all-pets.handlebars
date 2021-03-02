@@ -7,16 +7,20 @@
                     <div class="card-image"><a href="#"><img src="" alt=""></a></div>
                     <div class="card-content py-6">
                         <h5 class="title is-5">{{petName}}</h5>
-                        <p class="pb-5 px-5">Progress Bar</p>
+                        <progress class="progress is-warning" id="progress" value="" max="100"></progress>
                         <img src = {{picURL}}>
                         <p>{{petBio}}</p>
-                        <a href="/pet-info/{{id}}" data-type="handlebarBtn" class="button button-ikr is-primary" id= "{{id}}">More Info / Volunteer</a>
+                        <a href="/pet-info/{{id}}" data-type="handlebarBtn" id= "{{id}}">See more about {{petName}}</a>
+                        <div>
+                            <a href="/donatepet.html" class="button">Donate</a>
+                            <a href="#" id="{{id}}" helpType = "{{services_monetary}}" class="button volunteerBtn" >Volunteer</a>
+                            <p id="thanks{{id}}" class="hide">Thank you! This pet has been matched.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             {{/each}}
 		</div>
-		<div class="buttons is-centered"><a class="button button-ikr is-primary" href="#">View All Pets</a></div>
 </div>
 
 
