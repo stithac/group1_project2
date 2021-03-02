@@ -429,7 +429,6 @@ module.exports = function (app) {
             },
            
           }).then((results) => {
-
             const petInfo = JSON.parse(JSON.stringify(results));
             console.log(petInfo); // Testing
             res.render('pet-info', {
