@@ -9,7 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var petId;
     var btn;
-    var clickedBtn;
+
+    // Volunteer buttons
+    var btns = document.getElementsByClassName('volunteerBtn');
+    console.log(btns);
+
+    for (i = 0; i < btns.length; i++){
+        btns[i].addEventListener("click", event =>{
+            console.log(event.target.id);
+
+            const btn = event.target;
+            const btnId = event.target.id;
+            const thanks = document.getElementById("thanks"+ btnId);
+
+            thanks.removeAttribute("class", "hide");
+            btn.setAttribute("class", "hide");
+
+        })
+    }
 
     // Only run script from the all-pets handlebars route
     if (url.includes("all-pets")){
@@ -57,12 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         petsHandlebars();
 
 
-
-
-
-    } else {
-
-
+    } else if (url.includes("pet-info")) {
 
         const petInfoHandlebars = (petId) => {
 

@@ -14,6 +14,7 @@ $(document).ready(() => {
     const firstNameInput = $("input#first-name");
     const lastNameInput = $("input#last-name");
     const streetInput = $("input#street");
+    const street2Input = $("input#aptSuite");
     const cityInput = $("input#city");
     const stateInput = $("select#state");
     const zipInput = $("input#zip");
@@ -49,6 +50,7 @@ $(document).ready(() => {
                     $(lastNameInput).val(results.lastName);
                     $(emailInput).val(results.email);
                     $(streetInput).val(results.street);
+                    $(street2Input).val(results.street2);
                     $(cityInput).val(results.city);
                     // to populate the correct state in option list need to first find correct option
                     var options = document.getElementById('state').options;
@@ -80,6 +82,7 @@ $(document).ready(() => {
             firstName: firstNameInput.val().trim(),
             lastName: lastNameInput.val().trim(),
             street: streetInput.val().trim(),
+            street2: street2Input.val().trim(),
             email: emailInput.val().trim(),
             city: cityInput.val().trim(),
             state: $("select#state :selected").text(),
@@ -130,12 +133,13 @@ $(document).ready(() => {
         }
  */
         // Lastly make call to updateUser function to actually write out the data
-        updateUser(regData.firstName, regData.lastName, regData.email, regData.street, regData.city, regData.state,
+        updateUser(regData.firstName, regData.lastName, regData.email, regData.street, regData.street2, regData.city, regData.state,
             regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
         firstNameInput.val("");
         lastNameInput.val("");
         emailInput.val("");
         streetInput.val("");
+        street2Input.val("");
         cityInput.val("");
         stateInput.val("");
         zipInput.val("");
@@ -146,7 +150,7 @@ $(document).ready(() => {
 
     // Does a post to the updateUserReg route. If successful, we are redirected to the userLanding page
     // Otherwise we log any errors
-    function updateUser(firstName, lastName, email, street, city, state, zip, phone, question, answer) {
+    function updateUser(firstName, lastName, email, street, street2, city, state, zip, phone, question, answer) {
         fetch('/api/user_data', {
                 method: 'GET',
                 headers: {
@@ -158,13 +162,14 @@ $(document).ready(() => {
                 console.log(data);
                 savedEmail = data.email;
                 savedID = data.id;
-                console.log(firstName, lastName, email, street, city, state, zip, phone, question, answer);
+                console.log(firstName, lastName, email, street, street2, city, state, zip, phone, question, answer);
                 $.post("/api/updateUserReg", {
                         id: data.id,
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
                         street: street,
+                        street2: street2,
                         city: city,
                         state: state,
                         zip: zip,

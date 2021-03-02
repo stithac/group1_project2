@@ -37,11 +37,13 @@ module.exports = (app) => {
 
   // login route loads login.html
   app.get('/login', (req, res) => {
+    console.log('inside login route');
+    console.log(req.user);
      // If the user already has an account send them to the userLanding page
      if (req.user) {
        res.sendFile(path.join(__dirname, "../public/userLanding.html"));
      }
-     res.sendFile(path.join(__dirname, "../public/passportlogin.html"));
+     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
    // Here we've add our isAuthenticated middleware to this route.
@@ -63,8 +65,7 @@ module.exports = (app) => {
   );
 
   // pet route loads main.html
-  //  if a user is not logged in and tries to access this route they will be redirected to the signup page
-  app.get('/pet', isAuthenticated, (req, res) =>
+  app.get('/pet', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/pet.html'))
   );
 
@@ -110,4 +111,8 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname, '../public/generaldonation.html'))
   );
 
+    // successfulpets route loads successpets.html
+    app.get('/successfulpets', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/successfulpets.html'))
+  );
 };

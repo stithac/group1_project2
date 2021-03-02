@@ -11,26 +11,26 @@
   <link rel="stylesheet" href="./css/bulma.min.css">
   <link rel="stylesheet" href="./css/testimonials.css">
   <link rel="stylesheet" href="./css/style.css">
-
-  <script src="./js/main.js"></script>
+  <link rel="icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
   <div class="container is-fluid">
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="#">Petocracy</a><a class="navbar-burger" role="button"
+        <div class="navbar-brand"><a class="navbar-item" href="/">Petocracy</a><a class="navbar-burger" role="button"
             aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
               aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="./aboutus.html">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
-              class="navbar-item" href="#">Pets</a>
-            <a class="navbar-item" href="./">Contact Us</a>
+            <a class="navbar-item" href="/aboutus">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
+              class="navbar-item" href="/pet">Pets</a>
+            <a class="navbar-item" href="/">Contact Us</a>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons"><a class="control button button-ikr is-primary" href="/logout">Log Out</a></div>
+              <div class="buttons"><a class="control button button-ikr is-primary" type="click" href="/logout">Log Out</a></div>
             </div>
           </div>
         </div>
@@ -66,6 +66,10 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Street</label>
                 <input type="input" class="form-control" id="street" placeholder="Street" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street</label>
+                <input type="input" class="form-control" id="street2" placeholder="Street2" required>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">City</label>
@@ -336,6 +340,7 @@
       const firstNameInput = $("input#first-name");
       const lastNameInput = $("input#last-name");
       const streetInput = $("input#street");
+      const street2Input = $("input#street2");
       const cityInput = $("input#city");
       const stateInput = $("input#state");
       const zipInput = $("input#zip");
@@ -392,6 +397,7 @@
           firstName: firstNameInput.val().trim(),
           lastName: lastNameInput.val().trim(),
           street: streetInput.val().trim(),
+          street2: street2Input.val().trim(),
           city: cityInput.val().trim(),
           state: stateInput.val().trim(),
           zip: zipInput.val().trim(),
@@ -430,7 +436,7 @@
           picURL: picURLInput
         };
 
-        regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
+        regUser(regData.firstName, regData.lastName, regData.street, regData.street2, regData.city, regData.state,
           regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer, regData.help_volunteer
         );
         if (regData.help_volunteer === "needHelp") {
@@ -447,6 +453,7 @@
         firstNameInput.val("");
         lastNameInput.val("");
         streetInput.val("");
+        street2Input.val("");
         cityInput.val("");
         stateInput.val("");
         zipInput.val("");
@@ -465,9 +472,9 @@
 
       });
 
-      // Does a post to the signup route. If successful, we are redirected to the members page
+      // Does a post to the signup route. If successful, we are redirected to the userLanding page
       // Otherwise we log any errors
-      function regUser(firstName, lastName, street, city, state, zip, phone, question, answer, help_volunteer) {
+      function regUser(firstName, lastName, street, street2, city, state, zip, phone, question, answer, help_volunteer) {
         fetch('/api/user_data', {
             method: 'GET',
             headers: {
@@ -479,12 +486,13 @@
             console.log(data);
             savedEmail = data.email;
             savedID = data.id;
-            console.log(firstName, lastName, street, city, state, zip, phone, question, answer, help_volunteer);
+            console.log(firstName, lastName, street, street2, city, state, zip, phone, question, answer, help_volunteer);
             $.post("/api/register", {
                 email: data.email,
                 firstName: firstName,
                 lastName: lastName,
                 street: street,
+                street2: street2,
                 city: city,
                 state: state,
                 zip: zip,
@@ -530,7 +538,7 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/registePet");
-                //                window.location.replace("/members");
+                //                window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
@@ -570,7 +578,7 @@
               })
               .then(() => {
                 console.log("success return from api/registerService");
-                //                window.location.replace("/members");
+                //                window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);

@@ -10,66 +10,72 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="stylesheet" href="./css/bulma.min.css">
-  <link rel="stylesheet" href="./stylesheets/testimonials.css">
+  <link rel="stylesheet" href="./css/testimonials.css">
   <link rel="icon" href="favicon.ico">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
-<body class="">
+<body>
   <div class="container is-fluid">
 
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="#">Petocracy</a><a class="navbar-burger" role="button"
+        <div class="navbar-brand"><a class="navbar-item" href="/">Petocracy</a><a class="navbar-burger" role="button"
             aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
               aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="./aboutus.html">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
-              class="navbar-item" href="#">Pets</a>
-            <a class="navbar-item" href="./">Contact Us</a>
+            <a class="navbar-item" href="/aboutus">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
+              class="navbar-item" href="/pet">Pets</a>
+            <a class="navbar-item" href="/">Contact Us</a>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons"><a class="button is-light" href="./login.html">Log in</a><a
-                  class="button button-ikr is-primary" href="./userLanding.html">Sign up</a></div>
+              <div class="buttons"><a class="button is-light" href="/login">Log in</a><a
+                  class="button button-ikr is-primary" href="/signup">Sign up</a></div>
             </div>
           </div>
         </div>
       </div>
     </nav>
 
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered py-4">
+        <h1 class="title is-spaced">Petocracy</h1>
+        <h2 class="subtitle">Signup if you don't have an account or login if you already have credentials</h2>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
+        <h3 class="has-text-centered mb-5">Signup below</h3>
+        <div class="columns is-centered">
+          <div class="column is-7">
+            <form class="signup">
+              <div class="field is-grouped mb-5">
+                <div class="control is-expanded">
+                  <input class="input" type="email" id="email-input" placeholder="Your e-mail" required="required"></div>
+                <div class="control is-expanded">
+                  <input class="input" type="password" id="password-input" placeholder="Password" required="required"></div>
+                <div class="control">
+                  <button class="button button-ikr is-primary" type="submit">Submit</button>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control has-text-centered">
+                  <label class="checkbox">
+                    <div class="control">
+                      <input type="checkbox" required="required">
+                      &nbsp; I agree to <a href="#">terms and conditions</a>.
+                      <div class="buttons is-centered my-6"><a class="control button button-ikr is-primary"
+                          href="#">Forgot Password?</a></div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
-        <form class="signup">         
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
-        </form>
-        <br />
-        <p>Or log in <a href="/login">here</a></p>
-      </div>
-    </div>
-  </div>
+  </section>
 
        <!-- Footer -->
        <footer class="footer">

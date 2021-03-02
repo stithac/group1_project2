@@ -69,7 +69,7 @@ module.exports = function (app) {
       })
   })
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the registration page.
+  // If the user has valid login credentials, send them to the userLanding page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     console.log("api/login");
@@ -132,6 +132,7 @@ module.exports = function (app) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         street: req.body.street,
+        street2: req.body.street2,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
@@ -164,6 +165,7 @@ module.exports = function (app) {
         lastName: req.body.lastName,
         email: req.body.email,
         street: req.body.street,
+        street2: req.body.street2,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
@@ -194,6 +196,7 @@ module.exports = function (app) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         street: req.body.street,
+        street2: req.body.street2,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
@@ -365,7 +368,7 @@ module.exports = function (app) {
       })
   });
 
-  // route to check f user exists already
+  // route to check if user exists already
   app.get("/api/userExists", (req, res) => {
     console.log("inside userExists");
     db.Registration.findAll()
@@ -400,6 +403,34 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/getPetID/:id', (req, res) => {
+    console.log(req.params.id);
+    db.Pets.findOne({
+        where: {
+          id: req.params.id,
+        },
+
+      }).then((results) => {
+        const savedPet = JSON.parse(JSON.stringify(results));
+        console.log(savedPet);
+        return res.json(savedPet);
+        });
+    });
+
+  app.get('/getUserInfo/:id', (req, res) => {
+    console.log(req.params.id);
+    db.Registration.findOne({
+        where: {
+          id: req.params.id,
+        },
+
+      }).then((results) => {
+        const savedUser = JSON.parse(JSON.stringify(results));
+        console.log(savedUser);
+        return res.json(savedUser);
+        });
+    });
+
 
   /***************** Handlebars routes *****************/
 
@@ -427,9 +458,8 @@ module.exports = function (app) {
             where: {
               id: req.params.id,
             },
-           
-          }).then((results) => {
 
+          }).then((results) => {
             const petInfo = JSON.parse(JSON.stringify(results));
             console.log(petInfo); // Testing
             res.render('pet-info', {
@@ -439,33 +469,25 @@ module.exports = function (app) {
         });
     });
 
-    // route to retrieve a Pet's info based upon ID and return the JSON data
-    app.get('/getPetID/:id', (req, res) => {
-      console.log(req.params.id);
-      db.Pets.findOne({
-          where: {
-            id: req.params.id,
-          },
-         
-        }).then((results) => {
-          const savedPet = JSON.parse(JSON.stringify(results));
-          console.log(savedPet);
-          return res.json(savedPet);
+     // route to retrieve all pet info from Pets table where servicesMonetary is parameter and send it back to handlebar file
+     app.get('/all-pets/:helpType', (req, res) => {
+
+      db.Pets.findAll({
+        where: {
+          services_monetary : req.params.helpType
+        }
+      }).then((results) => {
+          // res.json(results);
+
+          console.log(JSON.parse(JSON.stringify(results))); // Testing
+
+          const petsArray = JSON.parse(JSON.stringify(results));
+
+          res.render('all-pets', {
+              pets: petsArray, //pets Array
           });
+
       });
-      
-      // route to retrieve a particular registration info based upon ID and return the json data
-      app.get('/getUserInfo/:id', (req, res) => {
-      console.log(req.params.id);
-      db.Registration.findOne({
-          where: {
-            id: req.params.id,
-          },
-         
-        }).then((results) => {
-          const savedUser = JSON.parse(JSON.stringify(results));
-          console.log(savedUser);
-          return res.json(savedUser);
-          });
-      });
+  });
+
 };
