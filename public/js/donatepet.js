@@ -9,6 +9,7 @@ $(document).ready(() => {
     const nameOnCardInput = $("input#nameOnCard");
     const expirationDateInput = $("input#expirationDate");
     const cardTypeInput = $("input#cardType");
+    const petURLInput = $("img#petURL");
     var petId = localStorage.getItem("PetID");;
     var updatingRaised = 0;
 
@@ -38,6 +39,7 @@ $(document).ready(() => {
                     // set requested amount and raised amount to fields on page
                     $(amountRequestedInput).val(results.requestAmount);
                     $(amountRaisedInput).val(results.raisedAmount);
+                    $(petURLInput).attr("src", results.picURL);
                     //                window.location.replace("/members");
                     // If there's an error, handle it by throwing up a bootstrap alert
                 })
@@ -148,30 +150,31 @@ $(document).ready(() => {
                             })
                             .then(() => {
                                 console.log("success from updating raised amount");
-                                window.location.replace('/donatepet');
-                            })
-                            .catch(err => {
-                                console.log(err);
-                            })
-                        // write out credit card info to credit card table
-                        $.post("/api/saveCreditCard", {
-                                cardNumber: cardNumber,
-                                securityCode: securityCode,
-                                nameOnCard: nameOnCard,
-                                expirationDate: expirationDate,
-                                cardType: cardType,
-                                RegistrationId: localStorage.getItem("RegistrationId"),
-                            })
-                            .then(() => {
-                                console.log("success from update credit card");
+                                // write out credit card info to credit card table
+                                $.post("/api/saveCreditCard", {
+                                        cardNumber: cardNumber,
+                                        securityCode: securityCode,
+                                        nameOnCard: nameOnCard,
+                                        expirationDate: expirationDate,
+                                        cardType: cardType,
+                                        RegistrationId: localStorage.getItem("RegistrationId"),
+                                    })
+                                    .then(() => {
+                                        console.log("success from update credit card");
 
+                                    })
+                                    .catch(err => {
+                                        console.log("in error from update credit card");
+                                        console.log(err);
+                                    })
+                                console.log("success return from api/donatePet");
+                                window.location.replace("/userLanding");
+                                //                                window.location.replace('/donatepet');
                             })
                             .catch(err => {
-                                console.log("in error from update credit card");
                                 console.log(err);
                             })
-                        console.log("success return from api/donatePet");
-                        window.location.replace("/userLanding");
+
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })
                     .catch(err => {

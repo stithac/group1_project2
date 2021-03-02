@@ -6,25 +6,43 @@
   <meta charset="utf-8">
 
   <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/testimonials.css">
   <link rel="stylesheet" href="./css/style.css">
 
   <script src="./js/main.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
+  <div class="container is-fluid">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-item" href="#">Petocracy</a><a class="navbar-burger" role="button"
+            aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
+              aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="./aboutus.html">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
+              class="navbar-item" href="#">Pets</a>
+            <a class="navbar-item" href="./">Contact Us</a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons"><a class="control button button-ikr is-primary" href="/logout">Log Out</a></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Registration</h2>
-        <form class="signup">
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2>Registration</h2>
+          <form class="signup">
 
-          <!--           <div id="emailDiv">
+            <!--           <div id="emailDiv">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="email-input" placeholder="Email">
@@ -36,265 +54,271 @@
               <button id="emailSubmit" type="submit" class="btn btn-default">Next</button>
           </div> -->
 
-          <div id="registrationDiv">
-            <div class="form-group">
-              <label for="exampleInputEmail1">First Name</label>
-              <input type="input" class="form-control" id="first-name" placeholder="First Name" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Last Name</label>
-              <input type="input" class="form-control" id="last-name" placeholder="Last Name" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Street</label>
-              <input type="input" class="form-control" id="street" placeholder="Street" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">City</label>
-              <input type="input" class="form-control" id="city" placeholder="City" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">State</label>
-              <input type="input" class="form-control" id="state" placeholder="State" maxlength="2" size="2" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Zip</label>
-              <input type="input" class="form-control" id="zip" placeholder="Zip" maxlength="5" size="5" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" class="form-control" placeholder="555-555-5555" maxlength="12" size="12"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Security Question</label>
-              <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Security Question Answer</label>
-              <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer" required>
-            </div>
-            <div>
-              <p>Are you requesting help for a pet OR volunteering?</p>
-            </div>
-            <div class="form-group">
-              <input type="radio" id="needHelp" name="needType" value="needHelp">
-              <label for="needHelp">Requesting assistance for my pet</label><br>
-              <input type="radio" id="giveHelp" name="needType" value="giveHelp">
-              <label for="giveHelp">I would like to volunteer</label><br><br>
-            </div>
-            <div id="helpDiv" class="hide">
-
+            <div id="registrationDiv">
               <div class="form-group">
-                <label for="exampleInputEmail1">Pet Name</label>
-                <input type="input" class="form-control" id="petName" placeholder="Pet Name" required>
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="input" class="form-control" id="first-name" placeholder="First Name" required>
               </div>
               <div class="form-group">
-                <div>
-                  <br>
-                  <button type="button" id="upload_widget">Upload Pet Photo</button>
-                </div>
-                <br>
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="input" class="form-control" id="last-name" placeholder="Last Name" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Breed/Type</label>
-                <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type" required>
+                <label for="exampleInputEmail1">Street</label>
+                <input type="input" class="form-control" id="street" placeholder="Street" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Pet Age</label>
-                <input type="input" class="form-control" id="petAge" placeholder="Pet Age" maxlength="3" size="3" required>
+                <label for="exampleInputEmail1">City</label>
+                <input type="input" class="form-control" id="city" placeholder="City" required>
               </div>
               <div class="form-group">
-                <label for="petBio">Pet Bio</label>
-                <textarea class="form-control" id="petBio" placeholder="Pet Bio" maxlength="100" required></textarea>
+                <label for="exampleInputEmail1">State</label>
+                <input type="input" class="form-control" id="state" placeholder="State" maxlength="2" size="2" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Pet Weight</label>
-                <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight" maxlength="3" size="5" required>
+                <label for="exampleInputEmail1">Zip</label>
+                <input type="input" class="form-control" id="zip" placeholder="Zip" maxlength="5" size="5" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Reason for Help</label>
-                <textarea class="form-control" id="helpReason" placeholder="Reason for Help" maxlength="100" required></textarea>
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="555-555-5555" maxlength="12"
+                  size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Security Question</label>
+                <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Security Question Answer</label>
+                <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer"
+                  required>
               </div>
               <div>
-                <p>Are you needing help with pet services or monetary donations?</p>
+                <p>Are you requesting help for a pet OR volunteering?</p>
               </div>
               <div class="form-group">
-                <input type="radio" id="helpTypeService" name="helpType" value="services">
-                <label for="helpTypeService">Pet Services</label><br>
-                <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
-                <label for="helpTypeMonetary">Monetary Donation</label><br><br>
+                <input type="radio" id="needHelp" name="needType" value="needHelp">
+                <label for="needHelp">Requesting assistance for my pet</label><br>
+                <input type="radio" id="giveHelp" name="needType" value="giveHelp">
+                <label for="giveHelp">I would like to volunteer</label><br><br>
               </div>
-              <div id="monetaryDiv" class="hide">
-                <div class="form-group">
-                  <label for="amountRequested">Amount Requested</label>
-                  <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested" >
-                </div>
-              </div>
-              <div id="servicesDiv" class="hide">
-                <div class="form-group">
-                  <label for="serviceName">Requested Service </label>
-                  <input type="input" class="form-control" id="serviceName" placeholder="Requested Service">
-                </div>
+              <div id="helpDiv" class="hide">
 
                 <div class="form-group">
-                  <label for="startDate">Start Date</label>
-                  <input type="date" id="startDate" name="startDate" >
-                </div>
-
-                <div class="form-group">
-                  <label for="endDate">End Date</label>
-                  <input type="date" id="endDate" name="endDate">
-                </div>
-
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Time of Day</label>
-                  <input type="time" class="form-control" id="timeOfDay" placeholder="Time Of Day">
+                  <label for="exampleInputEmail1">Pet Name</label>
+                  <input type="input" class="form-control" id="petName" placeholder="Pet Name" required>
                 </div>
                 <div class="form-group">
-                  <label for="recurringCheck">Make this a repeating service</label>
-                  <input type="checkbox" id="recurringCheck" class="check" name="recurringCheck">
+                  <div>
+                    <br>
+                    <button type="button" class="control button button-ikr is-primary" id="upload_widget">Upload Pet
+                      Photo</button>
+                  </div>
+                  <br>
                 </div>
-
-                <div class="form-group hide" id="frequencyDiv">
-                  <label for="frequencySelect">Frequency</label>
-                  <!-- <input type="input" class="form-control" id="frequency" placeholder="Frequency"> -->
-
-                  <select name="frequencySelect" id="frequencySelect">
-                    <option value="">Select Frequency:</option>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                  </select>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Breed/Type</label>
+                  <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type" required>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Age</label>
+                  <input type="input" class="form-control" id="petAge" placeholder="Pet Age" maxlength="3" size="3"
+                    required>
+                </div>
+                <div class="form-group">
+                  <label for="petBio">Pet Bio</label>
+                  <textarea class="form-control" id="petBio" placeholder="Pet Bio" maxlength="100" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Weight</label>
+                  <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight" maxlength="3"
+                    size="5" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Reason for Help</label>
+                  <textarea class="form-control" id="helpReason" placeholder="Reason for Help" maxlength="100"
+                    required></textarea>
+                </div>
+                <div>
+                  <p>Are you needing help with pet services or monetary donations?</p>
+                </div>
+                <div class="form-group">
+                  <input type="radio" id="helpTypeService" name="helpType" value="services">
+                  <label for="helpTypeService">Pet Services</label><br>
+                  <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
+                  <label for="helpTypeMonetary">Monetary Donation</label><br><br>
+                </div>
+                <div id="monetaryDiv" class="hide">
+                  <div class="form-group">
+                    <label for="amountRequested">Amount Requested</label>
+                    <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
+                  </div>
+                </div>
+                <div id="servicesDiv" class="hide">
+                  <div class="form-group">
+                    <label for="serviceName">Requested Service </label>
+                    <input type="input" class="form-control" id="serviceName" placeholder="Requested Service">
+                  </div>
 
-                <div id="recurringDiv" class="hide">
+                  <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" name="startDate">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate" name="endDate">
+                  </div>
 
 
-                  <!-- <div class="form-group">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Time of Day</label>
+                    <input type="time" class="form-control" id="timeOfDay" placeholder="Time Of Day">
+                  </div>
+                  <div class="form-group">
+                    <label for="recurringCheck">Make this a repeating service</label>
+                    <input type="checkbox" id="recurringCheck" class="check" name="recurringCheck">
+                  </div>
+
+                  <div class="form-group hide" id="frequencyDiv">
+                    <label for="frequencySelect">Frequency</label>
+                    <!-- <input type="input" class="form-control" id="frequency" placeholder="Frequency"> -->
+
+                    <select name="frequencySelect" id="frequencySelect">
+                      <option value="">Select Frequency:</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </div>
+
+                  <div id="recurringDiv" class="hide">
+
+
+                    <!-- <div class="form-group">
                       <label for="exampleInputEmail1">Day of Week</label>
                       <input type="input" class="form-control" id="dayOfWeek" placeholder="Day of Week">
                     </div> -->
 
-                  <div class="form-group">
-                    <label for="frequencyNumber">Recur every </label>
-                    <input type="input" class="form-control" id="frequencyNumber"><span id="frequencySpan"
-                      style="margin-left:10px;"></span>
+                    <div class="form-group">
+                      <label for="frequencyNumber">Recur every </label>
+                      <input type="input" class="form-control" id="frequencyNumber"><span id="frequencySpan"
+                        style="margin-left:10px;"></span>
+                    </div>
+
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Sunday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Monday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Tuesday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Wednesday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Thursday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Friday</label>
+                    </div>
+                    <div class="form-group">
+
+                      <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
+                      <label for="exampleInputEmail1">Saturday</label>
+                    </div>
+
                   </div>
 
                   <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Sunday</label>
+                    <label for="serviceNotes">Notes / Additional Information</label>
+                    <textarea id="serviceNotes" maxlength="100"></textarea>
                   </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Monday</label>
-                  </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Tuesday</label>
-                  </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Wednesday</label>
-                  </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Thursday</label>
-                  </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Friday</label>
-                  </div>
-                  <div class="form-group">
-
-                    <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
-                    <label for="exampleInputEmail1">Saturday</label>
-                  </div>
-
                 </div>
 
-                <div class="form-group">
-                  <label for="serviceNotes">Notes / Additional Information</label>
-                  <textarea id="serviceNotes" maxlength="100"></textarea>
-                </div>
               </div>
 
+              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> <span class="msg"></span>
+              </div>
+              <br>
+              <br>
+              <button id="signup" type="submit" class="control button button-ikr is-primary">Sign Up</button>
             </div>
+            <!-- End of registrationDiv -->
 
-            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span class="sr-only">Error:</span> <span class="msg"></span>
-            </div>
-            <br>
-            <br>
-            <button id="signup" type="submit" class="btn btn-default">Sign Up</button>
-          </div>
-          <!-- End of registrationDiv -->
-
-        </form>
-        <br>
+          </form>
+          <br>
+        </div>
       </div>
     </div>
   </div>
   <br>
-       <!-- Footer -->
-       <footer class="footer">
-        <div class="container">
-          <div class="columns is-desktop">
-            <div class="column is-5">
-              <h2 class="title is-5"><a class="text-ikr" href="#">Petocracy</a></h2>
-              <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
-                for your sensational friend. </p>
-              <div class="buttons"><a class="button" href="#"><img src="../public/assets/p2-images/icons/twitter.svg"
-                    alt=""></a><a class="button" href="#"><img
-                    src="../public/assets/p2-images/icons/facebook-official.svg" alt=""></a><a class="button"
-                  href="#"><img src="../public/assets/p2-images/icons/instagram.svg" alt=""></a></div>
-            </div>
-            <div class="column">
-              <h3 class="title is-6">About Us</h3>
-              <ul>
-                <li><a class="text-ikr" href="#">Mission Statement</a></li>
-                <li><a class="text-ikr" href="#">Success Stories</a></li>
-                <li><a class="text-ikr" href="#">Our Volunteers</a></li>
-                <li><a class="text-ikr" href="#">Join Us</a></li>
-              </ul>
-            </div>
-            <div class="column">
-              <h6 class="title is-6">How to Contribute</h6>
-              <ul>
-                <li><a class="text-ikr" href="#">Volunteer</a></li>
-                <li><a class="text-ikr" href="#">Donate</a></li>
-                <li><a class="text-ikr" href="#">Sponsor</a></li>
-                <li><a class="text-ikr" href="#">Write a review</a></li>
-              </ul>
-            </div>
-            <div class="column">
-              <h6 class="title is-6">Contact</h6>
-              <ul>
-                <li><a class="text-ikr" href="#">info@petocracy.org</a></li>
-                <li><a class="text-ikr" href="#">555-555-5555</a></li>
-                <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
-              </ul>
-            </div>
-          </div>
-          <hr>
-          <div class="columns">
-            <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
-            <div class="column has-text-right-tablet">
-              <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
-            </div>
-          </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-desktop">
+        <div class="column is-5">
+          <h2 class="title is-5"><a class="text-ikr" href="#">Petocracy</a></h2>
+          <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
+            for your sensational friend. </p>
+          <div class="buttons"><a class="button" href="#"><img src="../public/assets/p2-images/icons/twitter.svg"
+                alt=""></a><a class="button" href="#"><img src="../public/assets/p2-images/icons/facebook-official.svg"
+                alt=""></a><a class="button" href="#"><img src="../public/assets/p2-images/icons/instagram.svg"
+                alt=""></a></div>
         </div>
-      </footer>
+        <div class="column">
+          <h3 class="title is-6">About Us</h3>
+          <ul>
+            <li><a class="text-ikr" href="#">Mission Statement</a></li>
+            <li><a class="text-ikr" href="#">Success Stories</a></li>
+            <li><a class="text-ikr" href="#">Our Volunteers</a></li>
+            <li><a class="text-ikr" href="#">Join Us</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h6 class="title is-6">How to Contribute</h6>
+          <ul>
+            <li><a class="text-ikr" href="#">Volunteer</a></li>
+            <li><a class="text-ikr" href="#">Donate</a></li>
+            <li><a class="text-ikr" href="#">Sponsor</a></li>
+            <li><a class="text-ikr" href="#">Write a review</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h6 class="title is-6">Contact</h6>
+          <ul>
+            <li><a class="text-ikr" href="#">info@petocracy.org</a></li>
+            <li><a class="text-ikr" href="#">555-555-5555</a></li>
+            <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="columns">
+        <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
+        <div class="column has-text-right-tablet">
+          <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
+        </div>
+      </div>
     </div>
+  </footer>
+  </div>
   </div>
   <!-- <button type="submit" id="submitInfo" class="btn btn-default">Sign Up</button> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -408,7 +432,7 @@
 
         regUser(regData.firstName, regData.lastName, regData.street, regData.city, regData.state,
           regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer, regData.help_volunteer
-          );
+        );
         if (regData.help_volunteer === "needHelp") {
           regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData
             .helpReason, regData.amountRequested, regData.services_monetary, regData.picURL);
@@ -471,7 +495,7 @@
               })
               .then(() => {
                 console.log("did I return successfully from api/register");
- //               window.location.replace("/userLanding");
+                //               window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
@@ -584,18 +608,18 @@
               styles: {
                 palette: {
                   window: "#F5F5F5",
-             sourceBg: "#438945",
-             windowBorder: "#F7F4E9",
-             tabIcon: "#438945",
-             inactiveTabIcon: "#E8D5BB",
-             menuIcons: "#B59B4D",
-             link: "#F7F4E9",
-             action: "#F7F4E9",
-             inProgress: "#99cccc",
-             complete: "#78b3b4",
-             error: "#F5F5F5",
-             textDark: "#1B1918",
-             textLight: "#695A5A"
+                  sourceBg: "#438945",
+                  windowBorder: "#F7F4E9",
+                  tabIcon: "#438945",
+                  inactiveTabIcon: "#E8D5BB",
+                  menuIcons: "#B59B4D",
+                  link: "#F7F4E9",
+                  action: "#F7F4E9",
+                  inProgress: "#99cccc",
+                  complete: "#78b3b4",
+                  error: "#F5F5F5",
+                  textDark: "#1B1918",
+                  textLight: "#695A5A"
                 },
                 fonts: {
                   default: null,
