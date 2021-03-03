@@ -3,16 +3,16 @@
 
 <head>
   <title>Petocracy: About US</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="./css/bulma.min.css">
-  <link rel="stylesheet" href="./css/testimonials.css">
-  <link rel="icon" href="favicon.ico">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/bulma.min.css">
+    <link rel="stylesheet" href="./css/testimonials.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/jpg" href="./p2-images/logo/petocracylogo-logomark.png"/>
 </head>
 
 <body class="">
@@ -20,16 +20,16 @@
 
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="./index.html"><img
+        <div class="navbar-brand"><a class="navbar-item" href="./"><img
               src="./p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
             aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
               aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" style="color: black;" href="./aboutus.html">About Us</a><a class="navbar-item"
-              style="color: black;" href="./allvolunteers.html">Volunteer</a><a class="navbar-item"
-              style="color: black;" href="./pet.html">Pets</a>
-            <a class="navbar-item" style="color: black;" href="./aboutus.html">Contact Us</a>
+            <a class="navbar-item" style="color:black;" href="/aboutus">About Us</a><a class="navbar-item"
+              style="color:black;" href="/all-pets/services">Volunteer</a><a class="navbar-item" style="color:black;"
+              href="/all-pets">Pets</a>
+            <a class="navbar-item" style="color:black;" href="/aboutus#contactus">Contact Us</a>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -40,6 +40,9 @@
         </div>
       </div>
     </nav>
+
+
+    <!-- End of nav/start of about us -->
     <section class="section">
       <div class="container has-text-centered py-4">
         <h2 class="title is-spaced">Why We Do What We Do</h2>
@@ -48,7 +51,7 @@
         <div class="columns is-centered has-text-left">
           <div class="column is-8">
             <div class="content">
-              <p class="subtitle">At Petocracy, we absolutely love animals — and we think humans are pretty swell, too.
+              <p class="subtitle" id="missionstatement">At Petocracy, we absolutely love animals — and we think humans are pretty swell, too.
                 That's why we created this site to help people just like you. Now more than ever, we understand that
                 times can be tough especially with the pandemic. </p>
               <p>We're motivated to help you</p>
@@ -58,16 +61,18 @@
                 <li>at the heart of our collaborative spirit are our volunteers</li>
                 <li>every life is worth saving, each individual is important</li>
               </ul>
-              <p>Even today, it still comes down to small and simple acts of kindness. Every animal deserves a chance.</p>
+              <p>Even today, it still comes down to small and simple acts of kindness. Every animal deserves a chance.
+              </p>
               <blockquote>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim id est laborum."</p>
-                <cite>Shirley Temple</cite>
+                <p>“I believe the happiness we feel in relation to animals is immensely significant. I believe it is
+                  absolutely central to our physical, psychological, and spiritual well-being.”</p>
+                <cite>Linda Bender,   
+                  Animal Wisdom: Learning from the Spiritual Lives of Animals</cite>
               </blockquote>
               <p class="mb-6">Join us our volunteer network where you can make a real difference.</p>
+              <div>
+                <div class="buttons is-centered"><a class="button button-ikr is-primary" href="/signup">Register to Volunteer</a></div>
+              </div>
 
             </div>
           </div>
@@ -113,7 +118,7 @@
             </div>
             <h5 class="title is-5">Ikra Rafi</h5>
             <p class="subtitle is-6">Ms. DOM</p>
-            <p>I'm just a mint of creativity with a healthy obsession of apples.</p>
+            <p>I'm just a mint of creativity with a healthy obsession of apples. I'm a code of mystery. No one knows what's going on in my background.</p>
           </div>
         </div>
       </div>
@@ -124,7 +129,7 @@
     <!-- contact us -->
     <section class="section">
       <div class="container py-4">
-        <h2 class="title has-text-centered mb-6">Contact the Petocracy team</h2>
+        <h2 class="title has-text-centered mb-6" id="contactus">Contact the Petocracy team</h2>
         <div class="columns is-centered">
           <div class="column is-8">
             <form>
@@ -133,11 +138,17 @@
                   <input class="input" type="email" placeholder="Email">
                 </div>
                 <div class="control is-expanded">
-                  <div class="select is-fullwidth"><select><option disabled="" selected="">Select Reason</option><option>Volunteer</option><option>Register Pet</option><option>Technical Issue</option></select></div>
+                  <div class="select is-fullwidth"><select>
+                      <option disabled="" selected="">Select Reason</option>
+                      <option>Volunteer</option>
+                      <option>Register Pet</option>
+                      <option>Write a Review</option>
+                    </select></div>
                 </div>
               </div>
               <div class="field">
-                <div class="control"><textarea class="textarea" rows="5" placeholder="Write something..."></textarea></div>
+                <div class="control"><textarea class="textarea" rows="5" placeholder="Write something..."></textarea>
+                </div>
               </div>
               <div class="field my-5">
                 <div class="control has-text-centered">
@@ -152,7 +163,9 @@
             <div class="level">
               <div class="level-item">
                 <div class="media">
-                  <div class="media-left"><figure class="image is-24x24"><i class="fas fa-map-marker-alt"></i></figure></div>
+                  <div class="media-left">
+                    <figure class="image is-24x24"><img src="p2-images/icons/map-marker.png"></figure>
+                  </div>
                   <div class="media-content">
                     <div class="content">
                       <p>555 Honey Crisp Apple Rd</p>
@@ -162,7 +175,9 @@
               </div>
               <div class="level-item">
                 <div class="media">
-                  <div class="media-left"><figure class="image is-24x24"><i class="fas fa-mobile-alt"></i></figure></div>
+                  <div class="media-left">
+                    <figure class="image is-24x24"><img src="./p2-images/icons/phone-alt-solid.png"></figure>
+                  </div>
                   <div class="media-content">
                     <div class="content">
                       <p>555-555-5555</p>
@@ -172,7 +187,9 @@
               </div>
               <div class="level-item">
                 <div class="media">
-                  <div class="media-left"><figure class="image is-24x24"><i class="fas fa-envelope-open-text"></i></figure></div>
+                  <div class="media-left">
+                    <figure class="image is-24x24"><img src="./p2-images/icons/envelope-o.png"></figure>
+                  </div>
                   <div class="media-content">
                     <div class="content">
                       <p>info@petocracy.org</p>
@@ -186,57 +203,57 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="columns is-desktop">
-          <div class="column is-5">
-            <h2 class="title is-5"><a class="text-ikr" href="./index.html"><img
-                  src="./p2-images/logo/petocracylogo-horizonal.png" width="450"></a></h2>
-            <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
-              for your sensational friend. </p>
-            <div class="buttons"><a class="button" href="https://www.instagram.com/"><i
-                  class="fab fa-instagram"></i></a><a class="button"
-                href="https://www.linkedin.com/school/george-washington-university/?trk=public_profile_topcard-school"><i
-                  class="fab fa-linkedin-in"></i></a><a class="button"
-                href="https://github.com/stithac/group1_project2"><img></a></div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-desktop">
+            <div class="column is-5">
+              <h2 class="title is-5"><a class="text-ikr" href="./"><img
+                    src="./p2-images/logo/petocracylogo-horizonal.png" width="450"></a></h2>
+              <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
+                for your sensational friend. </p>
+              <div class="buttons"><a class="button" href="https://www.twitter.com/"><img
+                    src="./p2-images/icons/twitter.png" width="25px"></a><a class="button"
+                  href="https://www.linkedin.com/school/george-washington-university/?trk=public_profile_topcard-school"><img src="./p2-images/icons/linkedin-in.png" width="25px"></a><a class="button"
+                  href="https://github.com/stithac/group1_project2"><img src="./p2-images/icons/github-brands.png"
+                    width="25px"></a></div>
+            </div>
+            <div class="column">
+              <h3 class="title is-6">About Us</h3>
+              <ul>
+                <li><a class="text-ikr" href="/aboutus#missionstatement">Mission Statement</a></li>
+                <li><a class="text-ikr" href="/successfulpets">Success Stories</a></li>
+                <li><a class="text-ikr" href="/allvolunteers">Our Volunteers</a></li>
+                <li><a class="text-ikr" href="/signup">Join Us</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <h6 class="title is-6">How to Contribute</h6>
+              <ul>
+                <li><a class="text-ikr" href="/signup">Volunteer</a></li>
+                <li><a class="text-ikr" href="/generaldonation">Donate</a></li>
+                <li><a class="text-ikr" href="/donatepet">Sponsor</a></li>
+                <li><a class="text-ikr" href="/aboutus#contactus">Write a review</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <h6 class="title is-6">Contact</h6>
+              <ul>
+                <li><a class="text-ikr" href="mailto:info@petocracy.org">info@petocracy.org</a></li>
+                <li><a class="text-ikr" href="#">555-555-5555</a></li>
+                <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="column">
-            <h3 class="title is-6">About Us</h3>
-            <ul>
-              <li><a class="text-ikr" href="./aboutus.html">Mission Statement</a></li>
-              <li><a class="text-ikr" href="./successfulpets.html">Success Stories</a></li>
-              <li><a class="text-ikr" href="./allvolunteers.html">Our Volunteers</a></li>
-              <li><a class="text-ikr" href="./signup.html">Join Us</a></li>
-            </ul>
-          </div>
-          <div class="column">
-            <h6 class="title is-6">How to Contribute</h6>
-            <ul>
-              <li><a class="text-ikr" href="./registration.html">Volunteer</a></li>
-              <li><a class="text-ikr" href="./generaldonation.html">Donate</a></li>
-              <li><a class="text-ikr" href="./donatepet.html">Sponsor</a></li>
-              <li><a class="text-ikr" href="#">Write a review</a></li>
-            </ul>
-          </div>
-          <div class="column">
-            <h6 class="title is-6">Contact</h6>
-            <ul>
-              <li><a class="text-ikr" href="#">info@petocracy.org</a></li>
-              <li><a class="text-ikr" href="#">555-555-5555</a></li>
-              <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
-            </ul>
+          <hr>
+          <div class="columns">
+            <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
+            <div class="column has-text-right-tablet">
+              <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
+            </div>
           </div>
         </div>
-        <hr>
-        <div class="columns">
-          <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
-          <div class="column has-text-right-tablet">
-            <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
   </div>
   </div>
 </body>
