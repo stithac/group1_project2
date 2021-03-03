@@ -10,7 +10,7 @@ $(document).ready(() => {
     const expirationDateInput = $("input#expirationDate");
     const cardTypeInput = $("input#cardType");
     const petURLInput = $("img#petURL");
-    var petId = localStorage.getItem("PetID");;
+    var petId = localStorage.getItem("PetID");
     var updatingRaised = 0;
 
     // get the current id of who is logged in

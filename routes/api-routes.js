@@ -81,27 +81,26 @@ module.exports = function (app) {
     });
   });
 
-  // route to delete user account
-  app.post("/api/deleteAccount", (req, res) => {
-    console.log("api/deleteAccount");
-    console.log(req.user);
-    console.log(req.body);
-    db.Registration.destroy({
-      where: {
-        id: parseInt(req.body.id)
-      }
-    })
-    .then(function(dbUser) {
-      console.log(dbUser);
-    })
-    .catch(err => {
-      // if error in deleting, log out user and redirect to index page
-      console.log("inside deleteAccount catch");
-      console.log(err);
-      req.logout();
-      res.redirect("/");
-    })
-  });
+    // route to delete credit card
+    app.post("/api/deleteCreditCard", (req, res) => {
+      console.log("api/deleteCreditCard");
+      console.log(req.user);
+      console.log(req.body);
+      db.CreditCard.destroy({
+        where: {
+          RegistrationId: parseInt(req.body.id)
+        }
+      })
+      .then((dbUser) => {
+        console.log(dbUser);
+        res.json(dbUser);
+      })
+      .catch(err => {
+        // if error in deleting, log out user and redirect to index page
+        console.log("inside deleteCreditCard catch");
+        console.log(err);
+      })
+    });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize Registration Model. If the user is created successfully, proceed to log the user in,
