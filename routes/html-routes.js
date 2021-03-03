@@ -86,14 +86,14 @@ module.exports = (app) => {
   );
 
   // users route loads users.html. Displays all registered users
-  app.get('/allusers', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/allusers.html'))
-  );
+  // app.get('/allusers', (req, res) =>
+  //   res.sendFile(path.join(__dirname, '../public/allusers.html'))
+  // );
 
   // userprofile route loads userprofile.html
-  app.get('/userprofile', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/userprofile.html'))
-  );
+  // app.get('/userprofile', (req, res) =>
+  //   res.sendFile(path.join(__dirname, '../public/userprofile.html'))
+  // );
 
   // donatepet route loads donatepet.html
   // if a user is not logged in and tries to access this route they will be redirected to the signup page
