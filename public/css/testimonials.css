@@ -20,6 +20,9 @@ body {
 	font-weight: 500;
 }
 
+a:hover .navbar-brand {
+    color: yellow !important;
+  }
 
 /* BUTTONS */
 .button-ikr, .has-background-primary {
@@ -31,9 +34,11 @@ body {
 	color:#438945 !important;
 }
 
+.card {
+  height: 650px;
+}
 
-
-/* CAROSUL? */
+/* testimonial */
 
 .testimonial{
     text-align: center;
@@ -91,3 +96,16 @@ body {
 }
 
 /* testimonial  close */
+
+/***** Styling used to toggle form fields on Registration page *****/
+.hide {
+    display: none;
+}
+
+.show {
+    display:block;
+}
+
+textarea{
+    vertical-align: middle;
+}
