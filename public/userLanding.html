@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="./css/bulma.min.css">
-    <link rel="stylesheet" href="./css/testimonials.css">
-    <link rel="icon" href="favicon.ico">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>User Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600,700,800&amp;subset=latin">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/testimonials.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <title>User Profile</title>
 </head>
-    <body class="">
-        <div class="container is-fluid">
-      <nav class="navbar"><div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="/">Petocracy</a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+
+<body class="">
+  <div class="container is-fluid">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-item" href="/">Petocracy</a><a class="navbar-burger" role="button"
+            aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
+              aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="/aboutus">About Us</a><a class="navbar-item" href="#">Volunteer</a><a class="navbar-item" href="/pet">Pets</a>
+            <a class="navbar-item" href="/aboutus">About Us</a><a class="navbar-item" href="#">Volunteer</a><a
+              class="navbar-item" href="/pet">Pets</a>
             <a class="navbar-item" href="/">Contact Us</a>
           </div>
           <div class="navbar-end">
@@ -30,88 +37,156 @@
         </div>
       </div>
     </nav>
-    
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <h2>User Profile</h2>
-            <br>
-            <div><h1 id="storeName"></h1></div>
-            <br>
-            <form class="userProfile">
-    
-              <div class="form-group">
-                <div class="buttons"><a class="control button button-ikr is-primary" href="/all-pets">Volunteer</a></div>
-                <br>
-                <br>
-                <div class="buttons"><a class="control button button-ikr is-primary" href="/all-pets">Donate</a></div>
-                <br>
-                <br>
-               <!-- <div class="buttons"><a class="control button button-ikr is-primary" href="/">Delete Account</a></div> -->
-                <button type="click" id="deleteAccount" class="control button button-ikr is-primary">Delete Account</button>
-                <br>
-                <br>
-                <div class="buttons"><a class="control button button-ikr is-primary" href="/updateReg">Update User Registration</a></div>
+
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2>User Profile</h2>
+          <br>
+          <div>
+            <h1 id="storeName"></h1>
+          </div>
+          <br>
+          <form class="userProfile">
+
+            <div class="form-group">
+              <div class="buttons"><a class="control button button-ikr is-primary" href="/all-pets">Volunteer</a></div>
+              <br>
+              <br>
+              <div class="buttons"><a class="control button button-ikr is-primary" href="/all-pets">Donate</a></div>
+              <br>
+              <br>
+              <button type="click" id="deleteCreditCard" class="control button button-ikr is-primary">Delete Credit
+                Card</button>
+              <div>
+                <h1 id="creditCardDeleted"></h1>
               </div>
-            </form>
-            <br>
+              <br>
+              <br>
+              <div class="buttons"><a class="control button button-ikr is-primary" href="/updateReg">Update User
+                  Registration</a></div>
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <section class="section">
+    <div class="container has-text-centered py-4">
+      <h2 class="title mb-6">User Profile</h2>
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <h3 class="title is-4">Volunteer</h3>
+              <p class="block">Join our network of volunteers.</p>
+              <h4 class="title is-spaced is-5"> <small></small></h4>
+              <div class="buttons is-centered"><a class="control button button-ikr is-primary"
+                  href="/all-pets">Volunteer</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <h3 class="title is-4">Donate</h3>
+              <p class="block">Donate to our registered pets in need.</p>
+              <h4 class="title is-spaced is-5"> <small></small></h4>
+              <div class="buttons is-centered"><a class="control button button-ikr is-primary"
+                  href="/all-pets">Donate</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <h3 class="title is-4">Update Profile</h3>
+              <p class="block">Update your user profile</p>
+              <h4 class="title is-spaced is-5"> <small></small></h4>
+              <div class="buttons is-centered"><a class="control button button-ikr is-primary" href="/updateReg">Update
+                  User Registration</a></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-         <script t ype="text/javascript" src="js/userlanding.js"></script>
-         <!-- Footer -->
-         <footer class="footer">
-          <div class="container">
-            <div class="columns is-desktop">
-              <div class="column is-5">
-                <h2 class="title is-5"><a class="text-ikr" href="#">Petocracy</a></h2>
-                <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
-                  for your sensational friend. </p>
-                <div class="buttons"><a class="button" href="#"><img src="../public/assets/p2-images/icons/twitter.svg"
-                      alt=""></a><a class="button" href="#"><img
-                      src="../public/assets/p2-images/icons/facebook-official.svg" alt=""></a><a class="button"
-                    href="#"><img src="../public/assets/p2-images/icons/instagram.svg" alt=""></a></div>
-              </div>
-              <div class="column">
-                <h3 class="title is-6">About Us</h3>
-                <ul>
-                  <li><a class="text-ikr" href="#">Mission Statement</a></li>
-                  <li><a class="text-ikr" href="#">Success Stories</a></li>
-                  <li><a class="text-ikr" href="#">Our Volunteers</a></li>
-                  <li><a class="text-ikr" href="#">Join Us</a></li>
-                </ul>
-              </div>
-              <div class="column">
-                <h6 class="title is-6">How to Contribute</h6>
-                <ul>
-                  <li><a class="text-ikr" href="#">Volunteer</a></li>
-                  <li><a class="text-ikr" href="#">Donate</a></li>
-                  <li><a class="text-ikr" href="#">Sponsor</a></li>
-                  <li><a class="text-ikr" href="#">Write a review</a></li>
-                </ul>
-              </div>
-              <div class="column">
-                <h6 class="title is-6">Contact</h6>
-                <ul>
-                  <li><a class="text-ikr" href="#">info@petocracy.org</a></li>
-                  <li><a class="text-ikr" href="#">555-555-5555</a></li>
-                  <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
-                </ul>
-              </div>
-            </div>
-            <hr>
-            <div class="columns">
-              <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
-              <div class="column has-text-right-tablet">
-                <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
-              </div>
-            </div>
-          </div>
-        </footer>
+    <br><br>
+    <div class="buttons is-centered">
+      <button type="click" id="deleteCreditCard" class="control button button-ikr is-primary">Delete Credit
+        Card</button>
+      <div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script t ype="text/javascript" src="js/userlanding.js"></script>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-desktop">
+        <div class="column is-5">
+          <h2 class="title is-5"><a class="text-ikr" href="./"><img src="./p2-images/logo/petocracylogo-horizonal.png"
+                width="450"></a></h2>
+          <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
+            for your sensational friend. </p>
+          <div class="buttons"><a class="button" href="https://www.instagram.com/"><i class="fab fa-twitter"></i></a><a
+              class="button"
+              href="https://www.linkedin.com/school/george-washington-university/?trk=public_profile_topcard-school"><i
+                class="fab fa-linkedin-in"></i></a><a class="button"
+              href="https://github.com/stithac/group1_project2"><i class="fab fa-github"></i></a></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6">About Us</h3>
+          <ul>
+            <li><a class="text-ikr" href="./aboutus.html">Mission Statement</a></li>
+            <li><a class="text-ikr" href="./successfulpets.html">Success Stories</a></li>
+            <li><a class="text-ikr" href="./allvolunteers.html">Our Volunteers</a></li>
+            <li><a class="text-ikr" href="./signup.html">Join Us</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h6 class="title is-6">How to Contribute</h6>
+          <ul>
+            <li><a class="text-ikr" href="./registration.html">Volunteer</a></li>
+            <li><a class="text-ikr" href="./generaldonation.html">Donate</a></li>
+            <li><a class="text-ikr" href="./donatepet.html">Sponsor</a></li>
+            <li><a class="text-ikr" href="#">Write a review</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h6 class="title is-6">Contact</h6>
+          <ul>
+            <li><a class="text-ikr" href="#">info@petocracy.org</a></li>
+            <li><a class="text-ikr" href="#">555-555-5555</a></li>
+            <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="columns">
+        <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
+        <div class="column has-text-right-tablet">
+          <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
+        </div>
       </div>
     </div>
-    </body>
+  </footer>
+  </div>
+  </div>
 </body>
+</body>
+
 </html>

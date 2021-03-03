@@ -26,14 +26,21 @@ body {
 	background-color: #438945 !important;
 	color: whitesmoke;
 }
+.columns button{
+    margin-top: auto;
+  }
 
 .text-ikr {
 	color:#438945 !important;
 }
 
+/* card height fixed */
 
+.card {
+    height: 100%;
+  }
 
-/* CAROSUL? */
+/* testimonial */
 
 .testimonial{
     text-align: center;
@@ -91,3 +98,16 @@ body {
 }
 
 /* testimonial  close */
+
+/***** Styling used to toggle form fields on Registration page *****/
+.hide {
+    display: none;
+}
+
+.show {
+    display:block;
+}
+
+textarea{
+    vertical-align: middle;
+}
