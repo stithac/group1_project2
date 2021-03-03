@@ -17,7 +17,19 @@ app.use(express.json());
 // Set Handlebars.
 const exphbs = require('express-handlebars');
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+var hbs = exphbs.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+      subtract: function (num1, num2) { return num1 - num2; },
+      divide: function (num1, num2){ return (num1 / num2) * 100}
+
+  }
+});
+
+// app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+
+app.engine('handlebars', hbs.engine);
+
 app.set('view engine', 'handlebars');
 
 // Static directory

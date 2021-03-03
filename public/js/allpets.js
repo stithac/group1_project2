@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     var btn;
 
     // Volunteer buttons
-    var btns = document.getElementsByClassName('volunteerBtn');
-    console.log(btns);
+    var volBtns = document.getElementsByClassName('volunteerBtn');
+    console.log(btns); // Testing
 
-    for (i = 0; i < btns.length; i++){
-        btns[i].addEventListener("click", event =>{
+    var btns = document.getElementsByClassName('btn');
+
+    for (i = 0; i < volBtns.length; i++){
+        volBtns[i].addEventListener("click", event =>{
             console.log(event.target.id);
 
             const btn = event.target;
@@ -27,6 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
     }
+
+    $.get("/api/user_data", (data) => {
+        console.log("trying this");
+        console.log(data);
+    })
+    .then((data) => {
+        console.log(data);
+        console.log(data.id);
+
+        for (i = 0; i < btns.length; i++){
+
+            // thanks.removeAttribute("class", "hide");
+            btns[i].setAttribute("class", "hide");
+
+
+        }
+
+    })
 
     // Only run script from the all-pets handlebars route
     if (url.includes("all-pets")){
