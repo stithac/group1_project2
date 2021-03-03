@@ -30,7 +30,8 @@
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons"><a class="control button button-ikr is-primary" type="click" href="/logout">Log Out</a></div>
+              <div class="buttons"><a class="control button button-ikr is-primary" type="click" href="/logout">Log
+                  Out</a></div>
             </div>
           </div>
         </div>
@@ -436,45 +437,43 @@
           picURL: picURLInput
         };
 
-        regUser(regData.firstName, regData.lastName, regData.street, regData.street2, regData.city, regData.state,
-          regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer, regData.help_volunteer
-        );
-        if (regData.help_volunteer === "needHelp") {
-          regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData
-            .helpReason, regData.amountRequested, regData.services_monetary, regData.picURL);
-          console.log(regData.services_monetary);
-          if (regData.services_monetary === "services") {
-            regService(regData.serviceName, regData.startDate, regData.endDate, regData.recurring, regData
-              .frequency, regData.time, regData.sunday, regData.monday, regData.tuesday, regData.wednesday,
-              regData.thursday, regData.friday, regData.saturday, regData.notes);
-          }
-        }
+        regUser(regData);
+        /*         if (regData.help_volunteer === "needHelp") {
+                  regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData
+                    .helpReason, regData.amountRequested, regData.services_monetary, regData.picURL);
+                  console.log(regData.services_monetary);
+                  if (regData.services_monetary === "services") {
+                    regService(regData.serviceName, regData.startDate, regData.endDate, regData.recurring, regData
+                      .frequency, regData.time, regData.sunday, regData.monday, regData.tuesday, regData.wednesday,
+                      regData.thursday, regData.friday, regData.saturday, regData.notes);
+                  }
+                } */
 
-        firstNameInput.val("");
-        lastNameInput.val("");
-        streetInput.val("");
-        street2Input.val("");
-        cityInput.val("");
-        stateInput.val("");
-        zipInput.val("");
-        phoneInput.val("");
-        securityQuestionInput.val("");
-        securityAnswerInput.val("");
-        helpTypeInput.val("");
+        /*         firstNameInput.val("");
+                lastNameInput.val("");
+                streetInput.val("");
+                street2Input.val("");
+                cityInput.val("");
+                stateInput.val("");
+                zipInput.val("");
+                phoneInput.val("");
+                securityQuestionInput.val("");
+                securityAnswerInput.val("");
+                helpTypeInput.val("");
 
-        petNameInput.val("");
-        breedTypeInput.val("");
-        petAgeInput.val("");
-        petWeightInput.val("");
-        petBioInput.val("");
-        helpReasonInput.val("");
-        amountRequestedInput.val("");
+                petNameInput.val("");
+                breedTypeInput.val("");
+                petAgeInput.val("");
+                petWeightInput.val("");
+                petBioInput.val("");
+                helpReasonInput.val("");
+                amountRequestedInput.val(""); */
 
       });
 
       // Does a post to the signup route. If successful, we are redirected to the userLanding page
       // Otherwise we log any errors
-      function regUser(firstName, lastName, street, street2, city, state, zip, phone, question, answer, help_volunteer) {
+      function regUser(postRegData) {
         fetch('/api/user_data', {
             method: 'GET',
             headers: {
@@ -486,23 +485,101 @@
             console.log(data);
             savedEmail = data.email;
             savedID = data.id;
-            console.log(firstName, lastName, street, street2, city, state, zip, phone, question, answer, help_volunteer);
+            console.log(postRegData);
             $.post("/api/register", {
                 email: data.email,
-                firstName: firstName,
-                lastName: lastName,
-                street: street,
-                street2: street2,
-                city: city,
-                state: state,
-                zip: zip,
-                phone: phone,
-                question: question,
-                answer: answer,
-                help_volunteer: help_volunteer
+                firstName: postRegData.firstName,
+                lastName: postRegData.lastName,
+                street: postRegData.street,
+                street2: postRegData.street2,
+                city: postRegData.city,
+                state: postRegData.state,
+                zip: postRegData.zip,
+                phone: postRegData.phone,
+                question: postRegData.securityQuestion,
+                answer: postRegData.securityAnswer,
+                help_volunteer: postRegData.help_volunteer
               })
               .then(() => {
                 console.log("did I return successfully from api/register");
+                if (postRegData.help_volunteer === "giveHelp") {
+                  window.location.replace("/userLanding");
+                } else {
+                  fetch('/api/user_data', {
+                      method: 'GET',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+//                      console.log(postPetData);
+                      console.log("savedID = " + savedID);
+                      console.log("savedemail = " + savedEmail);
+                      $.post("/api/registerPet", {
+                          registrationId: data.id,
+                          petName: postRegData.petName,
+                          breed_type: postRegData.breed_type,
+                          petAge: postRegData.petAge,
+                          petWeight: postRegData.petWeight,
+                          petBio: postRegData.petBio,
+                          helpReason: postRegData.helpReason,
+                          amountRequested: postRegData.amountRequested,
+                          services_monetary: postRegData.services_monetary,
+                          picURL: postRegData.picURL
+                        })
+                        .then(() => {
+                          console.log("did I return successfully from api/registePet");
+                          if (postRegData.services_monetary === "monetary") {
+                            window.location.replace("/userLanding");
+                          } else {
+                            fetch('/api/user_data', {
+                                method: 'GET',
+                                headers: {
+                                  'Content-Type': 'application/json',
+                                },
+                              })
+                              .then((response) => response.json())
+                              .then((data) => {
+                                console.log(data);
+                                console.log("savedID = " + savedID);
+                                console.log("savedemail = " + savedEmail);
+                                $.post("/api/registerService", {
+                                    registrationId: data.id,
+                                    serviceName: postRegData.serviceName,
+                                    startDate: postRegData.startDate,
+                                    endDate: postRegData.endDate,
+                                    recurring: postRegData.recurring,
+                                    frequency: postRegData.frequency,
+                                    timeOfDay: postRegData.timeOfDay,
+                                    recurringNumber: postRegData.recurringNumber,
+                                    sunday: postRegData.sunday,
+                                    monday: postRegData.monday,
+                                    tuesday: postRegData.tuesday,
+                                    wednesday: postRegData.wednesday,
+                                    thursday: postRegData.thursday,
+                                    friday: postRegData.friday,
+                                    saturday: postRegData.saturday,
+                                    notes: postRegData.notes
+                                  })
+                                  .then(() => {
+                                    console.log("success return from api/registerService");
+                                    window.location.replace("/userLanding");
+                                    // If there's an error, handle it by throwing up a bootstrap alert
+                                  })
+                                  .catch(handleLoginErr);
+                              })
+                          }
+                          // If there's an error, handle it by throwing up a bootstrap alert
+                        })
+                        .catch(handleLoginErr);
+                    })
+//                  regPet(postRegData);
+                  //                  window.location.replace("/userLanding");
+                }
+                //                else {
+                //                  regServices(postRegData);
+                //                }
                 //               window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
@@ -510,8 +587,7 @@
           })
       }
 
-      function regPet(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested,
-        services_monetary, picURL) {
+/*       function regPet(postPetData) {
         fetch('/api/user_data', {
             method: 'GET',
             headers: {
@@ -520,33 +596,35 @@
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log(petName, breed_type, petAge, petWeight, petBio, helpReason, amountRequested,
-              services_monetary, picURL);
+            console.log(postPetData);
             console.log("savedID = " + savedID);
             console.log("savedemail = " + savedEmail);
             $.post("/api/registerPet", {
                 registrationId: data.id,
-                petName: petName,
-                breed_type: breed_type,
-                petAge: petAge,
-                petWeight: petWeight,
-                petBio: petBio,
-                helpReason: helpReason,
-                amountRequested: amountRequested,
-                services_monetary: services_monetary,
-                picURL: picURL
+                petName: postPetData.petName,
+                breed_type: postPetData.breed_type,
+                petAge: postPetData.petAge,
+                petWeight: postPetData.petWeight,
+                petBio: postPetData.petBio,
+                helpReason: postPetData.helpReason,
+                amountRequested: postPetData.amountRequested,
+                services_monetary: postPetData.services_monetary,
+                picURL: postPetData.picURL
               })
               .then(() => {
                 console.log("did I return successfully from api/registePet");
-                //                window.location.replace("/userLanding");
+                if (postRegData.services_monetary === "monetary") {
+                  window.location.replace("/userLanding");
+                } else {
+                  regService(postRegData);
+                }
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
           })
-      }
-
-      function regService(serviceName, startDate, endDate, recurring, frequency, timeOfDay, recurringNumber, sunday,
-        monday, tuesday, wednesday, thursday, friday, saturday, notes) {
+      } */
+/* 
+      function regService(postSvcData) {
         fetch('/api/user_data', {
             method: 'GET',
             headers: {
@@ -560,30 +638,30 @@
             console.log("savedemail = " + savedEmail);
             $.post("/api/registerService", {
                 registrationId: data.id,
-                serviceName: serviceName,
-                startDate: startDate,
-                endDate: endDate,
-                recurring: recurring,
-                frequency: frequency,
-                timeOfDay: timeOfDay,
-                recurringNumber: recurringNumber,
-                sunday: sunday,
-                monday: monday,
-                tuesday: tuesday,
-                wednesday: wednesday,
-                thursday: thursday,
-                friday: friday,
-                saturday: saturday,
-                notes: notes
+                serviceName: postSvcData.serviceName,
+                startDate: postSvcData.startDate,
+                endDate: postSvcData.endDate,
+                recurring: postSvcData.recurring,
+                frequency: postSvcData.frequency,
+                timeOfDay: postSvcData.timeOfDay,
+                recurringNumber: postSvcData.recurringNumber,
+                sunday: postSvcData.sunday,
+                monday: postSvcData.monday,
+                tuesday: postSvcData.tuesday,
+                wednesday: postSvcData.wednesday,
+                thursday: postSvcData.thursday,
+                friday: postSvcData.friday,
+                saturday: postSvcData.saturday,
+                notes: postSvcData.notes
               })
               .then(() => {
                 console.log("success return from api/registerService");
-                //                window.location.replace("/userLanding");
+                window.location.replace("/userLanding");
                 // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
           })
-      }
+      } */
 
       function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
