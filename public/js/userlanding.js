@@ -47,18 +47,21 @@ $("#updateUserRegistration").on("click", event => {
     window.location.replace("./updateReg");
 })
 
-// Event listener for delete account button
-$("#deleteAccount").on("click", event => {
+// Event listener for delete credit card button
+$("#deleteCreditCard").on("click", event => {
     event.preventDefault();
     console.log('inside click delete');
     console.log('saved id = ' + saveId);
     // make call to delete the user account based upon saved ID
-    $.post("/api/deleteAccount", {
+    $.post("/api/deleteCreditCard", {
             id: saveId,
         })
         .then(() => {
-            console.log("success return from api/deleteAccount");
-            //                window.location.replace("/members");
+            console.log("success return from api/deleteCreditCard");
+                //display info that credit card was deleted
+                $("#creditCardDeleted").text("Thank You - your credit card(s) have been deleted!");
+                $("#creditCardDeleted").attr("font-weight: bold");
+                $("#creditCardDeleted").removeClass("hide");
             // If there's an error, handle it by throwing up a bootstrap alert
         })
         .catch((err) => console.error(err))
