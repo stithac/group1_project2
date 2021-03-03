@@ -14,8 +14,9 @@ body {
 }
 
 /* PROGRESS BAR */
-.raised, 
-.goal {
+.raised,
+.goal,
+.service {
 	font-family: 'Baloo 2', cursive;
 	font-weight: 500;
 }
@@ -99,7 +100,7 @@ body {
 
 /* testimonial  close */
 
-/***** Styling used to toggle form fields on Registration page *****/
+/***** Styling used to toggle form fields on Registration page and all-pets pages*****/
 .hide {
     display: none;
 }
