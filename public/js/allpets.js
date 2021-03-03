@@ -8,13 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var scriptTag = document.getElementById("scriptTag");
 
     var petId;
-    var btn;
+    var userId;
 
     // Volunteer buttons
     var volBtns = document.getElementsByClassName('volunteerBtn');
-    console.log(btns); // Testing
+    // console.log(volBtns); // Testing
 
     var btns = document.getElementsByClassName('btn');
+
+    console.log(btns);
 
     for (i = 0; i < volBtns.length; i++){
         volBtns[i].addEventListener("click", event =>{
@@ -30,26 +32,43 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    $.get("/api/user_data", (data) => {
-        console.log("trying this");
-        console.log(data);
-    })
-    .then((data) => {
-        console.log(data);
-        console.log(data.id);
+    var donateBtns = document.getElementsByClassName('donateBtn');
 
-        for (i = 0; i < btns.length; i++){
-
-            // thanks.removeAttribute("class", "hide");
-            btns[i].setAttribute("class", "hide");
+    for (i = 0; i < donateBtns.length; i++){
+        donateBtns[i].addEventListener("click", event => {
 
 
-        }
+            const btn = event.target;
 
-    })
+            console.log(btn.id);
+
+            localStorage.setItem("PetID", btn.id);
+        })
+    }
+
 
     // Only run script from the all-pets handlebars route
     if (url.includes("all-pets")){
+
+        fetch('/api/user_data', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            userId = data.id;
+            console.log(userId);
+
+            if(userId === undefined){
+                console.log("No id");
+                for( i = 0; i < btns.length; i++){
+                    btns[i].setAttribute("class", "hide");
+                }
+
+            }
+        })
 
         var pets;
 
