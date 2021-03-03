@@ -20,23 +20,25 @@ body {
 	font-weight: 500;
 }
 
-a:hover .navbar-brand {
-    color: yellow !important;
-  }
 
 /* BUTTONS */
 .button-ikr, .has-background-primary {
 	background-color: #438945 !important;
 	color: whitesmoke;
 }
+.columns button{
+    margin-top: auto;
+  }
 
 .text-ikr {
 	color:#438945 !important;
 }
 
+/* card height fixed */
+
 .card {
-  height: 650px;
-}
+    height: 100%;
+  }
 
 /* testimonial */
 
