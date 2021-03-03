@@ -4,6 +4,8 @@
 const db = require('../models');
 // Requiring our models and passport as we've configured it
 const passport = require("../config/passport");
+const { response } = require('express');
+var services;
 
 // Routes
 module.exports = function (app) {
@@ -12,12 +14,8 @@ module.exports = function (app) {
     // Finding all Pets, and then returning them to the user as JSON.
     // Sequelize queries are asynchronous and results are available to us inside the .then
     // console.log(req); // Testing
-    db.Pets.findAll().then((results) => {
-      res.json(results);
-      // console.log(results); // Testing
+    db.Pets.findAll().then((results) => res.json(results));
 
-    });
-    // console.log(results);
   });
 
   app.get('/api/accounts', (req, res) => {
@@ -37,6 +35,20 @@ module.exports = function (app) {
     db.Volunteers.findAll({}).then((results) => res.json(results));
     console.log(results);
   });
+
+  app.get('/api/services', (req, res) => {
+    // Finding all Services, and then returning them to the user as JSON.
+    // Sequelize queries are asynchronous and results are available to us inside the .then
+    // console.log(req); // Testing
+    db.Services.findAll().then((results) => {
+
+      console.log(JSON.parse(JSON.stringify(results))); // Testing
+
+      res.json(results);
+    });
+
+  });
+
 
   // gets the cloudinary environment variables from .env file to return to front end
   app.get('/api/envVars', (req, res) => {
@@ -218,23 +230,7 @@ module.exports = function (app) {
       })
   });
 
-/*   app.post("/api/saveDonation", (req, res) => {
 
-    console.log("inside api/saveDonation");
-    console.log(req.body);
-    db.Donation.create({
-        donationAmount: parseInt(req.body.donationAmount),
-        RegistrationId: parseInt(req.body.RegistrationId)
-      }).then((dbUser) => {
-        console.log(dbUser);
-        res.status(200).json(dbUser);
-      })
-      .catch(err => {
-        console.log("inside post failure");
-        console.log(err);
-        res.status(401).json(err);
-      })
-  }); */
 
   // route to save credit card info into Credit Card table
   app.post("/api/saveCreditCard", (req, res) => {
@@ -431,24 +427,81 @@ module.exports = function (app) {
     });
 
 
+
   /***************** Handlebars routes *****************/
 
+
+  // // route to retrieve all pet info from Pets table and send it back to handlebar file
+  //   app.get('/all-pets/', (req, res) => {
+
+
+  //       db.Pets.findAll().then((results) => {
+  //           // res.json(results);
+
+  //           console.log(JSON.parse(JSON.stringify(results))); // Testing
+
+  //           const petsArray = JSON.parse(JSON.stringify(results));
+
+  //           res.render('all-pets', {
+  //               pets: petsArray, //pets Array
+  //               // services: services
+  //           });
+
+  //       });
+  //   });
+
     // route to retrieve all pet info from Pets table and send it back to handlebar file
-    app.get('/all-pets', (req, res) => {
+    app.get('/all-pets/', (req, res) => {
 
-        db.Pets.findAll().then((results) => {
-            // res.json(results);
+      db.Services.findAll().then((results) =>{
+        services = results;
+        console.log(services)
 
-            console.log(JSON.parse(JSON.stringify(results))); // Testing
+        return services;
+      })
 
-            const petsArray = JSON.parse(JSON.stringify(results));
+      .then((servicesResults) => {
+        db.Pets.findAll().then((petsResults) => {
+          // console.log(servicesResults)
 
-            res.render('all-pets', {
-                pets: petsArray, //pets Array
-            });
+          const pets = JSON.parse(JSON.stringify(petsResults));
+          const services = JSON.parse(JSON.stringify(servicesResults));
 
-        });
+          // console.log(pets);
+          // console.log(services);
+
+          for (i = 0; i < services.length; i++){
+            const index = services[i].RegistrationId;
+
+            const result = pets.find(({RegistrationId}) => RegistrationId === index);
+            console.log(result);
+
+            const newResult = {
+                ...result,
+                ...services[i]
+            }
+
+            // console.log(newResult);
+
+            for (j = 0; j < pets.length; j++){
+                if(pets[j].RegistrationId === index){
+                    pets.splice(j, 1, newResult)
+                }
+            }
+
+            console.log(pets);
+
+        }
+          res.render('all-pets', {
+              pets: pets, //pets Array
+              
+          });
+
+      })
+
     });
+  });
+
 
     // route to retrieve a particular pet's info and send it back to handlebar file
     app.get('/pet-info/:id', (req, res) => {
