@@ -1,3 +1,5 @@
+// const services = require("../../models/services");
+
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded! 🚀');
@@ -8,13 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     var scriptTag = document.getElementById("scriptTag");
 
     var petId;
-    var btn;
+    var userData;
+    var pets;
+    var storedServices;
 
     // Volunteer buttons
     var volBtns = document.getElementsByClassName('volunteerBtn');
-    console.log(btns); // Testing
+    // console.log(volBtns); // Testing
 
-    var btns = document.getElementsByClassName('btn');
+    var btns = document.querySelectorAll('.volunteerBtn, .donateBtn');
+
+    console.log(btns);
 
     for (i = 0; i < volBtns.length; i++){
         volBtns[i].addEventListener("click", event =>{
@@ -30,28 +36,73 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    $.get("/api/user_data", (data) => {
-        console.log("trying this");
-        console.log(data);
-    })
-    .then((data) => {
-        console.log(data);
-        console.log(data.id);
+    var donateBtns = document.getElementsByClassName('donateBtn');
 
-        for (i = 0; i < btns.length; i++){
-
-            // thanks.removeAttribute("class", "hide");
-            btns[i].setAttribute("class", "hide");
+    for (i = 0; i < donateBtns.length; i++){
+        donateBtns[i].addEventListener("click", event => {
 
 
-        }
+            const btn = event.target;
 
-    })
+            console.log(btn.id);
+
+            localStorage.setItem("PetID", btn.id);
+        })
+    }
+
+    const checkLogin = () => {
+        fetch('/api/user_data', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data); // Testing
+
+            userData = JSON.stringify(data);
+
+            localStorage.setItem("UserData", userData);
+
+            if(userData === "{}"){
+
+                console.log("Not logged in"); // User not logged in so we hide buttons
+                for( i = 0; i < btns.length; i++){
+
+                    var dataType = btns[i].getAttribute("data-type");
+                    console.log(dataType);
+
+                    if (dataType == "handlebarBtn"){
+                        btns[i].setAttribute("class", "hide");
+                    }
+                }
+
+                const moreInfos = document.querySelectorAll(".moreInfo");
+
+                for (i = 0; i < moreInfos.length; i++){
+                    moreInfos[i].setAttribute("class", "hide");
+                }
+
+                const logoutBtn = document.querySelector("#logoutBtn");
+
+
+                logoutBtn.setAttribute("class", "hide");
+            } else {
+                const loginBtns = document.querySelectorAll(".login");
+
+                for(i = 0; i < loginBtns.length; i++){
+                    loginBtns[i].setAttribute("class", "hide");
+                }
+
+            }
+
+        })
+    }
 
     // Only run script from the all-pets handlebars route
     if (url.includes("all-pets")){
-
-        var pets;
 
         const getPets = () => {
             console.log('Get pets is getting called');
@@ -64,34 +115,34 @@ document.addEventListener('DOMContentLoaded', () => {
             })
                 .then((response) => response.json())
                 .then ((data) => {
-
-
                     pets = data;
-
                     console.log('Success in getting pets:', pets); // Testing
-
+                    petsHandlebars(); // call in petsHandlebars() to render the page
             })
+
                 .catch((err) => console.error(err));
+
         };
 
         const petsHandlebars = () => {
             console.log('Pet Handlebars is getting called');
 
-            fetch('/all-pets', {
+            console.log(pets);
+            fetch(`/all-pets/`, {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',
                 },
+
             })
-            // .then((response) => response.json())
+
 
             .catch((err) => console.error(err));
         };
 
-
         getPets();
 
-        petsHandlebars();
+        // petsHandlebars();
 
 
     } else if (url.includes("pet-info")) {
@@ -126,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         petInfoHandlebars(petId);
     }
 
+    checkLogin(); // call checkLogin to toggle page buttons
 });
 
 

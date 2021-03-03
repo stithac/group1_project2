@@ -22,7 +22,6 @@ var hbs = exphbs.create({
   helpers: {
       subtract: function (num1, num2) { return num1 - num2; },
       divide: function (num1, num2){ return (num1 / num2) * 100}
-
   }
 });
 

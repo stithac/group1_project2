@@ -1,18 +1,67 @@
-
-<div class="container has-text-centered py-4">
-    <h2 class="title mb-6">{{pet.petName}}</h2>
-        <div class="column is-6 is-4-widescreen">
-
-            <div><img src="{{pet.picURL}}"></div>
-            <div><p>Breed: {{pet.breed_type}}</p></div>
-            <div><p>Age: {{pet.petAge}}</p></div>
-            <div><p>Weight: {{pet.petWeight}}</p></div>
-            <div><p>Reason for requesting help: {{pet.helpReason}}</p></div>
-            <div><p>Type of help requested: {{pet.services_monetary}}</p></div>
-
+{{!-- Navigation displays login/signup buttons when user not logged in. Displays logout when user logged in--}}
+<nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-item" href="./"><img
+              src="/p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
+            aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
+              aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" style="color:black;" href="/aboutus">About Us</a><a class="navbar-item"
+              style="color:black;" href="/all-pets/services">Volunteer</a><a class="navbar-item" style="color:black;"
+              href="/all-pets">Pets</a>
+            <a class="navbar-item" style="color:black;" href="/aboutus#contactus">Contact Us</a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons"><a class="button is-light login" href="/login" id= "loginBtn">Log in</a><a
+                  class="button button-ikr is-primary login" href="/signup" id = "signUpBtn">Sign up</a><a class="button button-ikr is-primary" href="/logout" id = "logoutBtn">Logout</a></div>
+            </div>
+          </div>
         </div>
-		<div class="buttons is-centered"><a class="button button-ikr is-primary" href="#">View All Pets</a></div>
+    </div>
+</nav>
+
+<section>
+    <div class="container py-4">
+
+        <div class="columns">
+            <div class="column is-6">
+                <h2 class="title mb-6">{{pet.petName}}</h2>
+                <div class="column is-6 is-4-widescreen">
+                    <div><span class="service">Bio:</span> {{pet.petBio}}</div><br>
+                    <div><span class="service">Breed/Type:</span>{{pet.breed_type}}</div>
+                    <table class="table is-fullwidth">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div><span class="service" id=""> Weight: </span>{{pet.petWeight}}</div>
+                                </td>
+                                <td class="has-text-right">
+                                    <div> <span class="service" id="">Height:</span>{{pet.petHeight}}</div>
+                                </td>
+                                <td class="has-text-right">
+                                    <div ><span class="service" id="">Age: </span>{{pet.petAge}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div><span class="service">Reason for requesting help: </span>{{pet.helpReason}}</div>
+                    <div><span class="service">Type of help requested:</span> {{pet.services_monetary}}</div>
+
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="container">
+                    <img src="{{pet.picURL}}">
+                </div>
+            </div>
+        </div>
+
+		<div class="buttons is-centered"><a class="button button-ikr is-primary" href="/all-pets">View All Pets</a></div>
 </div>
+</section>
+
 
 
 
