@@ -63,18 +63,6 @@
           <h2>Registration</h2>
           <form class="signup">
 
-            <!--           <div id="emailDiv">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="email-input" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="password-input" placeholder="Password">
-              </div>
-              <button id="emailSubmit" type="submit" class="btn btn-default">Next</button>
-          </div> -->
-
             <div id="registrationDiv">
               <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
@@ -85,11 +73,11 @@
                 <input type="input" class="form-control" id="last-name" placeholder="Last Name" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Street</label>
+                <label for="exampleInputEmail1">Address</label>
                 <input type="input" class="form-control" id="street" placeholder="Street" required>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Street</label>
+                <label for="exampleInputEmail1">Address2</label>
                 <input type="input" class="form-control" id="street2" placeholder="Street2" required>
               </div>
               <div class="form-group">
@@ -207,7 +195,6 @@
 
                   <div class="form-group hide" id="frequencyDiv">
                     <label for="frequencySelect">Frequency</label>
-                    <!-- <input type="input" class="form-control" id="frequency" placeholder="Frequency"> -->
 
                     <select name="frequencySelect" id="frequencySelect">
                       <option value="">Select Frequency:</option>
@@ -218,12 +205,6 @@
                   </div>
 
                   <div id="recurringDiv" class="hide">
-
-
-                    <!-- <div class="form-group">
-                      <label for="exampleInputEmail1">Day of Week</label>
-                      <input type="input" class="form-control" id="dayOfWeek" placeholder="Day of Week">
-                    </div> -->
 
                     <div class="form-group">
                       <label for="frequencyNumber">Recur every </label>
@@ -390,11 +371,9 @@
       const startDateInput = $("input#startDate");
       const endDateInput = $("input#endDate");
       const recurringCheckInput = $("input#recurringCheck");
-      // const frequencyInput = $("input#frequency");
       const frequencySelect = $("select#frequencySelect");
       const timeOfDayInput = $("input#timeOfDay");
       const frequencyNumberInput = $("input#frequencyNumber");
-      // const dayOfWeekInput = $("input#dayOfWeek");
       const sundayInput = $("input#sunday");
       const mondayInput = $("input#monday");
       const tuesdayInput = $("input#tuesday");
@@ -402,7 +381,7 @@
       const thursdayInput = $("input#thursday");
       const fridayInput = $("input#friday");
       const saturdayInput = $("input#saturday");
-      const notesInput = $("textarea#servicesNotes");
+      const notesInput = $("textarea#serviceNotes");
 
       // additional global variables
       var picURLInput;
@@ -412,7 +391,7 @@
       /******************************************************************/
 
       signUpForm.on("submit", event => {
-        // $("#submitBtn").submit(function(event){
+
         event.preventDefault();
         console.log($("#recurringCheck").prop("checked")); // Testing
         console.log(recurringCheckInput.prop("checked")); // Testing
@@ -446,8 +425,7 @@
           recurring: recurringCheckInput.prop("checked"),
           frequency: frequencySelect.val(),
           time: timeOfDayInput.val().trim(),
-          frequencyNumber: frequencyNumberInput.val().trim,
-          // frequency: frequencyInput.val().trim(),
+          recurringNumber: frequencyNumberInput.val(),
           sunday: sundayInput.prop("checked"),
           monday: mondayInput.prop("checked"),
           tuesday: tuesdayInput.prop("checked"),
@@ -455,42 +433,12 @@
           thursday: thursdayInput.prop("checked"),
           friday: fridayInput.prop("checked"),
           saturday: saturdayInput.prop("checked"),
-          notes: notesInput.prop("checked"),
+          notes: notesInput.val().trim(),
 
           picURL: picURLInput
         };
 
-        regUser(regData);
-        /*         if (regData.help_volunteer === "needHelp") {
-                  regPet(regData.petName, regData.breed_type, regData.petAge, regData.petWeight, regData.petBio, regData
-                    .helpReason, regData.amountRequested, regData.services_monetary, regData.picURL);
-                  console.log(regData.services_monetary);
-                  if (regData.services_monetary === "services") {
-                    regService(regData.serviceName, regData.startDate, regData.endDate, regData.recurring, regData
-                      .frequency, regData.time, regData.sunday, regData.monday, regData.tuesday, regData.wednesday,
-                      regData.thursday, regData.friday, regData.saturday, regData.notes);
-                  }
-                } */
-
-        /*         firstNameInput.val("");
-                lastNameInput.val("");
-                streetInput.val("");
-                street2Input.val("");
-                cityInput.val("");
-                stateInput.val("");
-                zipInput.val("");
-                phoneInput.val("");
-                securityQuestionInput.val("");
-                securityAnswerInput.val("");
-                helpTypeInput.val("");
-
-                petNameInput.val("");
-                breedTypeInput.val("");
-                petAgeInput.val("");
-                petWeightInput.val("");
-                petBioInput.val("");
-                helpReasonInput.val("");
-                amountRequestedInput.val(""); */
+        regUser(regData)
 
       });
 
@@ -536,7 +484,6 @@
                     })
                     .then((response) => response.json())
                     .then((data) => {
-//                      console.log(postPetData);
                       console.log("savedID = " + savedID);
                       console.log("savedemail = " + savedEmail);
                       $.post("/api/registerPet", {
@@ -597,94 +544,11 @@
                         })
                         .catch(handleLoginErr);
                     })
-//                  regPet(postRegData);
-                  //                  window.location.replace("/userLanding");
                 }
-                //                else {
-                //                  regServices(postRegData);
-                //                }
-                //               window.location.replace("/userLanding");
-                // If there's an error, handle it by throwing up a bootstrap alert
               })
               .catch(handleLoginErr);
           })
       }
-
-/*       function regPet(postPetData) {
-        fetch('/api/user_data', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(postPetData);
-            console.log("savedID = " + savedID);
-            console.log("savedemail = " + savedEmail);
-            $.post("/api/registerPet", {
-                registrationId: data.id,
-                petName: postPetData.petName,
-                breed_type: postPetData.breed_type,
-                petAge: postPetData.petAge,
-                petWeight: postPetData.petWeight,
-                petBio: postPetData.petBio,
-                helpReason: postPetData.helpReason,
-                amountRequested: postPetData.amountRequested,
-                services_monetary: postPetData.services_monetary,
-                picURL: postPetData.picURL
-              })
-              .then(() => {
-                console.log("did I return successfully from api/registePet");
-                if (postRegData.services_monetary === "monetary") {
-                  window.location.replace("/userLanding");
-                } else {
-                  regService(postRegData);
-                }
-                // If there's an error, handle it by throwing up a bootstrap alert
-              })
-              .catch(handleLoginErr);
-          })
-      } */
-/* 
-      function regService(postSvcData) {
-        fetch('/api/user_data', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            console.log("savedID = " + savedID);
-            console.log("savedemail = " + savedEmail);
-            $.post("/api/registerService", {
-                registrationId: data.id,
-                serviceName: postSvcData.serviceName,
-                startDate: postSvcData.startDate,
-                endDate: postSvcData.endDate,
-                recurring: postSvcData.recurring,
-                frequency: postSvcData.frequency,
-                timeOfDay: postSvcData.timeOfDay,
-                recurringNumber: postSvcData.recurringNumber,
-                sunday: postSvcData.sunday,
-                monday: postSvcData.monday,
-                tuesday: postSvcData.tuesday,
-                wednesday: postSvcData.wednesday,
-                thursday: postSvcData.thursday,
-                friday: postSvcData.friday,
-                saturday: postSvcData.saturday,
-                notes: postSvcData.notes
-              })
-              .then(() => {
-                console.log("success return from api/registerService");
-                window.location.replace("/userLanding");
-                // If there's an error, handle it by throwing up a bootstrap alert
-              })
-              .catch(handleLoginErr);
-          })
-      } */
 
       function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
