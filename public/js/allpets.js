@@ -5,12 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = window.location.href;
     console.log( window.location.href);
 
-    var scriptTag = document.getElementById("scriptTag");
-
     var petId;
     var userData;
     var pets;
-    var storedServices;
+    var serviceName;
+
 
     // Volunteer buttons
     var volBtns = document.getElementsByClassName('volunteerBtn');
@@ -31,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             thanks.removeAttribute("class", "hide");
             btn.setAttribute("class", "hide");
 
+            localStorage.setAttribute("match", btnId);
+
         })
     }
 
@@ -45,8 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(btn.id);
 
             localStorage.setItem("PetID", btn.id);
+
         })
     }
+
+    var moreInfoBtns = document.querySelectorAll('.moreInfo');
+
+    for (i = 0; i< moreInfoBtns.length; i++){
+        moreInfoBtns[i].addEventListener("click", event => {
+
+            const btn = event.target;
+
+            localStorage.setItem("serviceName", btn.getAttribute("services_monetary"));
+        })
+    }
+
 
     const checkLogin = () => {
         fetch('/api/user_data', {
@@ -144,12 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } else if (url.includes("pet-info")) {
 
-        const petInfoHandlebars = (petId) => {
-
+        const petInfoHandlebars = (serviceName, petId) => {
 
             console.log('Pet Info Handlebars is getting called for id: ', petId);
 
-            fetch(`/pet-info/${petId}`, {
+            fetch(`/pet-info/${serviceName}/${petId}`, {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',
@@ -161,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch((err) => console.error(err));
         };
 
-
         const getId = () =>{
 
             petId = url.split("/").pop();
@@ -171,7 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         getId();
         localStorage.setItem("PetID", petId);
-        petInfoHandlebars(petId);
+
+        serviceName = localStorage.getItem("serviceName");
+        petInfoHandlebars(serviceName, petId);
     }
 
     checkLogin(); // call checkLogin to toggle page buttons

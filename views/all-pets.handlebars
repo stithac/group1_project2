@@ -50,7 +50,7 @@
                                     <a href="#" id="{{id}}"  data-type="handlebarBtn" helpType = "{{services_monetary}}" class="button volunteerBtn button-ikr is-primary btn" >Volunteer</a>
                                 </div><br>
                                 <div>
-                                    <a href="/pet-info/{{serviceName}}/{{id}}" id= "{{id}}" class="moreInfo">See more about {{petName}}</a>
+                                    <a href="/pet-info/{{serviceName}}/{{id}}" services_monetary="{{serviceName}}" id= "{{id}}" class="moreInfo">See more about {{petName}}</a>
                                 </div>
                                 <div>
                                     <p id="thanks{{id}}" class="hide">Thank you! This pet has been matched.</p>
@@ -96,11 +96,11 @@
                                 <progress class="progress is-warning" id="progress" value="{{divide raisedAmount requestAmount}}" max="100">{{subtract raisedAmount requestAmount}}</progress>
                                 <br>
                                 <div>
-                                    <a href="/donatepet.html" data-type="handlebarBtn" id= "{{id}}" class="button button-ikr is-primary btn donateBtn">Donate</a>
+                                    <a href="/donatepet.html"  data-type="handlebarBtn" id= "{{id}}" class="button button-ikr is-primary btn donateBtn">Donate</a>
                                 </div>
                                 <br>
                                 <div>
-                                    <a href="/pet-info/monetary/{{id}}" class="moreInfo" id= "{{id}}" >See more about {{petName}}</a>
+                                    <a href="/pet-info/monetary/{{id}}" services_monetary="monetary" class="moreInfo" id= "{{id}}" >See more about {{petName}}</a>
                                 </div>
                             </div>
                         </div>
