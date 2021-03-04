@@ -24,11 +24,10 @@ $(document).ready(() => {
   // Does a post to the signup route. If successful, we are redirected to the registration page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    console.log(email, password);
     $.post("/api/signup", {
-      email: email,
-      password: password,
-    })
+        email: email,
+        password: password,
+      })
       .then(() => {
         window.location.replace("/registration");
         // If there's an error, handle it by throwing up a bootstrap alert

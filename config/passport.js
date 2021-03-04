@@ -30,8 +30,6 @@ passport.use(
           });
         }
         // If none of the above, return the user
-//        console.log('returning user');
-//        console.log(dbUser.email + " " + dbUser.id);
         return done(null, dbUser);
       });
     }
