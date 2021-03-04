@@ -1,9 +1,6 @@
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded! 🚀');
-
     const url = window.location.href;
-    console.log( window.location.href);
 
     var petId;
     var userData;
@@ -20,11 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to all volunteer buttons. When clicked, show the "thank you" message associated with the pet
     for (i = 0; i < volBtns.length; i++){
         volBtns[i].addEventListener("click", event =>{
-            console.log(event.target.id);
 
             const btn = event.target;
             const btnId = event.target.id;
-            const thanks = document.getElementById("thanks"+ btnId);
+            const thanks = document.getElementById("thanks" + btnId);
 
             thanks.removeAttribute("class", "hide");
             btn.setAttribute("class", "hide");
@@ -38,12 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to all donate buttons to set the petId in local storage to the id of the button
     for (i = 0; i < donateBtns.length; i++){
+        
         donateBtns[i].addEventListener("click", event => {
 
             const btn = event.target;
-
-            console.log(btn.id);
-
             localStorage.setItem("PetID", btn.id);
 
         })
@@ -54,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to all moreInfo buttons to get the services_monetary attribute and store in local storage. This is used to pull up the correct info in the pet-info page
     for (i = 0; i< moreInfoBtns.length; i++){
+        
         moreInfoBtns[i].addEventListener("click", event => {
 
             const btn = event.target;
-
             localStorage.setItem("serviceName", btn.getAttribute("services_monetary"));
         })
     }
@@ -84,36 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if(userData === "{}"){
 
-                console.log("Not logged in"); // User not logged in so we hide buttons
-                for( i = 0; i < btns.length; i++){
+                userData = JSON.stringify(data);
+                localStorage.setItem("UserData", userData);
 
-                    var dataType = btns[i].getAttribute("data-type");
-                    console.log(dataType);
+                if (userData === "{}") {
+                    for (i = 0; i < btns.length; i++) {
+                        var dataType = btns[i].getAttribute("data-type");
 
-                    if (dataType == "handlebarBtn"){
-                        btns[i].setAttribute("class", "hide");
+                        if (dataType == "handlebarBtn") {
+                            btns[i].setAttribute("class", "hide");
+                        }
+                    }
+                    const moreInfos = document.querySelectorAll(".moreInfo");
+
+                    for (i = 0; i < moreInfos.length; i++) {
+                        moreInfos[i].setAttribute("class", "hide");
+                    }
+                    const logoutBtn = document.querySelector("#logoutBtn");
+                    logoutBtn.setAttribute("class", "hide");
+                } else {
+                    const loginBtns = document.querySelectorAll(".login");
+
+                    for (i = 0; i < loginBtns.length; i++) {
+                        loginBtns[i].setAttribute("class", "hide");
                     }
                 }
-
-                const moreInfos = document.querySelectorAll(".moreInfo");
-
-                for (i = 0; i < moreInfos.length; i++){
-                    moreInfos[i].setAttribute("class", "hide");
-                }
-
-                const logoutBtn = document.querySelector("#logoutBtn");
-
-                logoutBtn.setAttribute("class", "hide");
-            } else {
-                const loginBtns = document.querySelectorAll(".login");
-
-                for(i = 0; i < loginBtns.length; i++){
-                    loginBtns[i].setAttribute("class", "hide");
-                }
-
             }
-
-        })
+            })
     }
 
     /* The following functions make fetch calls to api routes in order to render the information for the pages and then render the pages themselves.  Based on the handlebar page, different functions are run because different information is needed and different routes being called */
@@ -122,38 +113,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (url.includes("all-pets")){
 
         const getPets = () => {
-            console.log('Get pets is getting called');
 
             fetch('/api/pets', {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-            })
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
                 .then((response) => response.json())
-                .then ((data) => {
+                .then((data) => {
                     pets = data;
-                    console.log('Success in getting pets:', pets); // Testing
                     // petsHandlebars(); // call in petsHandlebars() to render the page
             })
 
                 .catch((err) => console.error(err));
-
         };
 
         // petsHandlebars calls the /all-pets route to pull in all pets from the Pets table and join them with the Services table based on id.  The result is used to render the all-pets handlebars page
         const petsHandlebars = () => {
-            console.log('Pet Handlebars is getting called');
 
             fetch(`/all-pets/`, {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-
-            })
-
-            .catch((err) => console.error(err));
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .catch((err) => console.error(err));
         };
 
         getPets();
@@ -175,27 +160,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // petInfoHandlebars takes in the serviceName (stored in local storage) and the petId and renders the information for the pet on the pet-info handlebar page
         const petInfoHandlebars = (serviceName, petId) => {
 
-            console.log('Pet Info Handlebars is getting called for id: ', petId);
-
             fetch(`/pet-info/${serviceName}/${petId}`, {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-            })
-            // .then((response) => response.json())
-
-
-            .catch((err) => console.error(err));
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .catch((err) => console.error(err));
         };
 
         // getId gets the id passed in the URL
         const getId = () =>{
 
             petId = url.split("/").pop();
-
-            console.log(petId);
-
         }
 
         getId();

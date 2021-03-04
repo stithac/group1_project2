@@ -39,10 +39,10 @@ $(document).ready(() => {
             expirationDate: expirationDateInput.val(),
             cardType: cardTypeInput.val().trim()
         };
-        console.log(donationData.expirationDate);
+
         // have to add last day of month to expiration date so field will be correct format for SQL DATE type
         donationData.expirationDate = calcDay(donationData.expirationDate);
-        console.log("transformed date = " + donationData.expirationDate);
+
         genDonate(donationData.firstName, donationData.lastName, donationData.street, donationData.street2, donationData.city, donationData.state,
             donationData.zip, donationData.phone, donationData.genDonation, donationData.email, donationData.cardNumber, donationData.securityCode, donationData.nameOnCard, donationData.expirationDate, donationData.cardType);
         firstNameInput.val("");
@@ -69,16 +69,15 @@ $(document).ready(() => {
         var tempArray = date.split("-");
         var day = parseInt(tempArray[1]);
         var numToAdd;
-        
-        switch(day)
-        {
+
+        switch (day) {
             case 1:
             case 3:
             case 5:
             case 7:
             case 8:
             case 10:
-            case 12: 
+            case 12:
                 numToAdd = 31;
                 break;
             case 2:
@@ -99,7 +98,7 @@ $(document).ready(() => {
     // Does a post to the general donation route. If successful, we are redirected to the ?? page
     // Otherwise we log any errors
     function genDonate(firstName, lastName, street, street2, city, state, zip, phone, genDonation, email, cardNumber, securityCode, nameOnCard, expirationDate, cardType) {
-        console.log(firstName, lastName, email, street, street2, city, state, zip, phone, genDonation, cardNumber, securityCode, nameOnCard, expirationDate, cardType);
+
         // call api route to write data to general donation table
         $.post("/api/generalDonation", {
                 email: email,
@@ -119,12 +118,10 @@ $(document).ready(() => {
                 donationAmount: genDonation,
             })
             .then((data) => {
-                console.log("did I return successfully from api/generalDonation");
                 window.location.replace("/");
                 // If there's an error, handle it by throwing up a bootstrap alert
             })
             .catch(err => {
-                console.log("in error from generalDonation");
                 console.log(err);
             })
     }

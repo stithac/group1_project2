@@ -1,14 +1,6 @@
 $(document).ready(() => {
     // Getting references to our form and input
     // user fields
-/*     const origfirstNameInput = $("input#origfirst-name");
-    const origlastNameInput = $("input#origlast-name");
-    const origstreetInput = $("input#origstreet");
-    const origcityInput = $("input#origcity");
-    const origzipInput = $("input#origzip");
-    const origphoneInput = $("input#origphone");
-    const origsecurityQuestionInput = $("input#origsecurityQuestion");
-    const origsecurityAnswerInput = $("input#origsecurityAnswer"); */
     const updateForm = $("form.update");
     const emailInput = $("input#email");
     const firstNameInput = $("input#first-name");
@@ -25,13 +17,8 @@ $(document).ready(() => {
 
     /******************************************************************/
     // first, retrieve the id of who is logged in
-    $.get("/api/user_data", (data) => {
-            console.log("trying this");
-            console.log(data);
-        })
+    $.get("/api/user_data", (data) => {})
         .then((data) => {
-            console.log(data);
-            console.log(data.id);
             savedID = data.id;
             // next, retrieve the user info based upon who is logged in
             fetch(`/getUserInfo/${savedID}`, {
@@ -42,9 +29,6 @@ $(document).ready(() => {
                 })
                 .then((response) => response.json())
                 .then((results) => {
-                    console.log("data");
-                    console.log(results);
-                    console.log("did I return successfully from api/getUserInfo");
                     // set all the original info fields from registration table data returned
                     $(firstNameInput).val(results.firstName);
                     $(lastNameInput).val(results.lastName);
@@ -64,8 +48,6 @@ $(document).ready(() => {
                     $(phoneInput).val(results.phone);
                     $(securityQuestionInput).val(results.securityQuestion);
                     $(securityAnswerInput).val(results.securityAnswer);
-
-//                    window.location.replace("/userLanding");
                     // If there's an error, handle it by throwing up a bootstrap alert
                 })
                 .catch(err => {
@@ -92,46 +74,6 @@ $(document).ready(() => {
             securityAnswer: securityAnswerInput.val().trim(),
         };
 
-        // if user did not update all fields, take the original data retrieved from table and use it in 
-        // variable to write back out to Registration table.   This prevents blank fields in the database
-        // and keeps user from having to enter every field on form 
-/*         if (regData.firstName === "") {
-            regData.firstName = origfirstNameInput.val();
-        }
-        if (regData.lastName === "") {
-            regData.lastName = origlastNameInput.val();
-        }
-        if (regData.street === "") {
-            regData.street = origstreetInput.val();
-        }
-        if (regData.city === "") {
-            regData.city = origcityInput.val();
-        } */
-        // deteremine which option value to use
-/*         if ($("select#state :selected").val() === "") {
-            var options = document.getElementById('origstate').options;
-            var newoptions = document.getElementById('state').options;
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].selected === true) {
-                    newoptions[i].selected = true;
-                    break;
-                }
-            }
-            regData.state = $("select#origstate :selected").text();
-        }
-        if (regData.zip === "") {
-            regData.zip = origzipInput.val();
-        }
-        if (regData.phone === "") {
-            regData.phone = origphoneInput.val();
-        }
-        if (regData.securityQuestion === "") {
-            regData.securityQuestion = origsecurityQuestionInput.val();
-        }
-        if (regData.securityAnswer === "") {
-            regData.securityAnswer = origsecurityAnswerInput.val();
-        }
- */
         // Lastly make call to updateUser function to actually write out the data
         updateUser(regData.firstName, regData.lastName, regData.email, regData.street, regData.street2, regData.city, regData.state,
             regData.zip, regData.phone, regData.securityQuestion, regData.securityAnswer);
@@ -159,10 +101,8 @@ $(document).ready(() => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 savedEmail = data.email;
                 savedID = data.id;
-                console.log(firstName, lastName, email, street, street2, city, state, zip, phone, question, answer);
                 $.post("/api/updateUserReg", {
                         id: data.id,
                         firstName: firstName,
@@ -178,7 +118,6 @@ $(document).ready(() => {
                         answer: answer,
                     })
                     .then(() => {
-                        console.log("did I return successfully from api/updateUserReg");
                         window.location.replace("/userLanding");
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })

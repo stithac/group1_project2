@@ -25,13 +25,11 @@ $(document).ready(() => {
   // loginUser does a post to our "api/login" route and if successful, redirects us to the userLanding page
   function loginUser(email, password) {
     $.post("/api/login", {
-      email: email,
-      password: password
-    })
+        email: email,
+        password: password
+      })
       .then((data) => {
-        console.log(data.email, data.id);
         window.location.replace("/userLanding");
-        console.log(data.email, data.id);
         // If there's an error, log the error
       })
       .catch(err => {

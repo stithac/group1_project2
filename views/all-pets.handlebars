@@ -22,6 +22,7 @@
                                 <div style="height:50px !important">
                                     <p>{{helpReason}}</p>
                                 </div>
+                            <br>
                             <div><span class = "service">Service Requested: </span>{{serviceName}}</div>
 
                             <div>
@@ -42,7 +43,7 @@
                                 {{/if}}
                                 {{#unless recurring}}
                                     <div>
-                                        <span class = "service"> Frequency: one-time </span>{{frequency}} {{#if sunday}}on: Sunday, {{/if}}{{#if monday}}on: Monday, {{/if}}{{#if tuesday}}on: Tuesday, {{/if}}{{#if wednesday}}on: Wednesday, {{/if}}{{#if thursday}}on: Thursday, {{/if}}{{#if friday}}on: Friday, {{/if}}{{#if saturday}}on: Saturday {{/if}}
+                                        <span class = "service"> Frequency: one-time </span>
                                     </div>
                                 {{/unless}}
                                 <br>
@@ -81,6 +82,7 @@
                                 <div style="height:50px !important">
                                     <p>{{helpReason}}</p>
                                 </div>
+                                <br>
                                 <table class="table is-fullwidth">
                                     <tbody>
                                         <tr>

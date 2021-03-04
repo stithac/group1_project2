@@ -14,13 +14,8 @@ $(document).ready(() => {
     var updatingRaised = 0;
 
     // get the current id of who is logged in
-    $.get("/api/user_data", (data) => {
-            console.log("trying this");
-            console.log(data);
-        })
+    $.get("/api/user_data", (data) => {})
         .then((data) => {
-            console.log(data);
-            console.log(data.id);
             // retrieve pet data based upon current pet ID value
             fetch(`/getPetID/${petId}`, {
                     method: 'GET',
@@ -30,28 +25,21 @@ $(document).ready(() => {
                 })
                 .then((response) => response.json())
                 .then((results) => {
-                    console.log("data");
-                    console.log(results);
-                    console.log("did I return successfully from api/getPetInfo");
                     // update the raised amount for the pet
                     updatingRaised = updatingRaised + parseInt(results.raisedAmount);
-                    console.log("first updating raised = " + updatingRaised);
                     // set requested amount and raised amount to fields on page
                     $(amountRequestedInput).val(results.requestAmount);
                     $(amountRaisedInput).val(results.raisedAmount);
                     $(petURLInput).attr("src", results.picURL);
                     // If there's an error, handle it by throwing error
                 })
-                .catch(err => {
-                    console.log(err);
-                });
+                .catch(err => {});
         })
 
     // When the form is submitted, write the donation data to the donate pet table
     donateForm.on("submit", event => {
         event.preventDefault();
-        console.log("in donatePet button listener")
-        console.log(petId);
+
         // grab user inputs from page
         const donateData = {
             donation: donationInput.val().trim(),
@@ -66,13 +54,9 @@ $(document).ready(() => {
         if (!donateData.donation) {
             return;
         }
-        console.log('donation = ' + donateData.donation);
         updatingRaised = updatingRaised + parseInt(donateData.donation);
-        console.log("updatingraised = " + updatingRaised);
-        console.log(donateData.expirationDate);
         // convert date to appropriate SQL DATE type format
         donateData.expirationDate = calcDay(donateData.expirationDate);
-        console.log("transformed date = " + donateData.expirationDate);
         // If we have a donation amount we run the userDonation function and clear the form
         donationInput.val("");
         cardNumberInput.val("");
@@ -118,7 +102,6 @@ $(document).ready(() => {
 
     // userDonation does a post to our "api/donatePet" route and if successful, redirects us the the user landing page
     function userDonation(donation, updatingRaised, cardNumber, securityCode, nameOnCard, expirationDate, cardType) {
-        console.log("getting user data");
         // first get the user who is logged in
         fetch('/api/user_data', {
                 method: 'GET',
@@ -128,9 +111,6 @@ $(document).ready(() => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(donation);
-                console.log(data);
-                console.log(data.id);
                 // store user ID to local storage
                 localStorage.setItem("RegistrationId", data.id);
                 // write donation amount to Donation table based upon pet ID
@@ -140,7 +120,6 @@ $(document).ready(() => {
                         petId: petId
                     })
                     .then((data) => {
-                        console.log("success from donate pet");
                         // write out the updated raised amount based upon new donation amount
                         $.post("/api/updateRaisedAmount", {
                                 registrationId: localStorage.getItem("RegistrationId"),
@@ -148,7 +127,6 @@ $(document).ready(() => {
                                 petId: petId
                             })
                             .then(() => {
-                                console.log("success from updating raised amount");
                                 // write out credit card info to credit card table
                                 $.post("/api/saveCreditCard", {
                                         cardNumber: cardNumber,
@@ -158,15 +136,10 @@ $(document).ready(() => {
                                         cardType: cardType,
                                         RegistrationId: localStorage.getItem("RegistrationId"),
                                     })
-                                    .then(() => {
-                                        console.log("success from update credit card");
-
-                                    })
+                                    .then(() => {})
                                     .catch(err => {
-                                        console.log("in error from update credit card");
                                         console.log(err);
                                     })
-                                console.log("success return from api/donatePet");
                                 window.location.replace("/userLanding");
                             })
                             .catch(err => {
@@ -176,7 +149,6 @@ $(document).ready(() => {
                         // If there's an error, handle it by throwing up a bootstrap alert
                     })
                     .catch(err => {
-                        console.log("in error from donate pet")
                         console.log(err);
                     });
             })

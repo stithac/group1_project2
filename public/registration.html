@@ -161,7 +161,6 @@
                       <input type="radio" id="giveHelp" name="needType" value="giveHelp">
                       <label for="giveHelp">I would like to volunteer</label><br><br>
                     </div>
-
                     <div id="helpDiv" class="hide">
 
                       <div class="form-group">
@@ -237,7 +236,6 @@
 <div class="field is-grouped">
   <div class="control">
 
-  
                         <div class="field form-group">
                           <label class="label" for="startDate">Start Date</label>
                           <input class="input" type="date" id="startDate" name="startDate">
@@ -462,8 +460,6 @@
       signUpForm.on("submit", event => {
 
         event.preventDefault();
-        console.log($("#recurringCheck").prop("checked")); // Testing
-        console.log(recurringCheckInput.prop("checked")); // Testing
 
         const regData = {
           firstName: firstNameInput.val().trim(),
@@ -516,11 +512,9 @@
 
       function calcDay(timeOfDay) {
         var newTime = timeOfDay;
-        console.log(newTime);
         newTime = newTime + ":00";
         return newTime;
       }
-
 
       // Does a post to the signup route. If successful, we are redirected to the userLanding page
       // Otherwise we log any errors
@@ -533,10 +527,8 @@
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             savedEmail = data.email;
             savedID = data.id;
-            console.log(postRegData);
             $.post("/api/register", {
                 email: data.email,
                 firstName: postRegData.firstName,
@@ -552,7 +544,6 @@
                 help_volunteer: postRegData.help_volunteer
               })
               .then(() => {
-                console.log("did I return successfully from api/register");
                 if (postRegData.help_volunteer === "giveHelp") {
                   window.location.replace("/userLanding");
                 } else {
@@ -564,8 +555,6 @@
                     })
                     .then((response) => response.json())
                     .then((data) => {
-                      console.log("savedID = " + savedID);
-                      console.log("savedemail = " + savedEmail);
                       $.post("/api/registerPet", {
                           registrationId: data.id,
                           petName: postRegData.petName,
@@ -579,7 +568,6 @@
                           picURL: postRegData.picURL
                         })
                         .then(() => {
-                          console.log("did I return successfully from api/registePet");
                           if (postRegData.services_monetary === "monetary") {
                             window.location.replace("/userLanding");
                           } else {
@@ -591,7 +579,6 @@
                               })
                               .then((response) => response.json())
                               .then((data) => {
-                                console.log(data);
                                 $.post("/api/registerService", {
                                     registrationId: data.id,
                                     serviceName: postRegData.serviceName,
@@ -611,7 +598,6 @@
                                     notes: postRegData.notes
                                   })
                                   .then(() => {
-                                    console.log("success return from api/registerService");
                                     window.location.replace("/userLanding");
                                     // If there's an error, handle it by throwing up a bootstrap alert
                                   })
@@ -643,7 +629,6 @@
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log('successful GET', data);
 
             cloudinary.openUploadWidget({
               cloudName: data.cloudName,
@@ -682,10 +667,8 @@
               }
             }, (error, result) => {
               if (!error) {
-                console.log("Upload Widget event - ", result);
                 if (result.event === "success") {
                   picURLInput = result.info.url;
-                  console.log(result.info.url);
                 };
               };
             });

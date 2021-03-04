@@ -10,22 +10,6 @@ module.exports = (app) => {
 
   // index route loads index.html
   app.get('/', (req, res) => {
-     // If the user already has an account send them to the members page
-    //  if (req.user) {
-    //    res.redirect("/members");
-    //  }
-    //  console.log("doesn't have account");
-    //  console.log("redirect to signup.html");
-    //  res.sendFile(path.join(__dirname, "../public/signup.html"));
-
-  //  res.sendFile(path.join(__dirname, '../public/index.html'))
-//      if (req.user) {
-//        res.redirect("/userLanding");
-//      }
-//      console.log("doesn't have account");
-//      console.log("redirect to signup.html");
-// //     res.sendFile(path.join(__dirname, "../public/signup.html"));
-
     res.sendFile(path.join(__dirname, '../public/index.html'))
     }
   );
@@ -37,8 +21,6 @@ module.exports = (app) => {
 
   // login route loads login.html
   app.get('/login', (req, res) => {
-    console.log('inside login route');
-    console.log(req.user);
      // If the user already has an account send them to the userLanding page
      if (req.user) {
        res.sendFile(path.join(__dirname, "../public/userLanding.html"));
@@ -84,16 +66,6 @@ module.exports = (app) => {
   app.get('/aboutus', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/aboutus.html'))
   );
-
-  // users route loads users.html. Displays all registered users
-  // app.get('/allusers', (req, res) =>
-  //   res.sendFile(path.join(__dirname, '../public/allusers.html'))
-  // );
-
-  // userprofile route loads userprofile.html
-  // app.get('/userprofile', (req, res) =>
-  //   res.sendFile(path.join(__dirname, '../public/userprofile.html'))
-  // );
 
   // donatepet route loads donatepet.html
   // if a user is not logged in and tries to access this route they will be redirected to the signup page
