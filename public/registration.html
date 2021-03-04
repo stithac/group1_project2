@@ -426,7 +426,7 @@
       var savedEmail;
       var savedID;
 
-      /******************************************************************/
+      //******************************************************************/
 
       signUpForm.on("submit", event => {
 
@@ -462,7 +462,7 @@
           endDate: endDateInput.val().trim(),
           recurring: recurringCheckInput.prop("checked"),
           frequency: frequencySelect.val(),
-          time: timeOfDayInput.val().trim(),
+          timeOfDay: timeOfDayInput.val(),
           recurringNumber: frequencyNumberInput.val(),
           sunday: sundayInput.prop("checked"),
           monday: mondayInput.prop("checked"),
@@ -475,10 +475,21 @@
 
           picURL: picURLInput
         };
+        regData.timeOfDay = calcDay(regData.timeOfDay);
 
         regUser(regData)
 
       });
+
+   // function to add :SS to timeOfDay field to match format mySQL requires for TIME field type 
+
+    function calcDay(timeOfDay) {
+        var newTime = timeOfDay;
+        console.log(newTime);
+        newTime = newTime + ":00";
+        return newTime;
+    }
+
 
       // Does a post to the signup route. If successful, we are redirected to the userLanding page
       // Otherwise we log any errors
@@ -550,8 +561,6 @@
                               .then((response) => response.json())
                               .then((data) => {
                                 console.log(data);
-                                console.log("savedID = " + savedID);
-                                console.log("savedemail = " + savedEmail);
                                 $.post("/api/registerService", {
                                     registrationId: data.id,
                                     serviceName: postRegData.serviceName,
