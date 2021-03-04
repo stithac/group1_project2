@@ -480,7 +480,7 @@ module.exports = function (app) {
 
               }).then((results) => {
                 const petInfo = JSON.parse(JSON.stringify(results));
-
+                console.log(petInfo);
                 res.render('pet-info', {
                     pet: petInfo, // pet Information
                 });
@@ -585,4 +585,5 @@ module.exports = function (app) {
 
     });
 
+    
 };
