@@ -76,11 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             localStorage.setItem("UserData", userData);
 
-            if(userData === "{}"){
-
-                userData = JSON.stringify(data);
-                localStorage.setItem("UserData", userData);
-
                 if (userData === "{}") {
                     for (i = 0; i < btns.length; i++) {
                         var dataType = btns[i].getAttribute("data-type");
@@ -103,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         loginBtns[i].setAttribute("class", "hide");
                     }
                 }
-            }
             })
     }
 
