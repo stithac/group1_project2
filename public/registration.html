@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="stylesheet" href="./css/bulma.min.css">
   <link rel="stylesheet" href="./css/testimonials.css">
-  <link rel="shortcut icon" type="image/jpg" href="./p2-images/logo/petocracylogo-logomark.png"/>
+  <link rel="shortcut icon" type="image/jpg" href="./p2-images/logo/petocracylogo-logomark.png" />
   <link rel="icon" href="favicon.ico">
 </head>
 
@@ -19,7 +19,7 @@
   <div class="container is-fluid">
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="./"><img
+        <div class="navbar-brand"><a class="navbar-item" href="/"><img
               src="./p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
             aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
               aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
@@ -38,295 +38,331 @@
         </div>
       </div>
     </nav>
-<!-- end of nav -->
+    <!-- end of nav -->
 
 
 
-<section class="hero">
-  <div class="hero-body">
+    <section class="hero">
+      <div class="hero-body">
 
-    <div class="container has-text-centered">
-      <div class="level">
-        <div class="level-item">
-          <figure class="image is-64x64"><img src="./p2-images/logo/petocracylogo-logomark.png" alt="logo"></figure>
-        </div>
-      </div>
-
-      <h1 class="title">Registration Form</h1>
-    </div>
-  </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          
-          <h2>Registration</h2>
-          <form class="signup">
-
-            <div id="registrationDiv">
-              <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input type="input" class="form-control" id="first-name" placeholder="First Name" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Last Name</label>
-                <input type="input" class="form-control" id="last-name" placeholder="Last Name" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Address</label>
-                <input type="input" class="form-control" id="street" placeholder="Street" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Address2</label>
-                <input type="input" class="form-control" id="street2" placeholder="Street2" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="input" class="form-control" id="city" placeholder="City" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">State</label>
-                <input type="input" class="form-control" id="state" placeholder="State" maxlength="2" size="2" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Zip</label>
-                <input type="input" class="form-control" id="zip" placeholder="Zip" maxlength="5" size="5" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" class="form-control" placeholder="555-555-5555" maxlength="12"
-                  size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Security Question</label>
-                <input type="input" class="form-control" id="securityQuestion" placeholder="Security Question" required>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Security Question Answer</label>
-                <input type="input" class="form-control" id="securityAnswer" placeholder="Security Question Answer"
-                  required>
-              </div>
-              <div>
-                <p>Are you requesting help for a pet OR volunteering?</p>
-              </div>
-              <div class="form-group">
-                <input type="radio" id="needHelp" name="needType" value="needHelp">
-                <label for="needHelp">Requesting assistance for my pet</label><br>
-                <input type="radio" id="giveHelp" name="needType" value="giveHelp">
-                <label for="giveHelp">I would like to volunteer</label><br><br>
-              </div>
-              <div id="helpDiv" class="hide">
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Name</label>
-                  <input type="input" class="form-control" id="petName" placeholder="Pet Name" required>
-                </div>
-                <div class="form-group">
-                  <div>
-                    <br>
-                    <button type="button" class="control button button-ikr is-primary" id="upload_widget">Upload Pet
-                      Photo</button>
-                  </div>
-                  <br>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Breed/Type</label>
-                  <input type="input" class="form-control" id="breed-type" placeholder="Breed/Type" required>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Age</label>
-                  <input type="input" class="form-control" id="petAge" placeholder="Pet Age" maxlength="3" size="3"
-                    required>
-                </div>
-                <div class="form-group">
-                  <label for="petBio">Pet Bio</label>
-                  <textarea class="form-control" id="petBio" placeholder="Pet Bio" maxlength="100" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Weight</label>
-                  <input type="input" class="form-control" id="petWeight" placeholder="Pet Weight" maxlength="3"
-                    size="5" required>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Reason for Help</label>
-                  <textarea class="form-control" id="helpReason" placeholder="Reason for Help" maxlength="100"
-                    required></textarea>
-                </div>
-                <div>
-                  <p>Are you needing help with pet services or monetary donations?</p>
-                </div>
-                <div class="form-group">
-                  <input type="radio" id="helpTypeService" name="helpType" value="services">
-                  <label for="helpTypeService">Pet Services</label><br>
-                  <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
-                  <label for="helpTypeMonetary">Monetary Donation</label><br><br>
-                </div>
-                <div id="monetaryDiv" class="hide">
-                  <div class="form-group">
-                    <label for="amountRequested">Amount Requested</label>
-                    <input type="input" class="form-control" id="amountRequested" placeholder="Amount Requested">
-                  </div>
-                </div>
-                <div id="servicesDiv" class="hide">
-                  <div class="form-group">
-                    <label for="serviceName">Requested Service </label>
-                    <input type="input" class="form-control" id="serviceName" placeholder="Requested Service">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="startDate">Start Date</label>
-                    <input type="date" id="startDate" name="startDate">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="endDate">End Date</label>
-                    <input type="date" id="endDate" name="endDate">
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Time of Day</label>
-                    <input type="time" class="form-control" id="timeOfDay" placeholder="Time Of Day">
-                  </div>
-                  <div class="form-group">
-                    <label for="recurringCheck">Make this a repeating service</label>
-                    <input type="checkbox" id="recurringCheck" class="check" name="recurringCheck">
-                  </div>
-
-                  <div class="form-group hide" id="frequencyDiv">
-                    <label for="frequencySelect">Frequency</label>
-
-                    <select name="frequencySelect" id="frequencySelect">
-                      <option value="">Select Frequency:</option>
-                      <option value="daily">Daily</option>
-                      <option value="weekly">Weekly</option>
-                      <option value="monthly">Monthly</option>
-                    </select>
-                  </div>
-
-                  <div id="recurringDiv" class="hide">
-
-                    <div class="form-group">
-                      <label for="frequencyNumber">Recur every </label>
-                      <input type="input" class="form-control" id="frequencyNumber"><span id="frequencySpan"
-                        style="margin-left:10px;"></span>
-                    </div>
-
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="sunday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Sunday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="monday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Monday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="tuesday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Tuesday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="wednesday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Wednesday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="thursday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Thursday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="friday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Friday</label>
-                    </div>
-                    <div class="form-group">
-
-                      <input type="checkbox" class="form-control" id="saturday" placeholder="Frequency">
-                      <label for="exampleInputEmail1">Saturday</label>
-                    </div>
-
-                  </div>
-
-                  <div class="form-group">
-                    <label for="serviceNotes">Notes / Additional Information</label>
-                    <textarea id="serviceNotes" maxlength="100"></textarea>
-                  </div>
-                </div>
-
-              </div>
-
-              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span> <span class="msg"></span>
-              </div>
-              <br>
-              <br>
-              <button id="signup" type="submit" class="control button button-ikr is-primary">Sign Up</button>
+        <div class="container has-text-centered">
+          <div class="level">
+            <div class="level-item">
+              <figure class="image is-64x64"><img src="./p2-images/logo/petocracylogo-logomark.png" alt="logo"></figure>
             </div>
-            <!-- End of registrationDiv -->
+          </div>
 
-          </form>
-          <br>
+          <h1 class="title">Registration Form</h1>
         </div>
       </div>
-    </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+
+            <h4 class="title is-4">Register below</h2>
+            <form class="signup">
+
+              <div id="registrationDiv">
+                
+              <div class="field is-grouped">
+                <div class="control is-expanded">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">First Name</label>
+                  <input type="input" class="input form-control" id="first-name" placeholder="First Name" required>
+                </div>
+</div>
+
+
+<!-- <div class="field is-grouped"> -->
+  <div class="control is-expanded">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Last Name</label>
+                  <input type="input" class="input form-control" id="last-name" placeholder="Last Name" required>
+                </div>
+</div></div>
+
+<div class="field">
+  <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Address</label>
+                  <input type="input" class="input form-control" id="street" placeholder="Street" required>
+                </div> </div>
+
+                <div class="field">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Address2</label>
+                  <input type="input" class="input form-control" id="street2" placeholder="Street2" required>
+                </div></div>
+                <div class="field">
+
+                  <div class="field is-grouped">
+                    <div class="control is-expanded">
+                      <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">City</label>
+                  <input type="input" class="input form-control" id="city" placeholder="City" required>
+                </div></div>
+
+                <!-- <div class="field is-grouped"> -->
+                  <div class="control is-expanded">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">State</label>
+                  <input type="input" class="input form-control" id="state" placeholder="State" maxlength="2" size="2"
+                    required>
+                </div></div>
+
+                <!-- <div class="field is-grouped"> -->
+                  <div class="control is-expanded">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Zip</label>
+                  <input type="input" class="input form-control" id="zip" placeholder="Zip" maxlength="5" size="5" required>
+                </div></div></div>
+<div class="field">
+                <div class="form-group">
+                  <label class="label" for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" class="input form-control" placeholder="555-555-5555"
+                    maxlength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                </div></div>
+
+                
+<div class="field">
+  <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Security Question</label>
+                  <input type="input" class="input form-control" id="securityQuestion" placeholder="Security Question"
+                    required>
+                </div>                </div>
+
+
+<div class="field">
+                <div class="form-group">
+                  <label class="label" for="exampleInputEmail1">Security Question Answer</label>
+                  <input type="input" class="input form-control" id="securityAnswer" placeholder="Security Question Answer"
+                    required>
+                </div>                </div>
+
+                <div>
+                  <h4 class="title is-4">Are you requesting help for a pet OR volunteering?</h4>
+                </div>
+                <div class="form-group">
+                  <input type="radio" id="needHelp" name="needType" value="needHelp">
+                  <label for="needHelp">Requesting assistance for my pet</label><br>
+                  <input type="radio" id="giveHelp" name="needType" value="giveHelp">
+                  <label for="giveHelp">I would like to volunteer</label><br><br>
+                </div>
+                <div id="helpDiv" class="hide">
+
+                  <div class="form-group">
+                    <label class="label" for="exampleInputEmail1">Pet Name</label>
+                    <input type="input" class="input form-control" id="petName" placeholder="Pet Name" required>
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <br>
+                      <button type="button" class="control button button-ikr is-primary" id="upload_widget">Upload Pet
+                        Photo</button>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <label class="label" for="exampleInputEmail1">Breed/Type</label>
+                    <input type="input" class="input form-control" id="breed-type" placeholder="Breed/Type" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="label" for="exampleInputEmail1">Pet Age</label>
+                    <input type="input" class="input form-control" id="petAge" placeholder="Pet Age" maxlength="3" size="3"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label class="label" for="petBio">Pet Bio</label>
+                    <textarea class="input form-control" id="petBio" placeholder="Pet Bio" maxlength="100"
+                      required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="label" for="exampleInputEmail1">Pet Weight</label>
+                    <input type="input" class="input form-control" id="petWeight" placeholder="Pet Weight" maxlength="3"
+                      size="5" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="label" for="exampleInputEmail1">Reason for Help</label>
+                    <textarea class="input form-control" id="helpReason" placeholder="Reason for Help" maxlength="100"
+                      required></textarea>
+                  </div>
+                  <div>
+                    <h4 class="title is-4">Are you needing help with pet services or monetary donations?</h4>
+                  </div>
+                  <div class="form-group">
+                    <input type="radio" id="helpTypeService" name="helpType" value="services">
+                    <label for="helpTypeService">Pet Services</label><br>
+                    <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
+                    <label for="helpTypeMonetary">Monetary Donation</label><br><br>
+                  </div>
+                  <div id="monetaryDiv" class="hide">
+                    <div class="form-group">
+                      <label class="label" for="amountRequested">Amount Requested</label>
+                      <input type="input" class="input form-control" id="amountRequested" placeholder="Amount Requested">
+                    </div>
+                  </div>
+                  <div id="servicesDiv" class="hide">
+                    <div class="form-group">
+                      <label class="label" for="serviceName">Requested Service </label>
+                      <input type="input" class="input form-control" id="serviceName" placeholder="Requested Service">
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" for="startDate">Start Date</label>
+                      <input type="date" id="startDate" name="startDate">
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" for="endDate">End Date</label>
+                      <input type="date" id="endDate" name="endDate">
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="label" for="exampleInputEmail1">Time of Day</label>
+                      <input type="time" class="input form-control" id="timeOfDay" placeholder="Time Of Day">
+                    </div>
+                    <div class="form-group">
+                      <label class="label" for="recurringCheck">Make this a repeating service</label>
+                      <input type="checkbox" id="recurringCheck" class="check" name="recurringCheck">
+                    </div>
+
+                    <div class="form-group hide" id="frequencyDiv">
+                      <label for="frequencySelect">Frequency</label>
+
+                      <select name="frequencySelect" id="frequencySelect">
+                        <option value="">Select Frequency:</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                      </select>
+                    </div>
+
+                    <div id="recurringDiv" class="hide">
+
+                      <div class="form-group">
+                        <label for="frequencyNumber">Recur every </label>
+                        <input type="input" class="input form-control" id="frequencyNumber"><span id="frequencySpan"
+                          style="margin-left:10px;"></span>
+                      </div>
+
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="sunday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Sunday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="monday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Monday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="tuesday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Tuesday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="wednesday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Wednesday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="thursday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Thursday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="friday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Friday</label>
+                      </div>
+                      <div class="form-group">
+
+                        <input type="checkbox" class="input form-control" id="saturday" placeholder="Frequency">
+                        <label for="exampleInputEmail1">Saturday</label>
+                      </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="serviceNotes">Notes / Additional Information</label>
+                      <textarea id="serviceNotes" maxlength="100"></textarea>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+                <br>
+                <br>
+                <button id="signup" type="submit" class="control button button-ikr is-primary">Sign Up</button>
+              </div>
+              <!-- End of registrationDiv -->
+
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
   </div>
   <br>
-     <!-- Footer -->
-     <section>
-      <footer class="footer">
-        <div class="container">
-          <div class="columns is-desktop">
-            <div class="column is-5">
-              <h2 class="title is-5"><a class="text-ikr" href="./"><img
-                    src="./p2-images/logo/petocracylogo-horizonal.png" width="450"></a></h2>
-              <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
-                for your sensational friend. </p>
-              <div class="buttons"><a class="button" href="https://www.twitter.com/"><img
-                    src="./p2-images/icons/twitter.png" width="25px"></a><a class="button"
-                  href="https://www.linkedin.com/school/george-washington-university/?trk=public_profile_topcard-school"><img src="./p2-images/icons/linkedin-in.png" width="25px"></a><a class="button"
-                  href="https://github.com/stithac/group1_project2"><img src="./p2-images/icons/github-brands.png"
-                    width="25px"></a></div>
-            </div>
-            <div class="column">
-              <h3 class="title is-6">About Us</h3>
-              <ul>
-                <li><a class="text-ikr" href="/aboutus#missionstatement">Mission Statement</a></li>
-                <li><a class="text-ikr" href="/successfulpets">Success Stories</a></li>
-                <li><a class="text-ikr" href="/allvolunteers">Our Volunteers</a></li>
-                <li><a class="text-ikr" href="/signup">Join Us</a></li>
-              </ul>
-            </div>
-            <div class="column">
-              <h6 class="title is-6">How to Contribute</h6>
-              <ul>
-                <li><a class="text-ikr" href="/signup">Volunteer</a></li>
-                <li><a class="text-ikr" href="/generaldonation">Donate</a></li>
-                <li><a class="text-ikr" href="/donatepet">Sponsor</a></li>
-                <li><a class="text-ikr" href="/aboutus#contactus">Write a review</a></li>
-              </ul>
-            </div>
-            <div class="column">
-              <h6 class="title is-6">Contact</h6>
-              <ul>
-                <li><a class="text-ikr" href="mailto:info@petocracy.org">info@petocracy.org</a></li>
-                <li><a class="text-ikr" href="#">555-555-5555</a></li>
-                <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
-              </ul>
-            </div>
+  <!-- Footer -->
+  <section>
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-desktop">
+          <div class="column is-5">
+            <h2 class="title is-5"><a class="text-ikr" href="./"><img src="./p2-images/logo/petocracylogo-horizonal.png"
+                  width="450"></a></h2>
+            <p class="block">We provide an exceptional service when you fall on hard times and are unable to provide
+              for your sensational friend. </p>
+            <div class="buttons"><a class="button" href="https://www.twitter.com/"><img
+                  src="./p2-images/icons/twitter.png" width="25px"></a><a class="button"
+                href="https://www.linkedin.com/school/george-washington-university/?trk=public_profile_topcard-school"><img
+                  src="./p2-images/icons/linkedin-in.png" width="25px"></a><a class="button"
+                href="https://github.com/stithac/group1_project2"><img src="./p2-images/icons/github-brands.png"
+                  width="25px"></a></div>
           </div>
-          <hr>
-          <div class="columns">
-            <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
-            <div class="column has-text-right-tablet">
-              <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
-            </div>
+          <div class="column">
+            <h3 class="title is-6">About Us</h3>
+            <ul>
+              <li><a class="text-ikr" href="/aboutus#missionstatement">Mission Statement</a></li>
+              <li><a class="text-ikr" href="/successfulpets">Success Stories</a></li>
+              <li><a class="text-ikr" href="/allvolunteers">Our Volunteers</a></li>
+              <li><a class="text-ikr" href="/signup">Join Us</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h6 class="title is-6">How to Contribute</h6>
+            <ul>
+              <li><a class="text-ikr" href="/signup">Volunteer</a></li>
+              <li><a class="text-ikr" href="/generaldonation">Donate</a></li>
+              <li><a class="text-ikr" href="/donatepet">Sponsor</a></li>
+              <li><a class="text-ikr" href="/aboutus#contactus">Write a review</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h6 class="title is-6">Contact</h6>
+            <ul>
+              <li><a class="text-ikr" href="mailto:info@petocracy.org">info@petocracy.org</a></li>
+              <li><a class="text-ikr" href="#">555-555-5555</a></li>
+              <li><a class="text-ikr" href="#">555 Honey Crisp Apple Rd</a></li>
+            </ul>
           </div>
         </div>
-      </footer></section>
+        <hr>
+        <div class="columns">
+          <div class="column"><a class="text-ikr" href="#">Terms and conditions</a></div>
+          <div class="column has-text-right-tablet">
+            <p class="subtitle is-6">&copy; 2021 Petocracy. All right reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
   </div>
   </div>
   <!-- <button type="submit" id="submitInfo" class="btn btn-default">Sign Up</button> -->

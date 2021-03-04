@@ -1,12 +1,12 @@
-# **Petocracy** A lil' CRUD app
+# Petocracy
 
-Petocracy application was designed to help out pet owners during the current Covid crisis when people may be out of work and having a hard time paying bills.   Petocracy allows a pet owner to register as a user and request help from volunteers in either a monetary form or requesting help with services i.e. buying food, walking pet, housesitting, etc...   Any person can also register to be a volunteer to either sponsor the pet monetarily or volunteer to help out providing the specific need from the pet owner.  The application also allows the pet owner to upload a picture of their pet.   All the pets for either services requested or donations are displayed when a volunteer is trying to choose which pet to support.   A person who does not wish to register at the site can also just make a general donation to the cause to help out all pet owners.
+Petocracy is an application designed to help out pet owners during the current Covid-19 crisis when people may be out of work and having a hard time paying bills.   Petocracy allows a pet owner to register as a user and request help from volunteers in either a monetary form or requesting help with services i.e. buying food, walking pet, housesitting, etc...   Any person can also register to be a volunteer to either sponsor the pet monetarily or volunteer to help out providing the specific need from the pet owner.  The application also allows the pet owner to upload a picture of their pet.   All the pets for either services requested or donations are displayed when a volunteer is trying to choose which pet to support.   A person who does not wish to register at the site can also just make a general donation to the cause to help out all pet owners.
 
 This project demonstrates a full front end to back end application utilizing sequelize to perform all 4 of the CRUD operations.   It utilizes node.js and an express server for the back end while the front end utilized the Bulma framework.   Displaying the pet info to the user was accomplished through the use of the handlebar templating engine.  The project structure followed the MVC.  A mySQL database was incorporated and used with a sequelize ORM.  In addition, application has been deployed to Heroku.
 
 The CRUD operations were incorporated through the use of registering a user, their pet info and services requested.  Those operations covered the Create.   The project also allowed the user to update their registration information which covered the Update.   The pet information registered by the pet owner was retrieved and displayed to a volunteer trying to decide between sponsor/donation or volunteering a service.   This operation covered the Read.  The project also allowed a registered user to delete their credit card information.   This operation covered the Delete.
 
-New technologies incorporated into this project that the team had not used before include: Cloudinary, dotenv, bcrypt, and passport.  Dotenv was utilized to hide the keys for Cloudinary from the user by supplying only environment variables in the code that was deployed.  Passport was utilized to handle user authentication across the various html pages.  The application checks against the user being currently logged in before displaying some of the pages.   This was necessary because we needed a registered user for some operations on the website.  Bcrypt was utilized to hash the user password, the credit card number, credit card security code.  Lastly, cloudinary was incorporated to provide a way for user to easily upload photos of their pets to the website.   These pet pictures are stored in the cloud at the cloudinary site, but the returned URL to the photo is stored locally in the Petrocracy database.    These URL links are used to display the pet pictures when people are viewing the pets to sponsor/donate.
+New technologies incorporated into this project that the team had not used before include: Cloudinary, dotenv, bcrypt, and passport.  Dotenv was utilized to hide the keys for Cloudinary from the user by supplying only environment variables in the code that was deployed.  Passport was utilized to handle user authentication across the various html pages.  The application checks against the user being currently logged in before displaying some of the pages.   This was necessary because we needed a registered user for some operations on the website.  Bcrypt was utilized to hash the user password, the credit card number, credit card security code.  Lastly, cloudinary was incorporated to provide a way for the user to easily upload photos of their pets to the website.   These pet pictures are stored in the cloud at the cloudinary site, but the returned URL to the photo is stored locally in the Petrocracy database.    These URL links are used to display the pet pictures when people are viewing the pets to sponsor/donate.
 
 ## Table of Contents
 * [Team](#Team)
@@ -18,10 +18,7 @@ New technologies incorporated into this project that the team had not used befor
 * [Support](#Support)
 * [Technologies](#Technologies)
 * [Repository](#Repository)
-* [HTML Pages](#HTML-Pages)
-* [CRUD Operations](#CRUD-Operations)
-* [Routes](#Routes)
-
+* [Deployment](#Deployment)
 
 ## Team: SKOTU (Super Koders of the Universe)
 ![Team](./public/assets/SKOTU3.png)
@@ -34,7 +31,7 @@ Members:
 ## Project-Diagram
 ![Project Diagram](./public/assets/project_diagram.PNG)
 
-## ERD
+## Entity Relationship Diagram
 ![ERD](./public/assets/Covid_Pets.jpg)
 
 ## Screenshots
@@ -48,67 +45,67 @@ Members:
 * [General Donations](#General-Donations)
 * [Update User Registration](#Update-User-Registration)
 
-### Home Page
+#### Home Page
 The following is a screenshot of the Petocracy application home page.
 
 <p align="center">
-  <img src="./images/PetrocracyHomePage.png" alt="Petocracy application home screen">
+  <img src="./public/assets/PetrocracyHomePage.png" alt="Petocracy application home screen">
 </p>
 
-### Login
+#### Login
 The following is a screenshot of the login page.
 
 <p align="center">
-  <img src="./images/PetrocracyLogin.png" alt="Petocracy application login screen">
+  <img src="./public/assets/PetrocracyLogin.png" alt="Petocracy application login screen">
 </p>
 
-### Registration
+#### Registration
 The following is a screenshot of the registration page.
 
 <p align="center">
-  <img src="./images/PetrocracyRegistration.png" alt="Petocracy application registration screen">
+  <img src="./public/assets/PetrocracyRegistration.png" alt="Petocracy application registration screen">
 </p>
 
-### User Landing
+#### User Landing
 The following is a screenshot of the user landing page.
 
 <p align="center">
-  <img src="./images/PetrocracyUserLanding.png" alt="Petocracy application user landing screen">
+  <img src="./public/assets/PetrocracyUserLanding.png" alt="Petocracy application user landing screen">
 </p>
 
-### Display Pets
+#### Display Pets
 The following is a screenshot of the display pets page.
 
 <p align="center">
-  <img src="./images/PetrocracyDisplayPets.png" alt="Petocracy application display pets screen">
+  <img src="./public/assets/PetrocracyDisplayPets.png" alt="Petocracy application display pets screen">
 </p>
 
-### Display Pet Info
+#### Display Pet Info
 The following is a screenshot of the display pet info page.
 
 <p align="center">
-  <img src="./images/PetrocracyDisplayPetInfo.png" alt="Petocracy application display pet info screen">
+  <img src="./public/assets/PetrocracyDisplayPetInfo.png" alt="Petocracy application display pet info screen">
 </p>
 
-### Donate Pet
+#### Donate Pet
 The following is a screenshot of the donate to a pet page.
 
 <p align="center">
-  <img src="./images/PetrocracyDonatePet.png" alt="Petocracy application donate pet screen">
+  <img src="./public/assets/PetrocracyDonatePet.png" alt="Petocracy application donate pet screen">
 </p>
 
-### General Donations
+#### General Donations
 The following is a screenshot of the general donations page.
 
 <p align="center">
-  <img src="./images/PetrocracyGeneralDonations.png" alt="Petocracy application general donations screen">
+  <img src="./public/assets/PetrocracyGeneralDonations.png" alt="Petocracy application general donations screen">
 </p>
 
-### Update User Registration
+#### Update User Registration
 The following is a screenshot of the update user registration page.
 
 <p align="center">
-  <img src="./images/PetrocracyUpdateRegistration.png" alt="Petocracy application update user registration screen">
+  <img src="./public/assets/PetrocracyUpdateRegistration.png" alt="Petocracy application update user registration screen">
 </p>
 
 ## Installation
@@ -132,9 +129,9 @@ Followed by entering localhost:8080 in your browser URL line.
 
 Please email any of the following team member for further information:
 
-<div>ashleyc.stith@gmail.com</div>
-<div>irafi@nlihc.org</div>
-<div>jtoth7824@gmail.com</div>
+1.  Ashley Stith: ashleyc.stith@gmail.com
+2.  Ikra Rafia: irafi@nlihc.org
+3.  John Toth: jtoth7824@gmail.com
 
 ## Technologies
 
@@ -158,77 +155,3 @@ Direct link to repository:  https://github.com/stithac/group1_project2
 The Petocracy application was deployed to Heroku so that anyone can run the application.   The link to execute the application is as follows:
 
 https://immense-coast-50151.herokuapp.com/
-
-## HTML Pages
-* index.html - Home page for site.
-    * Mission Statement
-    * Buttons for:
-        * Volunteer
-        * Sponsor
-        * Request Help
-        * General Donation
-    * Amount raised so far
-    * Nav links: Login, Register
-* registration.html - Page to create an account (volunteer / register pet)
-    * Main Fields:
-        * firstName
-        * lastName
-        * email (userid)?
-        * street
-        * city
-        * state
-        * zip
-        * phone
-        * volunteer (if selected, show volunteer fields. Otherwise, display Pet Fields)
-        * password
-    * Pet Fields (fields that display if registering pet)
-        * petName
-        * picURL (cloudinary upload)
-        * breed_type
-        * petAge
-        * petBio
-        * weight
-        * helpReason
-        * monetary (if selected, show monetary fields):
-            * request amount
-            * raisedAmount
-* pet.html - Page to display all pets. Each pet has pic, name, sponsor button, donate button
-* *volunteer.html* - View All volunteers
-* login.html
-    * email (userid)
-    * password
-    * *link to reset password?*
-    * link to register.html (if no account)
-* userprofile.html - Page to display pets associated with user and link to delete account
-* *createaccount.html* - Is this the same as registration.html?
-* aboutus.html - Page with team info
-* Additional pages added by Ashley:
-    * donatepet.html: Donate pet page: Opens when user clicks "Donate" for particular pet
-    * volunteerpet.html: Volunteer pet page: Opens when user clicks "Volunteer" for particular pet
-    * donations.html: General Donation page - Allows users to submit general donations
-    * Credit Card (Handlebars)?: Allow users to submit payment information for donations
-
-
-## CRUD Operations
-* **CREATE**
-    * create user account
-    * create pet account
-* **READ**
-    * view all pets
-* **UPDATE**
-    * $ donated per pet
-    * general donation
-    * user registration
-* **DELETE**
-    * user delete credit card
-
-
-## Routes
-### HTML Routes
-    * Home page ("/")
-    * View all pets ("/pet.html")
-
-### API Routes
-    * View all users (Important to show delete functionality)
-    * View all services
-    * View all volunteers
