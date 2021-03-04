@@ -7,7 +7,7 @@
                 {{#unless requestAmount}}
                     <div class="column is-6 is-4-widescreen">
                         <div class="card">
-                            <div class="card-image"><a href="#"><img src="" alt=""></a>
+                            <div class="card-image">
                                 <figure class="image is-4by3"><img src={{picURL}} alt=""></figure>
                             </div>
                             <div class="card-content">
@@ -42,7 +42,7 @@
                                 {{/if}}
                                 {{#unless recurring}}
                                     <div>
-                                        <span class = "service"> Frequency: one-time</span>{{frequency}} {{#if sunday}}on: Sunday, {{/if}}{{#if monday}}on: Monday, {{/if}}{{#if tuesday}}on: Tuesday, {{/if}}{{#if wednesday}}on: Wednesday, {{/if}}{{#if thursday}}on: Thursday, {{/if}}{{#if friday}}on: Friday, {{/if}}{{#if saturday}}on: Saturday {{/if}}
+                                        <span class = "service"> Frequency: one-time </span>{{frequency}} {{#if sunday}}on: Sunday, {{/if}}{{#if monday}}on: Monday, {{/if}}{{#if tuesday}}on: Tuesday, {{/if}}{{#if wednesday}}on: Wednesday, {{/if}}{{#if thursday}}on: Thursday, {{/if}}{{#if friday}}on: Friday, {{/if}}{{#if saturday}}on: Saturday {{/if}}
                                     </div>
                                 {{/unless}}
                                 <br>
@@ -66,7 +66,7 @@
                 {{#if requestAmount}}
                     <div class="column is-6 is-4-widescreen">
                         <div class="card">
-                            <div class="card-image"><a href="#"><img src="" alt=""></a>
+                            <div class="card-image">
                                 <figure class="image is-4by3"><img src={{picURL}} alt=""></figure>
                             </div>
                             <div class="card-content ">
@@ -95,7 +95,8 @@
                                 </table>
                                 <progress class="progress is-warning" id="progress" value="{{divide raisedAmount requestAmount}}" max="100">{{subtract raisedAmount requestAmount}}</progress>
                                 <br>
-                                <div>
+
+                                <div style="margin-top:15px">
                                     <a href="/donatepet.html"  data-type="handlebarBtn" id= "{{id}}" class="button button-ikr is-primary btn donateBtn">Donate</a>
                                 </div>
                                 <br>
@@ -108,6 +109,8 @@
                 {{/if}}
             {{/each}}
 		</div>
+
+        <div class="buttons is-centered"><a class="button button-ikr is-primary" href="/all-pets">View All Pets</a></div>
     </div>
 </section>
 

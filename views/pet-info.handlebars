@@ -45,6 +45,19 @@
                     <div><label class="label">Additional information: </label></div>
                     <div>{{pet.notes}}</div><br>
                 </div>
+                {{#if pet.requestAmount}}
+                    <div>
+                        <a href="/donatepet.html"  data-type="handlebarBtn" id= "{{pet.id}}" class="button button-ikr is-primary btn donateBtn">Donate</a>
+                    </div>
+                {{/if}}
+                {{#unless pet.requestAmount}}
+                    <div>
+                        <a href="#" id="volunteerPetInfoBtn"  class="button button-ikr is-primary thanks" >Volunteer</a>
+                    </div><br>
+                    <div>
+                        <p id="thanksPetInfoButton" class="hide">Thank you! This pet has been matched.</p>
+                    </div>
+                {{/unless}}
             </div>
             <div class="column is-6">
                 <div class="container">
