@@ -1,54 +1,49 @@
-{{!-- Navigation displays login/signup buttons when user not logged in. Displays logout when user logged in--}}
-<nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="./"><img
-              src="/p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
-            aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
-              aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" style="color:black;" href="/aboutus">About Us</a><a class="navbar-item"
-              style="color:black;" href="/all-pets/services">Volunteer</a><a class="navbar-item" style="color:black;"
-              href="/all-pets">Pets</a>
-            <a class="navbar-item" style="color:black;" href="/aboutus#contactus">Contact Us</a>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons"><a class="button is-light login" href="/login" id= "loginBtn">Log in</a><a
-                  class="button button-ikr is-primary login" href="/signup" id = "signUpBtn">Sign up</a><a class="button button-ikr is-primary" href="/logout" id = "logoutBtn">Logout</a></div>
-            </div>
-          </div>
-        </div>
-    </div>
-</nav>
 
 <section>
     <div class="container py-4">
 
         <div class="columns">
-            <div class="column is-6">
+            <div class="column is-6" style="background-color:white">
                 <h2 class="title mb-6">{{pet.petName}}</h2>
-                <div class="column is-6 is-4-widescreen">
-                    <div><span class="service">Bio:</span> {{pet.petBio}}</div><br>
-                    <div><span class="service">Breed/Type:</span>{{pet.breed_type}}</div>
-                    <table class="table is-fullwidth">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div><span class="service" id=""> Weight: </span>{{pet.petWeight}}</div>
-                                </td>
-                                <td class="has-text-right">
-                                    <div> <span class="service" id="">Height:</span>{{pet.petHeight}}</div>
-                                </td>
-                                <td class="has-text-right">
-                                    <div ><span class="service" id="">Age: </span>{{pet.petAge}}</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div><span class="service">Reason for requesting help: </span>{{pet.helpReason}}</div>
-                    <div><span class="service">Type of help requested:</span> {{pet.services_monetary}}</div>
-
+                <div class="column">
+                    <div><label class="label">Bio</label></div>
+                    <div>{{pet.petBio}}</div><br>
+                    <div><label class="label">Breed/Type</label></div>
+                    <div>{{pet.breed_type}}</div><br>
+                    <div><label class="label">Weight</label></div>
+                    <div>{{pet.petWeight}}</div><br>
+                    <div><label class="label">Age</label></div>
+                    <div >{{pet.petAge}}</div><br>
+                    <div><label class="label">Reason for requesting help: </label></div>
+                    <div>{{pet.helpReason}}</div><br>
+                    {{#if pet.requestAmount}}
+                        <div><label class="label">Amount Requested: </label></div>
+                        <div>${{pet.requestAmount}}</div><br>
+                    {{/if}}
+                    {{#unless pet.requestAmount}}
+                        <div><label class="label">Service Requested: </label></div>
+                        <div>{{pet.serviceName}}</div><br>
+                        <div><label class="label">Start Date: </label></div>
+                        <div>{{date pet.startDate}}</div><br>
+                        <div><label class="label">End Date: </label></div>
+                        <div>{{date pet.endDate}}</div><br>
+                        <div><label class="label">Time: </label></div>
+                        <div>{{pet.timeOfDay}}</div><br>
+                        {{#if recurring}}
+                            <div>
+                                <div><label class="label">Frequency: </label></div>
+                                {{frequency}} on: {{#if pet.sunday}}Sunday, {{/if}}{{#if pet.monday}}Monday, {{/if}}{{#if pet.tuesday}}Tuesday, {{/if}}{{#if pet.wednesday}}Wednesday, {{/if}}{{#if pet.thursday}}Thursday, {{/if}}{{#if pet.friday}}Friday, {{/if}}{{#if pet.saturday}}Saturday {{/if}}
+                            </div><br>
+                        {{/if}}
+                        {{#unless recurring}}
+                            <div>
+                                <div><label class="label">Frequency: </label></div>
+                                <div>One-time</div>
+                            </div><br>
+                        {{/unless}}
+                    {{/unless}}
+                    <div><label class="label">Additional information: </label></div>
+                    <div>{{pet.notes}}</div><br>
                 </div>
             </div>
             <div class="column is-6">

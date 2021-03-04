@@ -136,13 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             })
 
-
             .catch((err) => console.error(err));
         };
 
         getPets();
 
-        // petsHandlebars();
+        petsHandlebars();
 
 
     } else if (url.includes("pet-info")) {

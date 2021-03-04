@@ -1,33 +1,9 @@
-{{!-- Navigation displays login/signup buttons when user not logged in. Displays logout when user logged in--}}
-<nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="./"><img
-              src="/p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
-            aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
-              aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" style="color:black;" href="/aboutus">About Us</a><a class="navbar-item"
-              style="color:black;" href="/all-pets/services">Volunteer</a><a class="navbar-item" style="color:black;"
-              href="/all-pets">Pets</a>
-            <a class="navbar-item" style="color:black;" href="/aboutus#contactus">Contact Us</a>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons"><a class="button is-light login" href="/login" id= "loginBtn">Log in</a><a
-                  class="button button-ikr is-primary login" href="/signup" id = "signUpBtn">Sign up</a><a class="button button-ikr is-primary" href="/logout" id = "logoutBtn">Logout</a></div>
-            </div>
-          </div>
-        </div>
-    </div>
-</nav>
-
 <section>
     <div class="container py-4">
-    <h2 class="title mb-6">Pets in Need</h2>
+    <h2 class="title mb-6 has-text-centered">Pets in Need</h2>
 		<div class="columns is-multiline mb-6">
-            {{!-- All Pets requesting services --}}
-			{{#each pets }}
+            {{!-- Displays all Pets requesting services --}}
+			{{#each pets}}
                 {{#unless requestAmount}}
                     <div class="column is-6 is-4-widescreen">
                         <div class="card">
@@ -37,39 +13,44 @@
                             <div class="card-content">
                                 <div>
                                     <h4 class="title is-spaced is-4">{{petName}}</h4>
-                                </div>
-                                <div style="height:80px !important">
+                            </div>
+                            <div class="service">Mini Bio:</div>
+                            <div style="height:80px !important">
                                     <p>{{petBio}}</p>
+                            </div>
+                            <div class="service">Reason for requesting help:</div>
+                                <div style="height:50px !important">
+                                    <p>{{helpReason}}</p>
                                 </div>
-                                {{!-- <table class="table is-fullwidth" >
-                                    <tbody>
-                                        <tr> --}}
-                                            {{!-- <td> --}}
-                                                <div><span class = "service">Service Requested: </span>{{serviceName}}</div>
+                            <div><span class = "service">Service Requested: </span>{{serviceName}}</div>
 
-                                                <div>
-                                                    <div>
-                                                        <span class = "service">Start Date: </span>{{startDate}}
-                                                    </div>
-                                                    <div>
-                                                        <span class = "service">End Date: </span>{{endDate}}
-                                                    </div>
-                                                </div>
-
-                                                {{#if recurring}}
-                                                <div><span class = "service"> Frequency: </span>{{frequency}} on: {{#if sunday}}Sunday, {{/if}}{{#if monday}}Monday, {{/if}}{{#if tuesday}}Tuesday, {{/if}}{{#if wednesday}}Wednesday, {{/if}}{{#if thursday}}Thursday, {{/if}}{{#if friday}}Friday, {{/if}}{{#if saturday}}Saturday {{/if}}</div>
-                                                {{/if}}
-
-                                                {{#unless recurring}}
-                                                <div><span class = "service"> Frequency: one-time</span>{{frequency}} {{#if sunday}}on: Sunday, {{/if}}{{#if monday}}on: Monday, {{/if}}{{#if tuesday}}on: Tuesday, {{/if}}{{#if wednesday}}on: Wednesday, {{/if}}{{#if thursday}}on: Thursday, {{/if}}{{#if friday}}on: Friday, {{/if}}{{#if saturday}}on: Saturday {{/if}}</div>
-                                                {{/unless}}
-
-
-                                <div class="has-text-centered">
-                                    <a href="/pet-info/{{id}}" id= "{{id}}" class="moreInfo">See more about {{petName}}</a>
+                            <div>
+                                <div>
+                                    <span class = "service">Start Date: </span>{{date startDate}}
                                 </div>
                                 <div>
+                                    <span class = "service">End Date: </span>{{date endDate}}
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class = "service">Time: </span>{{timeOfDay}}
+                                </div>
+                                {{#if recurring}}
+                                    <div>
+                                        <span class = "service"> Frequency: </span>{{frequency}} on: {{#if sunday}}Sunday, {{/if}}{{#if monday}}Monday, {{/if}}{{#if tuesday}}Tuesday, {{/if}}{{#if wednesday}}Wednesday, {{/if}}{{#if thursday}}Thursday, {{/if}}{{#if friday}}Friday, {{/if}}{{#if saturday}}Saturday {{/if}}
+                                    </div>
+                                {{/if}}
+                                {{#unless recurring}}
+                                    <div>
+                                        <span class = "service"> Frequency: one-time</span>{{frequency}} {{#if sunday}}on: Sunday, {{/if}}{{#if monday}}on: Monday, {{/if}}{{#if tuesday}}on: Tuesday, {{/if}}{{#if wednesday}}on: Wednesday, {{/if}}{{#if thursday}}on: Thursday, {{/if}}{{#if friday}}on: Friday, {{/if}}{{#if saturday}}on: Saturday {{/if}}
+                                    </div>
+                                {{/unless}}
+                                <br>
+                                <div>
                                     <a href="#" id="{{id}}"  data-type="handlebarBtn" helpType = "{{services_monetary}}" class="button volunteerBtn button-ikr is-primary btn" >Volunteer</a>
+                                </div><br>
+                                <div>
+                                    <a href="/pet-info/{{serviceName}}/{{id}}" id= "{{id}}" class="moreInfo">See more about {{petName}}</a>
                                 </div>
                                 <div>
                                     <p id="thanks{{id}}" class="hide">Thank you! This pet has been matched.</p>
@@ -80,7 +61,7 @@
                 {{/unless}}
             {{/each}}
 
-            {{!-- All Pets requesting donations --}}
+            {{!-- Displays all Pets requesting donations --}}
             {{#each pets }}
                 {{#if requestAmount}}
                     <div class="column is-6 is-4-widescreen">
@@ -92,8 +73,13 @@
                                 <div>
                                     <h4 class="title is-spaced is-4">{{petName}}</h4>
                                 </div>
+                                <div class="service">Mini Bio:</div>
                                 <div style="height:80px !important">
                                     <p>{{petBio}}</p>
+                                </div>
+                                <div class="service">Reason for requesting help:</div>
+                                <div style="height:50px !important">
+                                    <p>{{helpReason}}</p>
                                 </div>
                                 <table class="table is-fullwidth">
                                     <tbody>
@@ -107,20 +93,14 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
                                 <progress class="progress is-warning" id="progress" value="{{divide raisedAmount requestAmount}}" max="100">{{subtract raisedAmount requestAmount}}</progress>
-
-
-
-
-                                <div class="has-text-centered">
-                                    <a href="/pet-info/{{id}}" class="moreInfo" id= "{{id}}" >See more about {{petName}}</a>
-                                </div>
-
+                                <br>
                                 <div>
-
                                     <a href="/donatepet.html" data-type="handlebarBtn" id= "{{id}}" class="button button-ikr is-primary btn donateBtn">Donate</a>
-
+                                </div>
+                                <br>
+                                <div>
+                                    <a href="/pet-info/monetary/{{id}}" class="moreInfo" id= "{{id}}" >See more about {{petName}}</a>
                                 </div>
                             </div>
                         </div>

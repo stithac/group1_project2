@@ -6,6 +6,7 @@ const db = require('../models');
 const passport = require("../config/passport");
 const { response } = require('express');
 var services;
+var pet;
 
 // Routes
 module.exports = function (app) {
@@ -430,116 +431,159 @@ module.exports = function (app) {
 
   /***************** Handlebars routes *****************/
 
-
-  // // route to retrieve all pet info from Pets table and send it back to handlebar file
-  //   app.get('/all-pets/', (req, res) => {
-
-
-  //       db.Pets.findAll().then((results) => {
-  //           // res.json(results);
-
-  //           console.log(JSON.parse(JSON.stringify(results))); // Testing
-
-  //           const petsArray = JSON.parse(JSON.stringify(results));
-
-  //           res.render('all-pets', {
-  //               pets: petsArray, //pets Array
-  //               // services: services
-  //           });
-
-  //       });
-  //   });
-
     // route to retrieve all pet info from Pets table and send it back to handlebar file
     app.get('/all-pets/', (req, res) => {
 
       db.Services.findAll().then((results) =>{
         services = results;
-        console.log(services)
 
         return services;
       })
-
       .then((servicesResults) => {
         db.Pets.findAll().then((petsResults) => {
-          // console.log(servicesResults)
 
           const pets = JSON.parse(JSON.stringify(petsResults));
           const services = JSON.parse(JSON.stringify(servicesResults));
-
-          // console.log(pets);
-          // console.log(services);
 
           for (i = 0; i < services.length; i++){
             const index = services[i].RegistrationId;
 
             const result = pets.find(({RegistrationId}) => RegistrationId === index);
-            console.log(result);
 
             const newResult = {
                 ...result,
                 ...services[i]
             }
 
-            // console.log(newResult);
+            newResult.id = result.id;
 
             for (j = 0; j < pets.length; j++){
                 if(pets[j].RegistrationId === index){
                     pets.splice(j, 1, newResult)
                 }
             }
-
-            console.log(pets);
-
-        }
+          }
           res.render('all-pets', {
-              pets: pets, //pets Array
-              
+              pets: pets, //pets array with services information is passed to handlebars file
           });
-
       })
-
     });
   });
 
-
     // route to retrieve a particular pet's info and send it back to handlebar file
-    app.get('/pet-info/:id', (req, res) => {
-        console.log(req.params.id);
-        db.Pets.findOne({
-            where: {
-              id: req.params.id,
-            },
+    app.get('/pet-info/:services_monetary/:id', (req, res) => {
 
-          }).then((results) => {
-            const petInfo = JSON.parse(JSON.stringify(results));
-            console.log(petInfo); // Testing
-            res.render('pet-info', {
-                pet: petInfo, // pet Information
+        if(req.params.services_monetary === "monetary"){
+            db.Pets.findOne({
+                where: {
+                  id: req.params.id,
+                },
+
+              }).then((results) => {
+                const petInfo = JSON.parse(JSON.stringify(results));
+
+                res.render('pet-info', {
+                    pet: petInfo, // pet Information
+                });
+
             });
+        } else {
+            db.Pets.findOne({
+                where: {
+                  id: req.params.id,
+                },
+            })
+            .then((petResults) => {
+                pet = JSON.parse(JSON.stringify(petResults));
 
-        });
+                db.Services.findOne({
+                    where: {
+                        serviceName: req.params.services_monetary
+                    }
+                })
+                .then((serviceResult) => {
+                    const service = JSON.parse(JSON.stringify(serviceResult));
+
+                    const newResult = {
+                        ...pet,
+                        ...service
+                    }
+                    console.log(newResult);
+
+                    res.render('pet-info', {
+                        pet: newResult, // pet Information
+                    });
+                })
+
+            })
+        }
+
     });
 
      // route to retrieve all pet info from Pets table where servicesMonetary is parameter and send it back to handlebar file
      app.get('/all-pets/:helpType', (req, res) => {
+      if (req.params.helpType == "monetary"){
+        db.Pets.findAll({
+          where: {
+            services_monetary : req.params.helpType
+          }
+        }).then((results) => {
+            // res.json(results);
 
-      db.Pets.findAll({
-        where: {
-          services_monetary : req.params.helpType
-        }
-      }).then((results) => {
-          // res.json(results);
+            console.log(JSON.parse(JSON.stringify(results))); // Testing
 
-          console.log(JSON.parse(JSON.stringify(results))); // Testing
+            const petsArray = JSON.parse(JSON.stringify(results));
 
-          const petsArray = JSON.parse(JSON.stringify(results));
+            res.render('all-pets', {
+                pets: petsArray, //pets Array
+            });
 
-          res.render('all-pets', {
-              pets: petsArray, //pets Array
-          });
+        });
+      } else if (req.params.helpType === "services"){
+        // console.log("services");
+        db.Services.findAll().then((results) =>{
+          services = results;
 
-      });
-  });
+          return services;
+        })
+        .then((servicesResults) => {
+          db.Pets.findAll({
+              where: {
+                services_monetary : 'services'
+              }
+
+          }).then((petsResults) => {
+
+            const pets = JSON.parse(JSON.stringify(petsResults));
+            // console.log(pets); // Testing
+            const services = JSON.parse(JSON.stringify(servicesResults));
+
+            for (i = 0; i < services.length; i++){
+              const index = services[i].RegistrationId;
+
+              const result = pets.find(({RegistrationId}) => RegistrationId === index);
+
+              const newResult = {
+                  ...result,
+                  ...services[i]
+              }
+
+              newResult.id = result.id;
+
+              for (j = 0; j < pets.length; j++){
+                  if(pets[j].RegistrationId === index){
+                      pets.splice(j, 1, newResult)
+                  }
+              }
+            }
+            // console.log(pets); // Testing
+            res.render('all-pets', {
+                pets: pets, //pets array with services information is passed to handlebars file
+            });
+          })
+        })
+      }
+
+    });
 
 };

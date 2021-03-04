@@ -18,27 +18,30 @@
 </head>
 
 <body>
-	<div class="container is-fluid">
-		{{!-- <nav class="navbar">
-			<div class="container">
-				<div class="navbar-brand"><a class="navbar-item" href="./">Petocracy</a><a class="navbar-burger"
-						role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
-							aria-hidden="true"></span><span aria-hidden="true"></span></a>
-				</div>
-				<div class="navbar-menu">
-					<div class="navbar-start">
-						<a class="navbar-item" href="./aboutus.html">About Us</a><a class="navbar-item"
-							href="#">Volunteer</a><a class="navbar-item" href="#">Pets</a>
-						<a class="navbar-item" href="./">Contact Us</a>
-					</div>
-					<div class="navbar-end">
-						<div class="navbar-item">
-							<div class="buttons"><a class="button button-ikr is-primary" href="/logout">Logout</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav> --}}
+      {{!-- Navigation displays login/signup buttons when user not logged in. Displays logout when user logged in--}}
+      <nav class="navbar">
+            <div class="container">
+              <div class="navbar-brand"><a class="navbar-item" href="/"><img
+                    src="/p2-images/logo/petocracylogo-horizonal.png"></a><a class="navbar-burger" role="button"
+                  aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span
+                    aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+              <div class="navbar-menu">
+                <div class="navbar-start">
+                  <a class="navbar-item" style="color:black;" href="/aboutus">About Us</a><a class="navbar-item"
+                    style="color:black;" href="/all-pets/services">Volunteer</a><a class="navbar-item" style="color:black;"
+                    href="/all-pets">Pets</a>
+                  <a class="navbar-item" style="color:black;" href="/aboutus#contactus">Contact Us</a>
+                </div>
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons"><a class="button is-light login" href="/login" id= "loginBtn">Log in</a><a
+                        class="button button-ikr is-primary login" href="/signup" id = "signUpBtn">Sign up</a><a class="button button-ikr is-primary" href="/logout" id = "logoutBtn">Logout</a></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </nav>
+  <div class="container is-fluid">
 		<section class="section">
 			{{{body}}}
 		</section>
