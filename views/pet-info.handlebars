@@ -29,13 +29,13 @@
                         <div>{{date pet.endDate}}</div><br>
                         <div><label class="label">Time: </label></div>
                         <div>{{pet.timeOfDay}}</div><br>
-                        {{#if recurring}}
+                        {{#if pet.recurring}}
                             <div>
                                 <div><label class="label">Frequency: </label></div>
-                                {{frequency}} on: {{#if pet.sunday}}Sunday, {{/if}}{{#if pet.monday}}Monday, {{/if}}{{#if pet.tuesday}}Tuesday, {{/if}}{{#if pet.wednesday}}Wednesday, {{/if}}{{#if pet.thursday}}Thursday, {{/if}}{{#if pet.friday}}Friday, {{/if}}{{#if pet.saturday}}Saturday {{/if}}
+                                {{pet.frequency}} on: {{#if pet.sunday}}Sunday, {{/if}}{{#if pet.monday}}Monday, {{/if}}{{#if pet.tuesday}}Tuesday, {{/if}}{{#if pet.wednesday}}Wednesday, {{/if}}{{#if pet.thursday}}Thursday, {{/if}}{{#if pet.friday}}Friday, {{/if}}{{#if pet.saturday}}Saturday {{/if}}
                             </div><br>
                         {{/if}}
-                        {{#unless recurring}}
+                        {{#unless pet.recurring}}
                             <div>
                                 <div><label class="label">Frequency: </label></div>
                                 <div>One-time</div>

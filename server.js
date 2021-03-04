@@ -25,20 +25,21 @@ var hbs = exphbs.create({
       date: function(UTCDate){ return UTCDate.split('T')[0]},
       eq: function(var1, var2){if(var1 === var2){return 1}},
       time: function(timeVar){
-        var hours = timeVar.split(':')[0];
-        var am_pm;
-        if (hours < 12){
-          am_pm = "AM";
-        } else {
-          am_pm = "PM"
-        }
-        hours = ((hours + 11) % 12 + 1);
-        var mins = timeVar.split(':')[1];
 
-        return hours +":" + mins +" " + am_pm
-      }
-  }
-});
+          var hours = timeVar.split(':')[0];
+          var am_pm;
+          if (hours < 12){
+              am_pm = "AM";
+            } else {
+              am_pm = "PM"
+            }
+            hours = ((hours + 11) % 12 + 1);
+            var mins = timeVar.split(':')[1];
+
+            return hours +":" + mins +" " + am_pm
+          }
+        }
+  });
 
 // app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
