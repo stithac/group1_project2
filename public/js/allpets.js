@@ -10,15 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     var pets;
     var serviceName;
 
+    /************ Event Listeners ***************/
+    // Get all buttons
+    var btns = document.querySelectorAll('.volunteerBtn, .donateBtn');
 
     // Volunteer buttons
     var volBtns = document.getElementsByClassName('volunteerBtn');
-    // console.log(volBtns); // Testing
 
-    var btns = document.querySelectorAll('.volunteerBtn, .donateBtn');
-
-    console.log(btns);
-
+    // Add event listener to all volunteer buttons. When clicked, show the "thank you" message associated with the pet
     for (i = 0; i < volBtns.length; i++){
         volBtns[i].addEventListener("click", event =>{
             console.log(event.target.id);
@@ -30,16 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
             thanks.removeAttribute("class", "hide");
             btn.setAttribute("class", "hide");
 
-            localStorage.setAttribute("match", btnId);
-
+            localStorage.setItem("match", btnId);
         })
     }
 
+    // Donate buttons
     var donateBtns = document.getElementsByClassName('donateBtn');
 
+    // Add event listener to all donate buttons to set the petId in local storage to the id of the button
     for (i = 0; i < donateBtns.length; i++){
         donateBtns[i].addEventListener("click", event => {
-
 
             const btn = event.target;
 
@@ -50,8 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    // More info buttons
     var moreInfoBtns = document.querySelectorAll('.moreInfo');
 
+    // Add event listener to all moreInfo buttons to get the services_monetary attribute and store in local storage. This is used to pull up the correct info in the pet-info page
     for (i = 0; i< moreInfoBtns.length; i++){
         moreInfoBtns[i].addEventListener("click", event => {
 
@@ -62,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    /************ Functions ***************/
+
+    // Check to see if the user is logged in by passing the user info to the user_data api route.  Buttons are hidden if the user is not logged in
     const checkLogin = () => {
         fetch('/api/user_data', {
             method: 'GET',
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((response) => response.json())
         .then((data) => {
 
-            console.log(data); // Testing
+            // console.log(data); // Testing
 
             userData = JSON.stringify(data);
 
@@ -99,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const logoutBtn = document.querySelector("#logoutBtn");
 
-
                 logoutBtn.setAttribute("class", "hide");
             } else {
                 const loginBtns = document.querySelectorAll(".login");
@@ -113,7 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // Only run script from the all-pets handlebars route
+    /* The following functions make fetch calls to api routes in order to render the information for the pages and then render the pages themselves.  Based on the handlebar page, different functions are run because different information is needed and different routes being called */
+
+    // Only run script from the all-pets handlebars route. Script calls the api/pets route to get all of the pets in the Pets model.
     if (url.includes("all-pets")){
 
         const getPets = () => {
@@ -129,17 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then ((data) => {
                     pets = data;
                     console.log('Success in getting pets:', pets); // Testing
-                    petsHandlebars(); // call in petsHandlebars() to render the page
+                    // petsHandlebars(); // call in petsHandlebars() to render the page
             })
 
                 .catch((err) => console.error(err));
 
         };
 
+        // petsHandlebars calls the /all-pets route to pull in all pets from the Pets table and join them with the Services table based on id.  The result is used to render the all-pets handlebars page
         const petsHandlebars = () => {
             console.log('Pet Handlebars is getting called');
 
-            console.log(pets);
             fetch(`/all-pets/`, {
                 method: 'GET',
                 headers: {
@@ -152,12 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         getPets();
-
         petsHandlebars();
 
+    } else if (url.includes("pet-info")) { //If on the pet-info handlebars page
 
-    } else if (url.includes("pet-info")) {
+        // Event listener for volunteer button on pet-info page. Show thank you message when clicked
+        if (url.indexOf("monetary") == -1){
+            const volPetInfoBtn = document.getElementById("volunteerPetInfoBtn");
 
+            volPetInfoBtn.addEventListener("click", event => {
+            const thanks = document.getElementById("thanksPetInfoButton")
+            thanks.removeAttribute("class", "hide");
+            volPetInfoBtn.setAttribute("class", "hide");
+            })
+        }
+
+        // petInfoHandlebars takes in the serviceName (stored in local storage) and the petId and renders the information for the pet on the pet-info handlebar page
         const petInfoHandlebars = (serviceName, petId) => {
 
             console.log('Pet Info Handlebars is getting called for id: ', petId);
@@ -174,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch((err) => console.error(err));
         };
 
+        // getId gets the id passed in the URL
         const getId = () =>{
 
             petId = url.split("/").pop();
@@ -181,16 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(petId);
 
         }
+
         getId();
         localStorage.setItem("PetID", petId);
 
         serviceName = localStorage.getItem("serviceName");
         petInfoHandlebars(serviceName, petId);
-    }
+    } // end of else if statement
 
-    checkLogin(); // call checkLogin to toggle page buttons
+    checkLogin(); // call checkLogin on page load to toggle page buttons
 });
-
-
-
-
