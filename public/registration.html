@@ -150,10 +150,11 @@
                           placeholder="Security Question Answer" required>
                       </div>
                     </div>
-
+<br><hr>
                     <div>
                       <h4 class="title is-4">Are you requesting help for a pet OR volunteering?</h4>
                     </div>
+
                     <div class="form-group">
                       <input type="radio" id="needHelp" name="needType" value="needHelp">
                       <label for="needHelp">Requesting assistance for my pet</label><br>
@@ -166,6 +167,7 @@
                         <label class="label" for="exampleInputEmail1">Pet Name</label>
                         <input type="input" class="input form-control" id="petName" placeholder="Pet Name" required>
                       </div>
+
                       <div class="form-group">
                         <div>
                           <br>
@@ -175,40 +177,48 @@
                         </div>
                         <br>
                       </div>
-                      <div class="form-group">
+
+                      <div class="field form-group">
                         <label class="label" for="exampleInputEmail1">Breed/Type</label>
                         <input type="input" class="input form-control" id="breed-type" placeholder="Breed/Type"
                           required>
                       </div>
-                      <div class="form-group">
+                      
+                      <div class="field form-group">
                         <label class="label" for="exampleInputEmail1">Pet Age</label>
                         <input type="input" class="input form-control" id="petAge" placeholder="Pet Age" maxlength="3"
                           size="3" required>
                       </div>
-                      <div class="form-group">
+
+                      <div class="field form-group">
                         <label class="label" for="petBio">Pet Bio</label>
                         <textarea class="input form-control" id="petBio" placeholder="Pet Bio" maxlength="100"
                           required></textarea>
                       </div>
-                      <div class="form-group">
+
+                      <div class="field form-group">
                         <label class="label" for="exampleInputEmail1">Pet Weight</label>
                         <input type="input" class="input form-control" id="petWeight" placeholder="Pet Weight"
                           maxlength="3" size="5" required>
                       </div>
-                      <div class="form-group">
+
+                      <div class="field form-group">
                         <label class="label" for="exampleInputEmail1">Reason for Help</label>
                         <textarea class="input form-control" id="helpReason" placeholder="Reason for Help"
                           maxlength="100" required></textarea>
                       </div>
+                      <br><hr>
                       <div>
                         <h4 class="title is-4">Are you needing help with pet services or monetary donations?</h4>
                       </div>
-                      <div class="form-group">
+
+                      <div class="field form-group">
                         <input type="radio" id="helpTypeService" name="helpType" value="services">
                         <label for="helpTypeService">Pet Services</label><br>
                         <input type="radio" id="helpTypeMonetary" name="helpType" value="monetary">
                         <label for="helpTypeMonetary">Monetary Donation</label><br><br>
                       </div>
+                      
                       <div id="monetaryDiv" class="hide">
                         <div class="form-group">
                           <label class="label" for="amountRequested">Amount Requested</label>
@@ -216,93 +226,96 @@
                             placeholder="Amount Requested">
                         </div>
                       </div>
+
                       <div id="servicesDiv" class="hide">
-                        <div class="form-group">
+                        <div class="field form-group">
                           <label class="label" for="serviceName">Requested Service </label>
                           <input type="input" class="input form-control" id="serviceName"
                             placeholder="Requested Service">
                         </div>
+<div class="field is-grouped">
+  <div class="control">
 
-                        <div class="form-group">
+                        <div class="field form-group">
                           <label class="label" for="startDate">Start Date</label>
-                          <input type="date" id="startDate" name="startDate">
-                        </div>
-
-                        <div class="form-group">
+                          <input class="input" type="date" id="startDate" name="startDate">
+                        </div></div>
+                        <div class="control">
+                        <div class="field form-group">
                           <label class="label" for="endDate">End Date</label>
-                          <input type="date" id="endDate" name="endDate">
-                        </div>
+                          <input class="input" type="date" id="endDate" name="endDate">
+                        </div></div>
 
-
-                        <div class="form-group">
+                        <div class="control">
+                        <div class="field form-group">
                           <label class="label" for="exampleInputEmail1">Time of Day</label>
-                          <input type="time" class="input form-control" id="timeOfDay" placeholder="Time Of Day">
-                        </div>
-                        <div class="form-group">
-                          <label class="label" for="recurringCheck">Make this a repeating service</label>
-                          <input type="checkbox" id="recurringCheck" class="check" name="recurringCheck">
+                          <input class="input" type="time" id="timeOfDay" placeholder="Time Of Day">
+                        </div></div></div>
+                        
+                        <div class="field form-group">
+                          <label class="checkbox" for="recurringCheck">Make this a repeating service</label>
+                          <input type="checkbox" id="recurringCheck"  name="recurringCheck">
                         </div>
 
-                        <div class="form-group hide" id="frequencyDiv">
-                          <label for="frequencySelect">Frequency</label>
-
+                        <div class="field form-group hide" id="frequencyDiv">
+                          <label class="label" for="frequencySelect">Frequency</label>
+                        <div class="select">
                           <select name="frequencySelect" id="frequencySelect">
                             <option value="">Select Frequency:</option>
                             <option value="daily">Daily</option>
                             <option value="weekly">Weekly</option>
                             <option value="monthly">Monthly</option>
                           </select>
-                        </div>
+                        </div></div>
 
                         <div id="recurringDiv" class="hide">
 
-                          <div class="form-group">
-                            <label for="frequencyNumber">Recur every </label>
-                            <input type="input" class="input form-control" id="frequencyNumber"><span id="frequencySpan"
+                          <div class="field form-group">
+                            <label class="label" for="frequencyNumber">Recur every </label>
+                            <input  type="input" id="frequencyNumber"><span id="frequencySpan"
                               style="margin-left:10px;"></span>
                           </div>
 
-                          <div class="form-group">
-
-                            <input type="checkbox" class="input form-control" id="sunday" placeholder="Frequency">
-                            <label for="exampleInputEmail1">Sunday</label>
+                          <div class="field form-group">
+                            <input type="checkbox"  id="sunday" placeholder="Frequency">
+                            <label class="checkbox" for="exampleInputEmail1">Sunday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="monday" placeholder="Frequency">
-                            <label for="exampleInputEmail1">Monday</label>
+                          <div class="field form-group">
+                            <input type="checkbox" id="monday" placeholder="Frequency">
+                            <label class="checkbox" for="exampleInputEmail1">Monday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="tuesday" placeholder="Frequency">
-                            <label for="exampleInputEmail1">Tuesday</label>
+                          <div class="field form-group">
+                            <input type="checkbox" id="tuesday" placeholder="Frequency">
+                            <label class="checkbox" for="exampleInputEmail1">Tuesday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="wednesday" placeholder="Frequency">
+                          <div class="field form-group">
+                            <input type="checkbox" id="wednesday" placeholder="Frequency">
                             <label for="exampleInputEmail1">Wednesday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="thursday" placeholder="Frequency">
+                          <div class="field form-group">
+                            <input type="checkbox" id="thursday" placeholder="Frequency">
                             <label for="exampleInputEmail1">Thursday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="friday" placeholder="Frequency">
+                          <div class="field form-group">
+                            <input type="checkbox" id="friday" placeholder="Frequency">
                             <label for="exampleInputEmail1">Friday</label>
                           </div>
-                          <div class="form-group">
 
-                            <input type="checkbox" class="input form-control" id="saturday" placeholder="Frequency">
+                          <div class="field form-group">
+                            <input type="checkbox" id="saturday" placeholder="Frequency">
                             <label for="exampleInputEmail1">Saturday</label>
                           </div>
 
                         </div>
-
-                        <div class="form-group">
-                          <label for="serviceNotes">Notes / Additional Information</label>
-                          <textarea id="serviceNotes" maxlength="100"></textarea>
+<hr>
+                        <div class="field form-group">
+                          <label class="label" for="serviceNotes">Notes / Additional Information</label>
+                          <textarea class="textarea" id="serviceNotes" maxlength="100"></textarea>
                         </div>
                       </div>
 

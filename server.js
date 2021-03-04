@@ -6,6 +6,7 @@ require('dotenv').config();
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
+
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
