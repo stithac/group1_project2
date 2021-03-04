@@ -4,7 +4,6 @@
 const db = require('../models');
 // Requiring our models and passport as we've configured it
 const passport = require("../config/passport");
-const { response } = require('express');
 var services;
 
 // Routes
