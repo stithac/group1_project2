@@ -49,63 +49,63 @@ Members:
 The following is a screenshot of the Petocracy application home page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyHomePage.png" alt="Petocracy application home screen">
+  <img src="./public/assets/PetocracyHomePage.png" alt="Petocracy application home screen">
 </p>
 
 #### Login
 The following is a screenshot of the login page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyLogin.png" alt="Petocracy application login screen">
+  <img src="./public/assets/PetocracyLogin.png" alt="Petocracy application login screen">
 </p>
 
 #### Registration
 The following is a screenshot of the registration page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyRegistration.png" alt="Petocracy application registration screen">
+  <img src="./public/assets/PetocracyRegistration.png" alt="Petocracy application registration screen">
 </p>
 
 #### User Landing
 The following is a screenshot of the user landing page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyUserLanding.png" alt="Petocracy application user landing screen">
+  <img src="./public/assets/PetocracyUserLanding.png" alt="Petocracy application user landing screen">
 </p>
 
 #### Display Pets
 The following is a screenshot of the display pets page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyDisplayPets.png" alt="Petocracy application display pets screen">
+  <img src="./public/assets/PetocracyDisplayPets.png" alt="Petocracy application display pets screen">
 </p>
 
 #### Display Pet Info
 The following is a screenshot of the display pet info page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyDisplayPetInfo.png" alt="Petocracy application display pet info screen">
+  <img src="./public/assets/PetocracyDisplayPetInfo.png" alt="Petocracy application display pet info screen">
 </p>
 
 #### Donate Pet
 The following is a screenshot of the donate to a pet page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyDonatePet.png" alt="Petocracy application donate pet screen">
+  <img src="./public/assets/PetocracyDonatePet.png" alt="Petocracy application donate pet screen">
 </p>
 
 #### General Donations
 The following is a screenshot of the general donations page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyGeneralDonations.png" alt="Petocracy application general donations screen">
+  <img src="./public/assets/PetocracyGeneralDonations.png" alt="Petocracy application general donations screen">
 </p>
 
 #### Update User Registration
 The following is a screenshot of the update user registration page.
 
 <p align="center">
-  <img src="./public/assets/PetrocracyUpdateRegistration.png" alt="Petocracy application update user registration screen">
+  <img src="./public/assets/PetocracyUpdateRegistration.png" alt="Petocracy application update user registration screen">
 </p>
 
 ## Installation
