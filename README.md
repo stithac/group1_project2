@@ -150,7 +150,7 @@ Please email any of the following team member for further information:
 
 ## Repository
 
-Direct link to repository:  https://github.com/stithac/group1_project2
+Direct link to repository:  https://github.com/stithac/petocracy
 
 ## Deployment
 
